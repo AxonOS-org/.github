@@ -24,6 +24,7 @@ graph TD;
     B -->|Filtered Data| C{AxonOS Kernel - Rust}
     C -->|State| D[Cognitive Scheduler]
     D -->|Inference| E[AI Layer - Python/C++]
+```
 📂 Open Source Ecosystem
 axonos-sdk: Public Rust SDK for interacting with the AxonOS ecosystem. Contains public API traits, memory-safe data structures for telemetry parsing, and integration stubs.
 
