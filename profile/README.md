@@ -35,7 +35,6 @@ Motor imagery → deterministic intent → silicon-level execution. No GC. No ji
 
 [![Website](https://img.shields.io/badge/Web-AxonOS.org-000000?style=flat-square)](https://axonos.org)
 [![Medium](https://img.shields.io/badge/Medium-@AxonOS-02b875?style=flat-square)](https://medium.com/@AxonOS)
-[![Wellfound](https://img.shields.io/badge/Wellfound-Denis_Yermakou-ff6b00?style=flat-square)](https://wellfound.com/u/denis-yermakou)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-denis--yermakou-0077b5?style=flat-square)](https://www.linkedin.com/in/denis-yermakou)
 
 ---
@@ -54,30 +53,30 @@ The output is not raw signal. It is a typed, cryptographically attested intent e
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│  TrustZone Secure World  (STM32H573 SRAM1/2)                   │
-│                                                                  │
+│  TrustZone Secure World  (STM32H573 SRAM1/2)                    │
+│                                                                 │
 │  ADC/DMA (250 Hz, 8ch, 16-bit)                                  │
 │    └─► Artifact Gate (amplitude threshold → Kalman predict)     │
-│    └─► Hanning window → CSP spatial filter (8ch → 2ch)         │
-│    └─► RFFT 128pt × 2ch (CMSIS-DSP, FPU, ~312 µs)             │
+│    └─► Hanning window → CSP spatial filter (8ch → 2ch)          │
+│    └─► RFFT 128pt × 2ch (CMSIS-DSP, FPU, ~312 µs)               │
 │    └─► Band-power extraction (mu/beta 8–30 Hz)                  │
 │    └─► MDM Riemannian classifier → posterior distribution       │
 │    └─► Confidence gate (posterior > θ_user AND rejection check) │
 │    └─► IntentObservation { intent_id, posterior_q16,            │
 │                            timestamp_us, hmac_sha256 }          │
-│                                  │                               │
-│              NSC Gateway (only crossing point)                   │
-│                                  │                               │
+│                                  │                              │
+│              NSC Gateway (only crossing point)                  │
+│                                  │                              │
 ├──────────────────────────────────┼──────────────────────────────┤
 │  Non-Secure World                ▼                              │
-│                                                                  │
+│                                                                 │
 │  SPSC Ring Buffer (lock-free, wait-free)                        │
-│    └─► WASM Application Sandbox                                  │
-│          └─► Neural Permissions Firewall                         │
-│                (capability manifest enforced at load time)       │
-│                └─► Third-party application                       │
-│                      receives: typed event + confidence          │
-│                      cannot access: raw EEG, features, keys      │
+│    └─► WASM Application Sandbox                                 │
+│          └─► Neural Permissions Firewall                        │
+│                (capability manifest enforced at load time)      │
+│                └─► Third-party application                      │
+│                      receives: typed event + confidence         │
+│                      cannot access: raw EEG, features, keys     │
 └─────────────────────────────────────────────────────────────────┘
 
 BLE 5.2 (nRF52840) — connection interval 7.5 ms, ATT notify
