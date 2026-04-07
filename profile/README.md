@@ -233,9 +233,7 @@ Full architecture: [Articles #3, #7, #9, #10](https://medium.com/@AxonOS)
 **R&D:** Remote-first
 
 **Contact:**
-- Engineering: [admin@axonos.org](mailto:axonOSorg@gmail.com)
-- Partnerships: [axonos.org](https://axonos.org)
-
+- E-Mail : [axonosorg@gmail.com](mailto:axonOSorg@gmail.com)
 ---
 
 *AxonOS. Pure signal. Zero noise.*
