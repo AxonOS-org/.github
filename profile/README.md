@@ -1,10 +1,10 @@
 <div align="center">
   <h1>AxonOS</h1>
-  <p><b>Cognitive Operating System bridging AI and Brain-Computer Interfaces.</b></p>
+  <p><b>A deterministic cognitive OS that converts neural signals into intent under strict latency, privacy, and consent guarantees.</b></p>
   <p>
-    <a href="http://AxonOS.org">Website</a> •
+    <a href="https://x.com/axonos20371">X</a> •
     <a href="https://medium.com/@AxonOS">Medium</a> •
-    <a href="https://wellfound.com/u/denis-yermakou">Wellfound</a>
+    <a href="https://www.linkedin.com/in/axonos">Linkedin</a>
   </p>
 </div>
 
