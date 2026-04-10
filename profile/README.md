@@ -2,7 +2,6 @@
   <h1>AxonOS</h1>
   <p><b>A deterministic cognitive OS that converts neural signals into intent under strict latency, privacy, and consent guarantees.</b></p>
   <p>
-    <a href="https://x.com/axonos20371">X</a> •
     <a href="https://medium.com/@AxonOS">Medium</a> •
     <a href="https://www.linkedin.com/in/axonos">Linkedin</a>
   </p>
@@ -35,7 +34,7 @@ Motor imagery → deterministic intent → silicon-level execution. No GC. No ji
 
 [![Website](https://img.shields.io/badge/Web-AxonOS.org-000000?style=flat-square)](https://axonos.org)
 [![Medium](https://img.shields.io/badge/Medium-@AxonOS-02b875?style=flat-square)](https://medium.com/@AxonOS)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-denis--yermakou-0077b5?style=flat-square)](https://www.linkedin.com/in/denis-yermakou)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-AxonOS-0077b5?style=flat-square)](https://www.linkedin.com/in/axonos)
 
 ---
 
