@@ -8,6 +8,7 @@ A `#![no_std]` Rust microkernel for safety-critical BCI applications. Determinis
 
 [![Website](https://img.shields.io/badge/axonos.org-000000?style=for-the-badge&logoColor=white)](https://axonos.org)
 [![Medium](https://img.shields.io/badge/Medium-02b875?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com/@AxonOS)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/axonos)
 [![dev.to](https://img.shields.io/badge/dev.to-0A0A0A?style=for-the-badge&logo=devdotto&logoColor=white)](https://dev.to/axonosorg)
 [![Email](https://img.shields.io/badge/axonosorg%40gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:axonosorg@gmail.com)
 
