@@ -1,81 +1,110 @@
 <div align="center">
 
+<img src="https://axonos.org/assets/img/logo-256.png" width="96" alt="AxonOS logo">
+
 # AxonOS
 
 ### A real-time Rust kernel for brain-computer interface systems
 
-A `#![no_std]` Rust microkernel for safety-critical BCI applications. Deterministic scheduling, bounded worst-case execution, hardware-gated stimulation interlock. 2.1 µs jitter σ. Zero deadline misses over 10.8 M measured epochs. No heap on the hot path. No `unsafe` anywhere.
+A `#![no_std]` Rust microkernel for safety-critical BCI applications.  
+Deterministic EDF scheduling · Zero-copy signal path · Hardware-gated stimulation interlock  
+`#![forbid(unsafe_code)]` · Cortex-M4F / M33 · Singapore
 
-[![Website](https://img.shields.io/badge/axonos.org-000000?style=for-the-badge&logoColor=white)](https://axonos.org)
-[![Medium](https://img.shields.io/badge/Medium-02b875?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com/@AxonOS)
+[![Website](https://img.shields.io/badge/axonos.org-111111?style=for-the-badge)](https://axonos.org)
+[![RFCs](https://img.shields.io/badge/RFCs-5_active-2d6a9f?style=for-the-badge)](https://github.com/AxonOS-org/axonos-rfcs)
+[![Medium](https://img.shields.io/badge/Medium-42_articles-02b875?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com/@AxonOS)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/axonos)
-[![dev.to](https://img.shields.io/badge/dev.to-0A0A0A?style=for-the-badge&logo=devdotto&logoColor=white)](https://dev.to/axonosorg)
-[![Email](https://img.shields.io/badge/axonosorg%40gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:axonosorg@gmail.com)
+[![Email](https://img.shields.io/badge/info@axonos.org-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:info@axonos.org)
 
 </div>
 
 ---
 
-## What is here
+## Repositories
 
-| Repository | Status | What it is |
+| Repository | Version | Description |
 |:---|:---:|:---|
-| [`axonos-consent`](https://github.com/AxonOS-org/axonos-consent) | **v0.2.2** | The Rust reference implementation of the MMP Consent Extension v0.1.0. `#![no_std]`, zero allocation, 15/15 conformance vectors PASS. |
-| [`axonos-sdk`](https://github.com/AxonOS-org/axonos-sdk) | **v0.1.0 pre-release** | Application-facing SDK — typed intent events, capability manifests, mesh consent facade. |
+| [`axonos-consent`](https://github.com/AxonOS-org/axonos-consent) | **v0.2.2** | Rust reference implementation of the MMP Consent Extension v0.1.0. `#![no_std]`, zero-alloc critical path, security-bounded CBOR decoder, exhaustive 3×3 state machine. 15/15 interop vectors PASS. |
+| [`axonos-sdk`](https://github.com/AxonOS-org/axonos-sdk) | **v0.1.1** | Application-facing SDK — typed intent events, capability manifests, mesh consent facade. `#![no_std]` compatible. |
+| [`axonos-rfcs`](https://github.com/AxonOS-org/axonos-rfcs) | **5 active** | Engineering design documents. Every architectural decision is specified in writing before the corresponding code ships. CC-BY-SA-4.0. |
+| [`axon-bci-gateway`](https://github.com/AxonOS-org/axon-bci-gateway) | **v1.0.0-axonos** | OpenBCI_GUI integration fork for hardware-in-the-loop testing with the AxonOS signal pipeline. |
 
-Both crates are dual-licensed Apache-2.0 OR MIT.
+All Rust crates are dual-licensed **Apache-2.0 OR MIT**.
 
-## Protocol stack
+---
 
-AxonOS implements the Mesh Memory Protocol (MMP) v0.2.3, an open specification from SYM.BOT (CC-BY-4.0). The MMP Consent Extension v0.1.0 defines a per-peer state machine and wire format for consent enforcement; AxonOS is the Rust reference implementation of that extension on bare-metal Cortex-M hardware.
+## Measured performance
 
-Enforcement sits at Layer 2, below the SVAF coupling engine specified in arXiv:2604.03955.
+Every number below is tagged by the evidence level it rests on, per [RFC-0003](https://github.com/AxonOS-org/axonos-rfcs/blob/main/rfcs/0003-validation-status-framework.md):  
+`L1` = instruction-count derived · `L2` = runtime measured on reference hardware · `L3` = oscilloscope-validated (pending Q2 2026)
 
-## Collaborations
+| Metric | Value | Level |
+|:---|:---|:---:|
+| Pipeline WCET (M4F · 168 MHz) | 640.2 µs | `L1` |
+| End-to-end WCRT | 972 µs | `L2` |
+| Sample population | 10.8 M epochs / 12 h continuous | `L2` |
+| Deadline misses | 0 | `L2` |
+| EDF jitter σ | 2.1 µs | `L2` |
+| EDF jitter P99.9 | 6.5 µs | `L2` |
+| 4-class motor imagery accuracy | 82.4 % (full calibration) | `L2` |
+| 2-class ZeroCalib accuracy (~70 s) | 91.7 % | `L2` |
+| Information transfer rate | 40.3 bits/min | `L2` |
+| GPIO-validated WCRT (H573 fixture) | — | `pending Q2 2026` |
+| `axonos-consent` interop vectors | 15 / 15 PASS | `L2` |
 
-| Partner | Role |
-|:---|:---|
-| SYM.BOT | MMP specification author (CC-BY-4.0); MMP Consent Extension specification author. AxonOS implemented the Rust reference implementation. |
+Reference hardware: STM32F407 Cortex-M4F @ 168 MHz · ADS1299 8-channel 24-bit ADC · ATECC608B · nRF52840 BLE 5.3
 
-## Headline metrics (measured on STM32F407 @ 168 MHz)
+---
 
-| | |
-|:---|:---|
-| Jitter σ | **2.1 µs** (630× better than Linux mainline, 180× better than PREEMPT_RT) |
-| WCRT | **972 µs** measured over 12 h / 10.8 M epochs |
-| Deadline misses | **0** |
-| Zero-calibration classifier accuracy | **91.7 %** 2-class at ~70 s (no labelled training session) |
-| `axonos-consent` conformance | **15 / 15** canonical vectors PASS |
+## Engineering RFCs
 
-Every figure above is either instruction-count derived on published reference hardware or measured over a named interval. No marketing numbers. Full derivation in the [architecture series](https://medium.com/@AxonOS).
+| RFC | Title | Track |
+|:---|:---|:---:|
+| [RFC-0001](https://github.com/AxonOS-org/axonos-rfcs/blob/main/rfcs/0001-edf-scheduler-biological-deadlines.md) | EDF Scheduler with Biological Deadlines | scheduling |
+| [RFC-0002](https://github.com/AxonOS-org/axonos-rfcs/blob/main/rfcs/0002-zero-copy-ring-buffer.md) | Zero-Copy Ring Buffer for Signal Path | memory |
+| [RFC-0003](https://github.com/AxonOS-org/axonos-rfcs/blob/main/rfcs/0003-validation-status-framework.md) | Validation Status Framework (L1 / L2 / L3) | process |
+| [RFC-0004](https://github.com/AxonOS-org/axonos-rfcs/blob/main/rfcs/0004-dual-core-real-time-contract.md) | Dual-Core Real-Time Contract | scheduling |
+| [RFC-0005](https://github.com/AxonOS-org/axonos-rfcs/blob/main/rfcs/0005-capability-based-app-manifest.md) | Capability-Based Application Manifest | security |
 
-## Writing
+---
 
-40+ architecture articles documenting every major design decision: scheduler, zero-copy signal path, Riemannian classifier, dual-core real-time contract, swarm synchronization, hardware interlock, hardware reference design, clinical path, business case.
-
-Primary: [medium.com/@AxonOS](https://medium.com/@AxonOS) · Mirror: [dev.to/axonosorg](https://dev.to/axonosorg)
-
-## Specification attribution
+## Protocol attribution
 
 AxonOS implements protocol specifications authored by SYM.BOT.
 
-- **Mesh Memory Protocol (MMP) v0.2.3** — authored by SYM.BOT, published at sym.bot/spec/mmp, CC-BY-4.0.
-- **MMP Consent Extension v0.1.0** — specification authored by SYM.BOT, CC-BY-4.0.
-- **Symbolic-Vector Attention Fusion (SVAF)** — authored by Hongwei Xu, arXiv:2604.03955.
+| Specification | Author | License |
+|:---|:---|:---:|
+| Mesh Memory Protocol (MMP) v0.2.3 | SYM.BOT | CC-BY-4.0 |
+| MMP Consent Extension v0.1.0 | SYM.BOT | CC-BY-4.0 |
+| Symbolic-Vector Attention Fusion (SVAF) | Hongwei Xu · [arXiv:2604.03955](https://arxiv.org/abs/2604.03955) | — |
 
-AxonOS did not author, co-author, or contribute to these specifications. The `axonos-consent` Rust source code is independent work by AxonOS.
+`axonos-consent` is the Rust reference implementation of the MMP Consent Extension. The Rust source code is independent work by AxonOS, implemented against the specification authored by SYM.BOT. AxonOS did not author, co-author, or contribute to the specifications above.
+
+---
+
+## Writing
+
+42 long-form technical articles on EDF scheduling, zero-copy signal path, Riemannian transfer learning, dual-core real-time contract, swarm synchronisation, hardware-gated consent, and the clinical deployment path.
+
+Primary: [medium.com/@AxonOS](https://medium.com/@AxonOS) · Mirror: [dev.to/axonosorg](https://dev.to/axonosorg)
+
+---
 
 ## Contact
 
-Denis Yermakou, founder. Singapore.
-Engineering questions, research collaboration, commercial support, clinical partnerships — one email address, read personally.
+Denis Yermakou — founder and principal engineer. Singapore.
 
-📧 **axonosorg@gmail.com**
+| Purpose | Address |
+|:---|:---|
+| General | [info@axonos.org](mailto:info@axonos.org) |
+| Investors | [invest@axonos.org](mailto:invest@axonos.org) |
+| Clinical partnerships | [clinical@axonos.org](mailto:clinical@axonos.org) |
+| Security disclosures | [security@axonos.org](mailto:security@axonos.org) |
 
-Enterprise support tiers (Foundation $5k, Integration $15k, Clinical contact) for teams integrating AxonOS into regulated devices — see [axonos.org/enterprise](https://axonos.org/enterprise.html).
+Full contact directory: [axonos.org/contact](https://axonos.org/contact.html)
 
 ---
 
 <div align="center">
-<sub>© 2026 Denis Yermakou · AxonOS · Dual-licensed Apache-2.0 OR MIT</sub>
+<sub>© 2026 Denis Yermakou · AxonOS · Rust crates Apache-2.0 OR MIT · Documentation CC-BY-SA-4.0</sub>
 </div>
