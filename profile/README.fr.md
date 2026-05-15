@@ -161,7 +161,7 @@ en boucle fermée pour vos patients, avec un partenaire qui traite les
 modes de défaillance comme une documentation de premier ordre, et non
 comme des surprises marketing.
 
-Contact : [info@axonos.org](mailto:info@axonos.org) — entretien
+Contact : [connect@axonos.org](mailto:connect@axonos.org) — entretien
 initial, parcours de pilotage clinique, processus MOU.
 
 ## Feuille de route
@@ -228,7 +228,6 @@ conservent les droits d'auteur sur leurs contributions.
 - **Correspondance générale :** [info@axonos.org](mailto:info@axonos.org)
 - **Divulgations de sécurité :** [security@axonos.org](mailto:security@axonos.org)
   (clé GPG sur demande)
-- **Partenariats cliniques :** [clinical@axonos.org](mailto:clinical@axonos.org)
 - **Web :** [axonos.org](https://axonos.org)
 - **Écrits :** [medium.com/@AxonOS](https://medium.com/@AxonOS)
 

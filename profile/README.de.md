@@ -161,7 +161,7 @@ Regelschleife für Ihre Patienten betreibt — mit einem Partner, der
 Fehlermodi als erstklassige Dokumentation behandelt, nicht als
 Marketing-Überraschung.
 
-Kontakt: [info@axonos.org](mailto:info@axonos.org) — Erstgespräch,
+Kontakt: [connect@axonos.org](mailto:connect@axonos.org) — Erstgespräch,
 klinischer Pilot-Pfad, MOU-Prozess.
 
 ## Roadmap
@@ -227,7 +227,6 @@ behalten das Urheberrecht an ihren Beiträgen.
 - **Allgemeine Korrespondenz:** [info@axonos.org](mailto:info@axonos.org)
 - **Sicherheitsoffenlegungen:** [security@axonos.org](mailto:security@axonos.org)
   (GPG-Schlüssel auf Anfrage)
-- **Klinische Partnerschaften:** [clinical@axonos.org](mailto:clinical@axonos.org)
 - **Web:** [axonos.org](https://axonos.org)
 - **Schriften:** [medium.com/@AxonOS](https://medium.com/@AxonOS)
 

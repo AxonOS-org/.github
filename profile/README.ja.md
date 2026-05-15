@@ -150,7 +150,7 @@ RFC-0005 (検証フレームワーク)、RFC-0006 (安定 ABI 候補)。
 ソフトウェア、および障害モードをマーケティング上のサプライズではなく
 第一級のドキュメントとして扱うパートナーが必要な方。
 
-連絡先: [info@axonos.org](mailto:info@axonos.org) — 初回相談、
+連絡先: [connect@axonos.org](mailto:connect@axonos.org) — 初回相談、
 臨床パイロット経路、MOU プロセス。
 
 ## ロードマップ
@@ -208,7 +208,6 @@ RFC-0005 (検証フレームワーク)、RFC-0006 (安定 ABI 候補)。
 - **一般通信:** [info@axonos.org](mailto:info@axonos.org)
 - **セキュリティ開示:** [security@axonos.org](mailto:security@axonos.org)
   (GPG 鍵は要請次第)
-- **臨床パートナーシップ:** [clinical@axonos.org](mailto:clinical@axonos.org)
 - **ウェブ:** [axonos.org](https://axonos.org)
 - **執筆:** [medium.com/@AxonOS](https://medium.com/@AxonOS)
 

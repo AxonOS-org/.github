@@ -164,7 +164,7 @@ anello chiuso per i vostri pazienti, con un partner che tratta le
 modalità di guasto come documentazione di prima classe, non sorprese
 di marketing.
 
-Contatto: [info@axonos.org](mailto:info@axonos.org) — conversazione
+Contatto: [connect@axonos.org](mailto:connect@axonos.org) — conversazione
 iniziale, percorso di pilot clinico, processo MOU.
 
 ## Roadmap
@@ -232,7 +232,6 @@ copyright sui propri contributi.
 - **Corrispondenza generale:** [info@axonos.org](mailto:info@axonos.org)
 - **Divulgazioni di sicurezza:** [security@axonos.org](mailto:security@axonos.org)
   (chiave GPG su richiesta)
-- **Partnership cliniche:** [clinical@axonos.org](mailto:clinical@axonos.org)
 - **Web:** [axonos.org](https://axonos.org)
 - **Pubblicazioni:** [medium.com/@AxonOS](https://medium.com/@AxonOS)
 

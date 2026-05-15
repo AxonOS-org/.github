@@ -132,7 +132,7 @@ RFC-0005 (验证框架) 与 RFC-0006 (稳定 ABI 候选)。
 您需要可预测、可审计的软件来运行您患者的闭环接口,需要一个将故障
 模式视为一等公民文档(而非营销惊喜)的合作伙伴。
 
-联系: [info@axonos.org](mailto:info@axonos.org) — 初次沟通、
+联系: [connect@axonos.org](mailto:connect@axonos.org) — 初次沟通、
 临床先导路径、MOU 流程。
 
 ## 路线图
@@ -188,7 +188,6 @@ RFC-0005 (验证框架) 与 RFC-0006 (稳定 ABI 候选)。
 - **一般通信:** [info@axonos.org](mailto:info@axonos.org)
 - **安全披露:** [security@axonos.org](mailto:security@axonos.org)
   (按需提供 GPG 密钥)
-- **临床合作:** [clinical@axonos.org](mailto:clinical@axonos.org)
 - **网站:** [axonos.org](https://axonos.org)
 - **文章:** [medium.com/@AxonOS](https://medium.com/@AxonOS)
 

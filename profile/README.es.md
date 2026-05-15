@@ -160,7 +160,7 @@ Quieren software predecible y auditable que ejecute la interfaz de lazo
 cerrado para sus pacientes, con un socio que trate los modos de fallo
 como documentación de primera clase, no como sorpresas de marketing.
 
-Contacto: [info@axonos.org](mailto:info@axonos.org) — conversación
+Contacto: [connect@axonos.org](mailto:connect@axonos.org) — conversación
 inicial, vía de pilotaje clínico, proceso MOU.
 
 ## Hoja de ruta
@@ -228,7 +228,6 @@ copyright sobre sus contribuciones.
 - **Correspondencia general:** [info@axonos.org](mailto:info@axonos.org)
 - **Divulgaciones de seguridad:** [security@axonos.org](mailto:security@axonos.org)
   (clave GPG bajo petición)
-- **Alianzas clínicas:** [clinical@axonos.org](mailto:clinical@axonos.org)
 - **Web:** [axonos.org](https://axonos.org)
 - **Publicaciones:** [medium.com/@AxonOS](https://medium.com/@AxonOS)
 

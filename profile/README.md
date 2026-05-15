@@ -149,7 +149,7 @@ You want predictable, auditable software running the closed-loop interface
 for your patients, with a partner who treats failure modes as first-class
 documentation, not marketing surprises.
 
-Contact: [info@axonos.org](mailto:info@axonos.org) — initial conversation,
+Contact: [connect@axonos.org](mailto:connect@axonos.org) — initial conversation,
 clinical pilot pathway, MOU process.
 
 ## Roadmap
@@ -207,7 +207,6 @@ pull requests; contributors retain copyright over their contributions.
 - **General correspondence:** [info@axonos.org](mailto:info@axonos.org)
 - **Security disclosures:** [security@axonos.org](mailto:security@axonos.org)
   (GPG key on request)
-- **Clinical partnerships:** [clinical@axonos.org](mailto:clinical@axonos.org)
 - **Web:** [axonos.org](https://axonos.org)
 - **Writing:** [medium.com/@AxonOS](https://medium.com/@AxonOS)
 
