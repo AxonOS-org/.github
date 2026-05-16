@@ -1,17 +1,28 @@
+<div align="center">
+
+<img src="https://rustacean.net/assets/rustacean-flat-happy.svg" width="120" alt="Ferris" />
+
 # AxonOS
 
-> 用于脑机接口的裸机实时内核。
-> 用 Rust 编写。开源。以证据为基础。
+### 面向脑–机接口的实时 Rust 微内核
+
+[![Built with Rust](https://img.shields.io/badge/built%20with-Rust-CE422B?style=for-the-badge&logo=rust&logoColor=white)](https://www.rust-lang.org/)
+[![License](https://img.shields.io/badge/license-Apache--2.0%20OR%20MIT-blue?style=for-the-badge)](#license)
+[![no_std](https://img.shields.io/badge/no__std-yes-success?style=for-the-badge)](https://docs.rust-embedded.org/book/intro/no-std.html)
+[![Kani BMC](https://img.shields.io/badge/Kani-28%20proofs-blueviolet?style=for-the-badge)](https://github.com/model-checking/kani)
 
 [🇬🇧 English](./README.md) ·
 [🇯🇵 日本語](./README.ja.md) ·
-[🇮🇹 Italiano](./README.it.md) ·
 [🇨🇳 中文](./README.zh.md) ·
 [🇩🇪 Deutsch](./README.de.md) ·
 [🇪🇸 Español](./README.es.md) ·
-[🇫🇷 Français](./README.fr.md)
+[🇫🇷 Français](./README.fr.md) ·
+[🇮🇹 Italiano](./README.it.md)
+
+</div>
 
 ---
+
 
 ## 这是什么
 
@@ -76,10 +87,6 @@ AxonOS 文档中的每一项性能声明都附有证据级别:
 | 度量 | 取值 | 级别 |
 |:---|:---|:---|
 | 单个 epoch 流水线 WCET | 640.2 µs | L1 |
-| 端到端 WCRT | 972 µs | L2 |
-| EDF 抖动 σ (1080 万 epoch, 12 小时) | 2.1 µs | L2 |
-| EDF 抖动 P99.9 | 6.5 µs | L2 |
-| 观测到的截止期遗漏 | 0 / 10.8 × 10⁶ | L2 |
 | CPU 利用率 U′ (膨胀 WCET) | 0.179 | L1 |
 | GPIO 验证 WCRT (H573 测试夹具) | — | **pending** 2026 Q2 |
 
@@ -90,10 +97,11 @@ ATECC608B 安全元件、nRF52840 BLE 5.3、ISO7741 5 kV 电气隔离。
 
 | 仓库 | 用途 | 状态 |
 |:---|:---|:---|
+| [`axonos-kernels`](https://github.com/AxonOS-org/axonos-kernels) | **可验证的内核基础** — 七个 crate、66 个测试、28 个 Kani 证明 | 活跃 · Apache-2.0 OR MIT |
 | [`axonos-rfcs`](https://github.com/AxonOS-org/axonos-rfcs) | 管理架构决策的工程 RFC | 6 个 RFC · CC-BY-SA-4.0 |
-| [`axonos-sdk`](https://github.com/AxonOS-org/axonos-sdk) | 应用 SDK:类型化 intent、能力、认证 | v0.4.0 · Apache-2.0 OR MIT |
-| [`axonos-consent`](https://github.com/AxonOS-org/axonos-consent) | AxonOS 同意协议参考实现 | v0.4.0 · Apache-2.0 OR MIT |
-| [`axonos-swarm`](https://github.com/AxonOS-org/axonos-swarm) | 多节点协调:Neural PTP、群调度器、故障检测器 | v0.1.0 · Apache-2.0 OR MIT |
+| [`axonos-sdk`](https://github.com/AxonOS-org/axonos-sdk) | 应用 SDK:类型化 intent、能力、认证 | Apache-2.0 OR MIT |
+| [`axonos-consent`](https://github.com/AxonOS-org/axonos-consent) | AxonOS 同意协议参考实现 | Apache-2.0 OR MIT |
+| [`axonos-swarm`](https://github.com/AxonOS-org/axonos-swarm) | 多节点协调:Neural PTP、群调度器、故障检测器 | Apache-2.0 OR MIT |
 | [`axon-bci-gateway`](https://github.com/AxonOS-org/axon-bci-gateway) | 参考应用网关 (fork,带署名) | 活跃 · Apache-2.0 |
 
 可复现的基准夹具与预印本 LaTeX 源码将与 2026 Q2 的 L3 验证结果
@@ -193,4 +201,12 @@ RFC-0005 (验证框架) 与 RFC-0006 (稳定 ABI 候选)。
 
 ---
 
-axonos.org · medium.com/@AxonOS · info@axonos.org
+<div align="center">
+
+**作者与维护者:** Denis Yermakou · [denis@axonos.org](mailto:denis@axonos.org)
+
+Zurich · Berlin · Milano · San Mateo · Singapore
+
+<sub>Made with 🦀</sub>
+
+</div>

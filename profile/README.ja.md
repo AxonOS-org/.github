@@ -1,17 +1,28 @@
+<div align="center">
+
+<img src="https://rustacean.net/assets/rustacean-flat-happy.svg" width="120" alt="Ferris" />
+
 # AxonOS
 
-> ブレイン・コンピュータ・インターフェース向けのベアメタル・リアルタイムカーネル。
-> Rust で記述。オープンソース。エビデンスに基づく設計。
+### ブレイン・コンピュータ・インターフェース向けリアルタイム Rust マイクロカーネル
+
+[![Built with Rust](https://img.shields.io/badge/built%20with-Rust-CE422B?style=for-the-badge&logo=rust&logoColor=white)](https://www.rust-lang.org/)
+[![License](https://img.shields.io/badge/license-Apache--2.0%20OR%20MIT-blue?style=for-the-badge)](#license)
+[![no_std](https://img.shields.io/badge/no__std-yes-success?style=for-the-badge)](https://docs.rust-embedded.org/book/intro/no-std.html)
+[![Kani BMC](https://img.shields.io/badge/Kani-28%20proofs-blueviolet?style=for-the-badge)](https://github.com/model-checking/kani)
 
 [🇬🇧 English](./README.md) ·
 [🇯🇵 日本語](./README.ja.md) ·
-[🇮🇹 Italiano](./README.it.md) ·
 [🇨🇳 中文](./README.zh.md) ·
 [🇩🇪 Deutsch](./README.de.md) ·
 [🇪🇸 Español](./README.es.md) ·
-[🇫🇷 Français](./README.fr.md)
+[🇫🇷 Français](./README.fr.md) ·
+[🇮🇹 Italiano](./README.it.md)
+
+</div>
 
 ---
+
 
 ## 概要
 
@@ -88,10 +99,6 @@ AxonOS のドキュメント中のあらゆる性能主張には、エビデン�
 | 計測項目 | 値 | レベル |
 |:---|:---|:---|
 | パイプライン WCET、1 エポック | 640.2 µs | L1 |
-| エンドツーエンド WCRT | 972 µs | L2 |
-| EDF ジッタ σ (10.8M エポック、12 時間) | 2.1 µs | L2 |
-| EDF ジッタ P99.9 | 6.5 µs | L2 |
-| 観測されたデッドラインミス | 10.8 × 10⁶ 中 0 | L2 |
 | CPU 使用率 U′ (インフレ後 WCET) | 0.179 | L1 |
 | GPIO 検証 WCRT (H573 固定装置) | — | **pending** 2026 Q2 |
 
@@ -103,10 +110,11 @@ ADC、ATECC608B セキュアエレメント、nRF52840 BLE 5.3、ISO7741 5 kV
 
 | リポジトリ | 目的 | ステータス |
 |:---|:---|:---|
+| [`axonos-kernels`](https://github.com/AxonOS-org/axonos-kernels) | **検証可能なカーネル基盤** — 7 crate、66 テスト、28 Kani 証明 | アクティブ · Apache-2.0 OR MIT |
 | [`axonos-rfcs`](https://github.com/AxonOS-org/axonos-rfcs) | アーキテクチャ決定を司るエンジニアリング RFC | 6 RFCs · CC-BY-SA-4.0 |
-| [`axonos-sdk`](https://github.com/AxonOS-org/axonos-sdk) | アプリケーション SDK: 型付きインテント、Capability、認証 | v0.4.0 · Apache-2.0 OR MIT |
-| [`axonos-consent`](https://github.com/AxonOS-org/axonos-consent) | AxonOS 同意プロトコル参照実装 | v0.4.0 · Apache-2.0 OR MIT |
-| [`axonos-swarm`](https://github.com/AxonOS-org/axonos-swarm) | マルチノード協調: Neural PTP、スウォームスケジューラ、フォルト検出 | v0.1.0 · Apache-2.0 OR MIT |
+| [`axonos-sdk`](https://github.com/AxonOS-org/axonos-sdk) | アプリケーション SDK: 型付きインテント、Capability、認証 | Apache-2.0 OR MIT |
+| [`axonos-consent`](https://github.com/AxonOS-org/axonos-consent) | AxonOS 同意プロトコル参照実装 | Apache-2.0 OR MIT |
+| [`axonos-swarm`](https://github.com/AxonOS-org/axonos-swarm) | マルチノード協調: Neural PTP、スウォームスケジューラ、フォルト検出 | Apache-2.0 OR MIT |
 | [`axon-bci-gateway`](https://github.com/AxonOS-org/axon-bci-gateway) | リファレンスアプリケーションゲートウェイ (フォーク、帰属表示付き) | Active · Apache-2.0 |
 
 再現可能なベンチマーク固定装置およびプレプリント LaTeX ソースは、
@@ -213,4 +221,12 @@ RFC-0005 (検証フレームワーク)、RFC-0006 (安定 ABI 候補)。
 
 ---
 
-axonos.org · medium.com/@AxonOS · info@axonos.org
+<div align="center">
+
+**著者およびメンテナ:** Denis Yermakou · [denis@axonos.org](mailto:denis@axonos.org)
+
+Zurich · Berlin · Milano · San Mateo · Singapore
+
+<sub>Made with 🦀</sub>
+
+</div>

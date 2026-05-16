@@ -1,17 +1,28 @@
+<div align="center">
+
+<img src="https://rustacean.net/assets/rustacean-flat-happy.svg" width="120" alt="Ferris" />
+
 # AxonOS
 
-> Un kernel de tiempo real bare-metal para interfaces cerebro-computadora.
-> Escrito en Rust. Código abierto. Construido sobre evidencia.
+### un microkernel Rust en tiempo real para interfaces cerebro–computadora
+
+[![Built with Rust](https://img.shields.io/badge/built%20with-Rust-CE422B?style=for-the-badge&logo=rust&logoColor=white)](https://www.rust-lang.org/)
+[![License](https://img.shields.io/badge/license-Apache--2.0%20OR%20MIT-blue?style=for-the-badge)](#license)
+[![no_std](https://img.shields.io/badge/no__std-yes-success?style=for-the-badge)](https://docs.rust-embedded.org/book/intro/no-std.html)
+[![Kani BMC](https://img.shields.io/badge/Kani-28%20proofs-blueviolet?style=for-the-badge)](https://github.com/model-checking/kani)
 
 [🇬🇧 English](./README.md) ·
 [🇯🇵 日本語](./README.ja.md) ·
-[🇮🇹 Italiano](./README.it.md) ·
 [🇨🇳 中文](./README.zh.md) ·
 [🇩🇪 Deutsch](./README.de.md) ·
 [🇪🇸 Español](./README.es.md) ·
-[🇫🇷 Français](./README.fr.md)
+[🇫🇷 Français](./README.fr.md) ·
+[🇮🇹 Italiano](./README.it.md)
+
+</div>
 
 ---
+
 
 ## Qué es esto
 
@@ -96,10 +107,6 @@ Cifras principales actuales:
 | Métrica | Valor | Nivel |
 |:---|:---|:---|
 | WCET de pipeline, época única | 640.2 µs | L1 |
-| WCRT extremo a extremo | 972 µs | L2 |
-| Jitter EDF σ (10.8M épocas, 12 h) | 2.1 µs | L2 |
-| Jitter EDF P99.9 | 6.5 µs | L2 |
-| Deadlines perdidas observadas | 0 de 10.8 × 10⁶ | L2 |
 | Utilización de CPU U′ (WCET inflado) | 0.179 | L1 |
 | WCRT validado por GPIO (fixture H573) | — | **pending** Q2 2026 |
 
@@ -111,10 +118,11 @@ ISO7741 5 kV.
 
 | Repositorio | Propósito | Estado |
 |:---|:---|:---|
+| [`axonos-kernels`](https://github.com/AxonOS-org/axonos-kernels) | **Sustrato de kernel verificable** — siete crates, 66 tests, 28 pruebas Kani | Activo · Apache-2.0 OR MIT |
 | [`axonos-rfcs`](https://github.com/AxonOS-org/axonos-rfcs) | RFCs de ingeniería que gobiernan decisiones de arquitectura | 6 RFCs · CC-BY-SA-4.0 |
-| [`axonos-sdk`](https://github.com/AxonOS-org/axonos-sdk) | SDK de aplicación: intents tipados, capabilities, atestación | v0.4.0 · Apache-2.0 OR MIT |
-| [`axonos-consent`](https://github.com/AxonOS-org/axonos-consent) | Implementación de referencia del AxonOS Consent Protocol | v0.4.0 · Apache-2.0 OR MIT |
-| [`axonos-swarm`](https://github.com/AxonOS-org/axonos-swarm) | Coordinación multi-nodo: Neural PTP, swarm scheduler, fault detector | v0.1.0 · Apache-2.0 OR MIT |
+| [`axonos-sdk`](https://github.com/AxonOS-org/axonos-sdk) | SDK de aplicación: intents tipados, capabilities, atestación | Apache-2.0 OR MIT |
+| [`axonos-consent`](https://github.com/AxonOS-org/axonos-consent) | Implementación de referencia del AxonOS Consent Protocol | Apache-2.0 OR MIT |
+| [`axonos-swarm`](https://github.com/AxonOS-org/axonos-swarm) | Coordinación multi-nodo: Neural PTP, swarm scheduler, fault detector | Apache-2.0 OR MIT |
 | [`axon-bci-gateway`](https://github.com/AxonOS-org/axon-bci-gateway) | Gateway de aplicación de referencia (fork, con atribución) | Activo · Apache-2.0 |
 
 Las fixtures de benchmark reproducibles y el código LaTeX del preprint
@@ -233,4 +241,12 @@ copyright sobre sus contribuciones.
 
 ---
 
-axonos.org · medium.com/@AxonOS · info@axonos.org
+<div align="center">
+
+**Autor y mantenedor:** Denis Yermakou · [denis@axonos.org](mailto:denis@axonos.org)
+
+Zurich · Berlin · Milano · San Mateo · Singapore
+
+<sub>Made with 🦀</sub>
+
+</div>
