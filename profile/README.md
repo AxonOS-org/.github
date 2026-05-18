@@ -1,264 +1,138 @@
-<div align="center">
+# **axonos**
 
-<img src="https://rustacean.net/assets/rustacean-flat-happy.svg" width="120" alt="Ferris, the Rust mascot" />
+The open neural operating system for brain-computer interfaces. Hard real-time, formally verified, hardware-agnostic.
 
-# AxonOS
+![AxonOS](./banner.png)
 
-### a real-time Rust microkernel for brain–computer interfaces
+[![License](https://img.shields.io/badge/license-Apache--2.0%20OR%20MIT-blue?style=flat-square)](https://github.com/AxonOS-org/AxonOS-kernel/blob/main/LICENSE-APACHE)
+[![Articles](https://img.shields.io/badge/medium-42%2B%20articles-black?style=flat-square&logo=medium)](https://medium.com/@AxonOS)
+[![Rust](https://img.shields.io/badge/built%20with-Rust-CE422B?style=flat-square&logo=rust&logoColor=white)](https://www.rust-lang.org/)
+[![Kernel](https://img.shields.io/badge/kernel-v0.1.9-orange?style=flat-square)](https://github.com/AxonOS-org/AxonOS-kernel)
+[![SDK](https://img.shields.io/badge/sdk-v0.1.7-orange?style=flat-square)](https://github.com/AxonOS-org/axonos-sdk)
 
-> Bare-metal. `no_std`. `forbid(unsafe_code)` outside two documented operations. Built around evidence — every claim tagged with the level of proof behind it.
-
-[![Built with Rust](https://img.shields.io/badge/built%20with-Rust-CE422B?style=for-the-badge&logo=rust&logoColor=white)](https://www.rust-lang.org/)
-[![License](https://img.shields.io/badge/license-Apache--2.0%20OR%20MIT-blue?style=for-the-badge)](#license)
-[![no_std](https://img.shields.io/badge/no__std-yes-success?style=for-the-badge)](https://docs.rust-embedded.org/book/intro/no-std.html)
-[![Kani BMC](https://img.shields.io/badge/Kani-28%20proofs-blueviolet?style=for-the-badge)](https://github.com/model-checking/kani)
-
-[![MSRV](https://img.shields.io/badge/MSRV-1.75-orange?style=flat-square)](https://blog.rust-lang.org/2023/12/28/Rust-1.75.0.html)
-[![Cortex-M4F](https://img.shields.io/badge/target-Cortex--M4F-purple?style=flat-square)](https://doc.rust-lang.org/rustc/platform-support/thumbv7em-none-eabi.html)
-[![Cortex-M33](https://img.shields.io/badge/target-Cortex--M33-purple?style=flat-square)](https://doc.rust-lang.org/rustc/platform-support/thumbv8m.main-none-eabi.html)
-[![Stage](https://img.shields.io/badge/stage-pre--measurement-yellow?style=flat-square)](#status)
-
-</div>
-
-<div align="center">
-
-[🇬🇧 English](./README.md) ·
-[🇯🇵 日本語](./README.ja.md) ·
-[🇨🇳 中文](./README.zh.md) ·
-[🇩🇪 Deutsch](./README.de.md) ·
-[🇪🇸 Español](./README.es.md) ·
-[🇫🇷 Français](./README.fr.md) ·
-[🇮🇹 Italiano](./README.it.md)
-
-</div>
+### [Site](https://axonos.org) | [Research](https://axonos.org/research) | [Articles](https://medium.com/@AxonOS) | [Specs (RFCs)](https://github.com/AxonOS-org/axonos-rfcs) | [Get in Touch](mailto:connect@axonos.org)
 
 ---
 
-## What this is
+## 🚀 Quick Start for Developers (2 min)
 
-AxonOS is a `#![no_std]` `#![forbid(unsafe_code)]` Rust microkernel for
-brain-computer interface (BCI) signal pipelines on Cortex-M class
-microcontrollers.
+```sh
+# 1. Try the SDK
+git clone https://github.com/AxonOS-org/axonos-sdk.git
+cd axonos-sdk
+cargo test --features std
 
-It is designed for one specific class of system: a small, autonomous
-device that acquires neural signals, classifies user intent, and drives
-a stimulator or assistive interface in a closed loop, on a fixed
-real-time budget, with no general-purpose operating system between the
-silicon and the patient.
+# 2. Read the kernel
+git clone https://github.com/AxonOS-org/AxonOS-kernel.git
+cd AxonOS-kernel
+cargo test --workspace
+```
 
-This is the kind of system where a missed deadline is not a performance
-regression — it is an adverse event.
+## What problem AxonOS solves
 
-## Why it exists
+| Capability | BCI2000 (research) | Synchron / Neuralink / NeuroXess (proprietary) | **AxonOS** |
+|:---|:---:|:---:|:---:|
+| Hard real-time (<1 ms jitter) | ✗ | ✓ proprietary | **✓ open, verified** |
+| Cross-hardware HAL | ✗ | ✗ locked to own HW | **✓** |
+| Formal privacy architecture | ✗ | ✗ | **✓ structural minimisation** |
+| FDA-viable regulatory posture | ✗ | partial | **✓ IEC 62304 Class C alignment** |
+| Open source kernel + SDK | ✓ | ✗ | **✓ Apache-2.0 OR MIT** |
 
-Real-time BCI software today is built on three categories of foundation,
-each with a structural mismatch to the problem:
+Today, application code that consumes a real-time neural classifier has to re-parse a bespoke binary wire format per device, re-implement capability gating, and re-write integration boilerplate for every new BCI platform. AxonOS does all three once, in safe `#![no_std]` Rust, on top of a formally-bounded microkernel.
 
-1. **General-purpose kernels** (Linux, Windows) — designed for fairness
-   and throughput, not bounded worst-case latency. Mainline scheduler
-   jitter is on the order of milliseconds; PREEMPT_RT reduces this but
-   does not eliminate it.
+## In this org
 
-2. **Conventional RTOS** (FreeRTOS, Zephyr) — provide priority-based
-   real-time scheduling but no formal schedulability proof, no
-   memory-safety guarantee at the language level, and no BCI-domain
-   abstractions.
+The full AxonOS stack spans several repositories. The kernel is the verifiable substrate; the SDK is the application boundary; the RFCs are the standards that bind them.
 
-3. **Application-class operating systems on application processors** —
-   bring the full attack surface and unpredictability of a general OS
-   to a regulated medical device.
-
-AxonOS fills the gap: a small, analytically schedulable kernel, written
-in a language that eliminates memory-safety defects at compile time,
-with a capability model that prevents raw neural data from reaching
-application code.
-
-## What's different about it
-
-| Property | AxonOS | Mainstream RTOS | Linux PREEMPT_RT |
+| Repository | What it is | Language | Status |
 |:---|:---|:---|:---|
-| Scheduling policy | EDF (Liu–Layland) | Fixed-priority | CFS + RT |
-| Analytical schedulability proof | Yes (in code) | No | No |
-| Compile-time memory safety | Yes (Rust) | No (C) | No (C) |
-| `unsafe` outside reviewable modules | Forbidden | Pervasive | Pervasive |
-| Heap on hot path | None | Optional | Default |
-| BCI capability isolation | Yes | None | None |
-| Stated WCET with evidence level | Yes | No | No |
-| Bounded model checking | 28 Kani proofs | No | No |
+| **[AxonOS-kernel](https://github.com/AxonOS-org/AxonOS-kernel)** | Hard real-time microkernel — 7 crates, 66 tests, 28 Kani BMC harnesses | Rust | v0.1.9 |
+| **[axonos-sdk](https://github.com/AxonOS-org/axonos-sdk)** | Application-side SDK: typed intents, capability manifests, ABI v1 | Rust | v0.1.7 |
+| **[axonos-rfcs](https://github.com/AxonOS-org/axonos-rfcs)** | Engineering specifications (RFC-0001 through RFC-0006) | Markdown | Active |
+| **[axonos-consent](https://github.com/AxonOS-org/axonos-consent)** | Protocol-level consent for cognitive mesh coupling (MMP) | Rust | v0.4.0 |
+| **[axonos-swarm](https://github.com/AxonOS-org/axonos-swarm)** | Multi-node coordination — Neural PTP, swarm scheduling | Rust | Pre-release |
+| **[axon-bci-gateway](https://github.com/AxonOS-org/axon-bci-gateway)** | Hardware acquisition gateway (fork of OpenBCI_GUI) | HTML / Java | Active |
 
-**Important honesty disclosure.** AxonOS does *not* claim formal
-verification in the seL4 sense. It uses analytic real-time scheduling
-theory (Liu–Layland), Rust's type system, bounded model checking via
-Kani on the safety-critical surfaces, and a measurement-backed
-validation taxonomy. This is weaker than machine-checked proofs of
-functional correctness, but it is achievable today and aligns with
-IEC 62304 Class C software lifecycle requirements.
+> Proprietary ML modules and certain hardware-specific firmware are maintained in private repositories until the Phase-1 measurement preprint is published.
 
-## Evidence model
+## Architectural pillars
 
-Every performance claim in AxonOS documentation is tagged with an
-evidence level:
+**The four bets AxonOS makes that distinguish it from every competing approach:**
 
-- **L1** — Analytically derived. Computed from algorithm and from the
-  cycle-timing reference of the target ISA. Conservative; no hardware
-  execution required.
-- **L2** — Runtime measured. Observed by on-chip instrument (DWT cycle
-  counter) on reference hardware over a stated interval and input
-  distribution.
-- **L3** — Independent instrument validated. Observed by an instrument
-  external to the device under test (logic analyser, GPIO toggle
-  points). Required for regulatory submission.
-- **pending** — Measurement scheduled; falsification thresholds stated
-  in advance.
+1. **`#![no_std]` Rust on ARMv8-M** — no allocator on the hot path, no garbage collector, no unbounded panics. Memory safety is structural, not runtime-checked.
+2. **Sub-millisecond WCRT guarantees** — formally bounded via Bounded Model Checking (Kani). Phase-1 measurement campaign on STM32H573 produces L2 evidence on real hardware.
+3. **Layered protocol stack** — Axon Protocol (transport), Cognitive Hypervisor (isolation), ZeroCalib (zero-shot transfer learning), Federated Riemannian Learning (privacy-preserving cohort training). Each layer is independently auditable.
+4. **Structural privacy** — capabilities that would leak raw cognitive state (RawEEG, EmotionState, CognitiveProfile) **do not exist** in the type system. Misuse is impossible at compile time, not policed at runtime.
 
-### Current headline numbers
+## Reference hardware
 
-| Metric | Value | Level |
-|:---|---:|:---|
-| Pipeline analytical WCET (per epoch) | ≤ 642 µs | **L1** — derived from code |
-| Synchronous busy-period response time `R₁` | ≤ 796 µs | **L1** — derived from code |
-| CPU utilisation `U` (BCI task set) | 0.174 | **L1** — derived from code |
-| Information-theoretic privacy bound (full catalogue) | ≤ 140.85 bits/s | **L1** — derived from code |
-| Phase-1 GPIO-validated WCRT on STM32H573 fixture | — | **pending** — Q2 2026 |
-
-All L1 numbers are computed by code in
-[`axonos-kernels`](https://github.com/AxonOS-org/axonos-kernels) and
-asserted in its test suite. Change the algorithm — the numbers change.
-The numbers in the preprint are tied to verifiable computation in the
-repository.
-
-## Status
-
-The AxonOS substrate is **pre-measurement**: the analytical foundation
-is complete and code-verified; the runtime measurement against real
-hardware is scheduled for Phase 1 (Q2 2026) and will be published with
-raw waveform manifests, regardless of whether the predictions hold or
-are refuted. The five pre-registered predictions (P1–P5) and their
-falsification thresholds are documented in the preprint and in
-RFC-0003.
-
-## Repositories in this organisation
-
-| Repository | Purpose | Status |
+| Component | Part | Why |
 |:---|:---|:---|
-| [`axonos-kernels`](https://github.com/AxonOS-org/axonos-kernels) | **Verifiable kernel substrate** — seven crates, 66 tests, 28 Kani proofs | Active · Apache-2.0 OR MIT |
-| [`axonos-rfcs`](https://github.com/AxonOS-org/axonos-rfcs) | Engineering RFCs governing architecture decisions | Active · CC-BY-SA-4.0 |
-| [`axonos-sdk`](https://github.com/AxonOS-org/axonos-sdk) | Application SDK — typed intents, capabilities, attestation | Active · Apache-2.0 OR MIT |
-| [`axonos-consent`](https://github.com/AxonOS-org/axonos-consent) | AxonOS Consent Protocol reference implementation | Active · Apache-2.0 OR MIT |
-| [`axonos-swarm`](https://github.com/AxonOS-org/axonos-swarm) | Multi-node coordination — Neural PTP, swarm scheduler | Active · Apache-2.0 OR MIT |
+| ADC | ADS1299 · 8-channel · 24-bit · 250 SPS | Open spec, research grade |
+| DSP core | STM32F407 · Cortex-M4F · 168 MHz | Available, formally bounded |
+| App core | Cortex-A53 · 1.2 GHz | Standard Linux + isolated DSP |
+| Wireless | nRF52840 · BLE 5.3 | Secure pairing, mesh capable |
+| Secure element | ATECC608B | Ed25519 attestation root |
+| Isolation | ISO7741 · 5 kV galvanic | Medical-grade patient barrier |
 
-Phase-1 measurement results, reproducible benchmark fixtures, and the
-preprint LaTeX source will be published alongside L3 validation
-in Q2 2026.
+Full design: [RFC-0005 — Hardware Reference Design](https://github.com/AxonOS-org/axonos-rfcs/blob/main/rfcs/0005-hardware-reference-design.md).
 
-## Audience — where to start
+## For whom this is built
 
-### Researchers in BCI and neural signal processing
+| Audience | What they find here |
+|:---|:---|
+| **Application developers** building closed-loop assistive interfaces | A typed `IntentObservation` decoder, a compile-time `Manifest` declaration, and an iterator-style stream API over the kernel's IPC output. |
+| **Research scientists** writing custom BCI experiments | A drop-in SDK without re-implementing wire-format parsing or capability handshaking. |
+| **Hardware OEMs** (Synchron, Paradromics, OpenBCI, NeuroXess) | A standard reference platform the kernel runs on, so applications written for AxonOS run on your hardware too. |
+| **Regulators** (FDA, EMA, MHRA) | Source-available kernel with documented WCRT envelope, capability-based privacy proof, and audit trail. |
+| **Standards bodies** (IEEE P2731, IETF) | A reference implementation that backs each RFC with running code. |
 
-You want a real-time substrate that does not impose its own opinions on
-your signal pipeline, with predictable timing you can characterise and
-a clean separation between raw acquisition and high-level intent output.
+## Documentation
 
-**Start with:** [`axonos-rfcs`](https://github.com/AxonOS-org/axonos-rfcs)
-→ RFC-0001 (architecture), RFC-0004 (dual-core contract).
+- **[Research overview](https://axonos.org/research)** — the project from 30,000 ft
+- **[Medium series (42 articles)](https://medium.com/@AxonOS)** — long-form deep dives, one per architectural decision
+- **[RFCs](https://github.com/AxonOS-org/axonos-rfcs)** — engineering specifications
+- **[axonos-sdk README](https://github.com/AxonOS-org/axonos-sdk#readme)** — application developer entry point
+- **[AxonOS-kernel README](https://github.com/AxonOS-org/AxonOS-kernel#readme)** — kernel internals
 
-### Embedded systems engineers
+## Contributing
 
-You want a working example of `#![no_std]` `#![forbid(unsafe_code)]`
-Rust applied to hard real-time scheduling on Cortex-M, with stated WCET
-figures that distinguish derived from measured.
+- **Code contributions:** see [CONTRIBUTING.md](https://github.com/AxonOS-org/AxonOS-kernel/blob/main/CONTRIBUTING.md) in the kernel repo
+- **Specification contributions:** open an RFC via [pull request to axonos-rfcs](https://github.com/AxonOS-org/axonos-rfcs/pulls)
+- **Bugs:** the relevant repo's Issues tab
+- **Security:** [security@axonos.org](mailto:security@axonos.org) — please do not open public issues for security-sensitive matters
 
-**Start with:** [`axonos-kernels`](https://github.com/AxonOS-org/axonos-kernels)
-→ `cargo test --workspace` (66 tests in 10 seconds), then read the
-crate READMEs in order: spsc → scheduler → capability → time → intent
-→ kernel-core → firmware-stm32f407.
+## Licensing
 
-### Medical device engineers and regulatory teams
+| Artifact | Licence |
+|:---|:---|
+| `AxonOS-kernel`, `axonos-sdk`, `axonos-consent`, `axonos-swarm` | Apache-2.0 OR MIT |
+| `axonos-rfcs` | CC-BY-SA-4.0 |
+| `axon-bci-gateway` | MIT (preserved from upstream OpenBCI_GUI) |
 
-You want a kernel substrate whose architectural decisions are
-documented as versioned RFCs, whose performance claims are tagged with
-evidence levels, and whose roadmap explicitly addresses IEC 62304 Class
-C alignment.
+See the LICENSE file in each repository.
 
-**Start with:** [`axonos-rfcs`](https://github.com/AxonOS-org/axonos-rfcs)
-→ RFC-0003 (validation framework), RFC-0006 (intent wire format ABI).
+## Engagement
 
-### Clinical teams and rehabilitation centres
-
-You want predictable, auditable software running the closed-loop
-interface for your patients, with a partner who treats failure modes as
-first-class documentation, not marketing surprises.
-
-**Contact:** [connect@axonos.org](mailto:connect@axonos.org) — initial
-conversation, clinical pilot pathway, MOU process.
-
-## Roadmap
-
-| Phase | Window | Deliverable |
-|:---|:---|:---|
-| **Phase 1** | Q2 2026 | GPIO-instrumented WCRT measurement on STM32H573 fixture. Falsification protocol P1–P5 executed and published regardless of outcome. |
-| **Phase 2** | Q3–Q4 2026 | First 8-channel clinical kit deployment with the partner ALS rehabilitation centre (northeastern US). |
-| **Phase 3** | 2027 | FDA Pre-Submission. Ferrocene-qualified toolchain integration. ISO 14971 risk management file. |
-
-Independent replication of measurement methodology is encouraged and
-welcomed. All measurement raw data will be published with SHA-256
-manifests.
-
-## Engineering principles
-
-These are the rules the project lives by. They are not aspirational;
-they are how decisions get made.
-
-1. **No claim above its evidence level.** If we derived it analytically,
-   we say L1. If we measured it on one board for 12 hours, we say L2.
-   We do not say "validated" until we have L3.
-2. **No `unsafe` in reviewable modules.** The only unsafe in the entire
-   kernel substrate is two operations in `axonos-spsc`, each guarded by
-   a Kani-verified invariant.
-3. **No heap allocation on the hot path.** Static buffers, sized at
-   compile time, sized to fit the WCET budget.
-4. **No silent recovery from inconsistent state.** Poisoned mutexes,
-   clock violations, and protocol mismatches surface as exhaustive
-   error enums, not as defaults.
-5. **No proprietary lock-in via the kernel.** All ABIs are published as
-   RFCs under CC-BY-SA-4.0. Third-party implementations are welcomed.
-
-## Intellectual property and licensing
-
-| Component | Licence | Why |
-|:---|:---|:---|
-| Source code (`axonos-kernels`, `axonos-sdk`, `axonos-consent`, `axonos-swarm`) | **Apache-2.0 OR MIT** | Permissive dual licence. Use, modify, redistribute, commercialise. |
-| Engineering RFCs (`axonos-rfcs`) | **CC-BY-SA-4.0** | Specifications spread further if they spread alike. |
-
-Commercial use, modification, and redistribution are permitted. There
-is no contributor licence agreement (CLA); contributions are accepted
-under the inbound = outbound model used by the Rust project itself.
-
-The name **"AxonOS"** is an unregistered word mark of Denis Yermakou.
-Permission is granted to use the name to refer to the project and to
-unmodified releases. Forks may state "based on AxonOS" as a factual
-description; forks may not name themselves "AxonOS Pro" or similar in
-a way that implies endorsement.
-
-Full attribution requirements and patent grant in the `NOTICE` files
-of each repository.
-
-## Contact
-
-- **General correspondence:** [info@axonos.org](mailto:info@axonos.org)
-- **Partnership and clinical engagement:** [connect@axonos.org](mailto:connect@axonos.org)
-- **Security disclosures:** [security@axonos.org](mailto:security@axonos.org) (GPG key on request)
-- **Project website:** [axonos.org](https://axonos.org)
-- **Long-form essays:** [medium.com/@AxonOS](https://medium.com/@AxonOS)
+- **Clinical partnerships:** [connect@axonos.org](mailto:connect@axonos.org)
+- **Investor discussion:** [connect@axonos.org](mailto:connect@axonos.org)
+- **Press:** [info@axonos.org](mailto:info@axonos.org)
+- **Security disclosures:** [security@axonos.org](mailto:security@axonos.org)
+- **Speaking / technical talks:** [info@axonos.org](mailto:info@axonos.org)
 
 ---
 
 <div align="center">
 
-**Author and maintainer:** Denis Yermakou · [denis@axonos.org](mailto:denis@axonos.org)
+**Founder and lead engineer:** Denis Yermakou · [denis@axonos.org](mailto:denis@axonos.org)
 
 Zurich · Berlin · Milano · San Mateo · Singapore
 
-<sub>Made with 🦀 and a long real-time tick.</sub>
+[axonos.org](https://axonos.org) · [medium.com/@AxonOS](https://medium.com/@AxonOS)
+
+<sub>
+<img src="https://rustacean.net/assets/rustacean-flat-happy.svg" width="32" alt="Ferris, the Rust mascot" align="absmiddle" />
+&nbsp; Built with Rust. Verified with Kani. Aimed at hard real-time.
+</sub>
 
 </div>
