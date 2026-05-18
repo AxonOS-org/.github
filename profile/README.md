@@ -2,7 +2,7 @@
 
 The open neural operating system for brain-computer interfaces. Hard real-time, formally verified, hardware-agnostic.
 
-![AxonOS](./banner.png)
+![AxonOS — neural OS architecture: signal → kernel → intent](./banner.jpg)
 
 [![License](https://img.shields.io/badge/license-Apache--2.0%20OR%20MIT-blue?style=flat-square)](https://github.com/AxonOS-org/AxonOS-kernel/blob/main/LICENSE-APACHE)
 [![Articles](https://img.shields.io/badge/medium-42%2B%20articles-black?style=flat-square&logo=medium)](https://medium.com/@AxonOS)
