@@ -8,11 +8,16 @@
 
 ### The open cognitive operating system for brain-computer interfaces.
 
-<sub>
+<br/>
 
-[English](#english) · [日本語](#日本語) · [中文](#中文) · [Italiano](#italiano) · [Français](#français) · [Deutsch](#deutsch) · [Español](#español) · [العربية](#العربية)
-
-</sub>
+[![🇬🇧 English](https://img.shields.io/badge/%F0%9F%87%AC%F0%9F%87%A7-English-012169?style=for-the-badge&labelColor=ffffff)](#english)
+[![🇯🇵 日本語](https://img.shields.io/badge/%F0%9F%87%AF%F0%9F%87%B5-%E6%97%A5%E6%9C%AC%E8%AA%9E-BC002D?style=for-the-badge&labelColor=ffffff)](#japanese)
+[![🇨🇳 中文](https://img.shields.io/badge/%F0%9F%87%A8%F0%9F%87%B3-%E4%B8%AD%E6%96%87-DE2910?style=for-the-badge&labelColor=ffffff)](#chinese)
+[![🇮🇹 Italiano](https://img.shields.io/badge/%F0%9F%87%AE%F0%9F%87%B9-Italiano-009246?style=for-the-badge&labelColor=ffffff)](#italian)
+[![🇫🇷 Français](https://img.shields.io/badge/%F0%9F%87%AB%F0%9F%87%B7-Fran%C3%A7ais-0055A4?style=for-the-badge&labelColor=ffffff)](#french)
+[![🇩🇪 Deutsch](https://img.shields.io/badge/%F0%9F%87%A9%F0%9F%87%AA-Deutsch-1A1A1A?style=for-the-badge&labelColor=FFCE00)](#german)
+[![🇪🇸 Español](https://img.shields.io/badge/%F0%9F%87%AA%F0%9F%87%B8-Espa%C3%B1ol-C60B1E?style=for-the-badge&labelColor=FFC400)](#spanish)
+[![🇸🇦 العربية](https://img.shields.io/badge/%F0%9F%87%B8%F0%9F%87%A6-%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A%D8%A9-006C35?style=for-the-badge&labelColor=ffffff)](#arabic)
 
 <br/>
 
@@ -29,7 +34,9 @@
 
 ---
 
-## English
+<a id="english"></a>
+
+## 🇬🇧 English
 
 **AxonOS is a hard real-time neural operating system for brain-computer interfaces.** Open-source kernel in `#![no_std]` Rust. Sub-millisecond jitter on commodity ARM Cortex-M. Formally bounded WCRT via Kani BMC. Structural privacy — sensitive capabilities don't exist in the type system, so misuse is a compile error rather than a runtime check.
 
@@ -144,6 +151,8 @@ flowchart LR
 | Clinical partnerships | [connect@axonos.org](mailto:connect@axonos.org) |
 | Press, speaking, general | [info@axonos.org](mailto:info@axonos.org) |
 
+<a id="licensing"></a>
+
 ### Licensing
 
 | Artifact | License |
@@ -154,24 +163,23 @@ flowchart LR
 
 ---
 
-<details>
-<summary><b>日本語 · Japanese</b></summary>
+<a id="japanese"></a>
 
-<a name="日本語"></a>
+## 🇯🇵 日本語
 
-### **AxonOS — AI とブレイン・コンピュータ・インターフェースを橋渡しする認知オペレーティングシステム**
+**AxonOS — AI とブレイン・コンピュータ・インターフェースを橋渡しする認知オペレーティングシステム。**
 
 `#![no_std]` Rust で書かれたオープンソースカーネル。汎用 ARM Cortex-M 上でサブミリ秒のジッタを実現。Kani 有界モデル検査による WCRT の形式的境界保証。**構造的プライバシー** — センシティブな機能は型システムに存在しないため、誤用はランタイムチェックではなくコンパイルエラーになります。
 
 クローズドループ補助インターフェースに依存する患者のため、そしてベストエフォートスケジューリングで製品を出荷することを拒否するエンジニアのために構築。
 
-#### なぜ AxonOS が必要か
+### なぜ AxonOS が必要か
 
 今日、すべての BCI アプリケーションはデバイスごとに独自のバイナリワイヤーフォーマットを再解析し、機能ゲーティングを再実装し、新しいハードウェアプラットフォームごとに統合コードを書き直さなければなりません。
 
 **AxonOS は、形式的に境界づけられたマイクロカーネル上で、安全な `no_std` Rust によりこれら 3 つを一度に行います。** 1 つの検証可能な基盤。1 つの型付き API。多数のハードウェアバックエンド。
 
-#### 4 つの技術的な賭け
+### 4 つの技術的な賭け
 
 | | 賭け | 意味 |
 |:---|:---|:---|
@@ -180,7 +188,7 @@ flowchart LR
 | 🔒 | **構造的プライバシー** | 生の認知状態を漏洩する機能(`RawEEG`、`EmotionState`)は型として存在しません。コンパイル時の拒否。 |
 | 🌐 | **オープンエコシステム** | コードは Apache-2.0 または MIT、仕様は CC-BY-SA-4.0。誰でも監査・フォーク・置き換え可能。 |
 
-#### ステータス
+### ステータス
 
 | フェーズ | 内容 | 時期 |
 |:---|:---|:---:|
@@ -189,26 +197,27 @@ flowchart LR
 | **フェーズ 2** | FDA 510(k) Q-Sub · IEEE P2731 寄稿 | 🔵 2026 Q3 |
 | **フェーズ 3** | 初の商用展開 | 🔵 2027 |
 
-</details>
+[⬆ トップへ戻る](#english)
 
-<details>
-<summary><b>中文 · Chinese (Simplified)</b></summary>
+---
 
-<a name="中文"></a>
+<a id="chinese"></a>
 
-### **AxonOS — 桥接人工智能与脑机接口的认知操作系统**
+## 🇨🇳 中文
+
+**AxonOS — 桥接人工智能与脑机接口的认知操作系统。**
 
 开源内核,使用 `#![no_std]` Rust 编写。在普通 ARM Cortex-M 上实现亚毫秒级抖动。通过 Kani 有界模型检查 (BMC) 形式化验证最坏情况响应时间。**结构化隐私** — 敏感能力在类型系统中根本不存在,因此误用会在编译时被拒绝,而非运行时检查。
 
 为依赖闭环辅助接口的患者而构建,为拒绝在"尽力而为"调度上交付产品的工程师而构建。
 
-#### 为什么需要 AxonOS
+### 为什么需要 AxonOS
 
 当今每一个脑机接口应用都必须为每种设备重新解析专有的二进制格式、重新实现能力门控、并为每一种新硬件平台重新编写集成代码。
 
 **AxonOS 在形式化验证的微内核之上,用安全的 `no_std` Rust 一次性完成这三件事。** 一个可验证的基础。一个类型化的 API 表面。支持多种硬件后端。
 
-#### 四大技术押注
+### 四大技术押注
 
 | | 押注 | 含义 |
 |:---|:---|:---|
@@ -217,7 +226,7 @@ flowchart LR
 | 🔒 | **结构化隐私** | 会泄露原始认知状态的能力(`RawEEG`、`EmotionState`)在类型系统中不存在。编译期拒绝。 |
 | 🌐 | **开放生态** | 代码采用 Apache-2.0 或 MIT 许可,规范采用 CC-BY-SA-4.0。任何人都可以审计、分叉、或替换任何层。 |
 
-#### 状态
+### 状态
 
 | 阶段 | 内容 | 时间 |
 |:---|:---|:---:|
@@ -226,26 +235,27 @@ flowchart LR
 | **阶段 2** | FDA 510(k) Q-Sub · IEEE P2731 贡献 | 🔵 2026 Q3 |
 | **阶段 3** | 首个商业部署 | 🔵 2027 |
 
-</details>
+[⬆ 返回顶部](#english)
 
-<details>
-<summary><b>Italiano · Italian</b></summary>
+---
 
-<a name="italiano"></a>
+<a id="italian"></a>
 
-### **AxonOS — il sistema operativo cognitivo open che collega l'IA alle interfacce cervello-computer**
+## 🇮🇹 Italiano
+
+**AxonOS — il sistema operativo cognitivo open che collega l'IA alle interfacce cervello-computer.**
 
 Kernel open-source scritto in `#![no_std]` Rust. Jitter sotto il millisecondo su ARM Cortex-M commerciale. Limiti superiori del WCRT verificati formalmente tramite Kani Bounded Model Checking. **Privacy strutturale** — le capability sensibili non esistono nel sistema dei tipi, quindi l'uso improprio è un errore di compilazione, non un controllo a runtime.
 
 Costruito per i pazienti che dipendono da interfacce assistive a ciclo chiuso, e per gli ingegneri che si rifiutano di rilasciarle su scheduling best-effort.
 
-#### Perché AxonOS esiste
+### Perché AxonOS esiste
 
 Oggi ogni applicazione BCI deve ri-analizzare un formato binario proprietario per ciascun dispositivo, ri-implementare il gating delle capability, e riscrivere il codice di integrazione per ogni nuova piattaforma hardware.
 
 **AxonOS fa tutte e tre le cose una volta sola, in `no_std` Rust sicuro, sopra un microkernel formalmente vincolato.** Una base verificabile. Una superficie API tipata. Molti backend hardware.
 
-#### Le quattro scommesse
+### Le quattro scommesse
 
 | | La scommessa | Cosa significa |
 |:---|:---|:---|
@@ -254,7 +264,7 @@ Oggi ogni applicazione BCI deve ri-analizzare un formato binario proprietario pe
 | 🔒 | **Privacy strutturale** | Le capability che farebbero trapelare stato cognitivo grezzo non esistono come tipi. Rifiuto in fase di compilazione. |
 | 🌐 | **Ecosistema aperto** | Apache-2.0 OR MIT per il codice, CC-BY-SA-4.0 per le specifiche. Chiunque può fare audit, fork o sostituire qualsiasi strato. |
 
-#### Stato
+### Stato
 
 | Fase | Contenuto | Quando |
 |:---|:---|:---:|
@@ -263,26 +273,27 @@ Oggi ogni applicazione BCI deve ri-analizzare un formato binario proprietario pe
 | **Fase 2** | FDA 510(k) Q-Sub per Cognitive Hypervisor · contributo IEEE P2731 | 🔵 Q3 2026 |
 | **Fase 3** | Primo deployment commerciale | 🔵 2027 |
 
-</details>
+[⬆ Torna su](#english)
 
-<details>
-<summary><b>Français · French</b></summary>
+---
 
-<a name="français"></a>
+<a id="french"></a>
 
-### **AxonOS — le système d'exploitation cognitif open source qui relie l'IA aux interfaces cerveau-ordinateur**
+## 🇫🇷 Français
+
+**AxonOS — le système d'exploitation cognitif open source qui relie l'IA aux interfaces cerveau-ordinateur.**
 
 Noyau open-source en `#![no_std]` Rust. Gigue inférieure à la milliseconde sur ARM Cortex-M grand public. Bornes supérieures du WCRT vérifiées formellement via Kani Bounded Model Checking. **Confidentialité structurelle** — les capacités sensibles n'existent pas dans le système de types, l'usage abusif est donc une erreur de compilation, pas une vérification d'exécution.
 
 Conçu pour les patients qui dépendent d'interfaces assistives en boucle fermée, et pour les ingénieurs qui refusent de les livrer sur du best-effort scheduling.
 
-#### Pourquoi AxonOS existe
+### Pourquoi AxonOS existe
 
 Aujourd'hui, chaque application BCI doit re-parser un format binaire propriétaire par appareil, ré-implémenter le contrôle de capacités, et réécrire le code d'intégration pour chaque nouvelle plateforme matérielle.
 
 **AxonOS fait les trois en une seule fois, en Rust `no_std` sûr, au-dessus d'un microkernel formellement borné.** Une seule base vérifiable. Une seule surface d'API typée. De nombreux backends matériels.
 
-#### Les quatre paris
+### Les quatre paris
 
 | | Le pari | Ce que cela signifie |
 |:---|:---|:---|
@@ -291,7 +302,7 @@ Aujourd'hui, chaque application BCI doit re-parser un format binaire propriétai
 | 🔒 | **Confidentialité structurelle** | Les capacités qui feraient fuir l'état cognitif brut n'existent pas en tant que types. Refus à la compilation. |
 | 🌐 | **Écosystème ouvert** | Apache-2.0 OR MIT pour le code, CC-BY-SA-4.0 pour les spécifications. Chaque couche est auditable, forkable, remplaçable. |
 
-#### Statut
+### Statut
 
 | Phase | Contenu | Échéance |
 |:---|:---|:---:|
@@ -300,26 +311,27 @@ Aujourd'hui, chaque application BCI doit re-parser un format binaire propriétai
 | **Phase 2** | FDA 510(k) Q-Sub pour Cognitive Hypervisor · contribution IEEE P2731 | 🔵 Q3 2026 |
 | **Phase 3** | Premier déploiement commercial | 🔵 2027 |
 
-</details>
+[⬆ Retour en haut](#english)
 
-<details>
-<summary><b>Deutsch · German</b></summary>
+---
 
-<a name="deutsch"></a>
+<a id="german"></a>
 
-### **AxonOS — das offene kognitive Betriebssystem als Brücke zwischen KI und Gehirn-Computer-Schnittstellen**
+## 🇩🇪 Deutsch
+
+**AxonOS — das offene kognitive Betriebssystem als Brücke zwischen KI und Gehirn-Computer-Schnittstellen.**
 
 Open-Source-Kernel in `#![no_std]` Rust. Sub-Millisekunden-Jitter auf handelsüblichen ARM Cortex-M. Formal verifizierte WCRT-Obergrenzen via Kani Bounded Model Checking. **Strukturelle Privatsphäre** — sensible Capabilities existieren nicht im Typsystem, sodass Missbrauch zur Compile-Zeit abgelehnt wird, nicht zur Laufzeit.
 
 Gebaut für Patienten, die auf closed-loop-Assistenzschnittstellen angewiesen sind, und für Ingenieure, die sich weigern, sie auf Best-Effort-Scheduling auszuliefern.
 
-#### Warum AxonOS existiert
+### Warum AxonOS existiert
 
 Heute muss jede BCI-Anwendung pro Gerät ein eigenes binäres Wire-Format neu parsen, Capability-Gating neu implementieren und Integrations-Boilerplate für jede neue Hardware-Plattform neu schreiben.
 
 **AxonOS erledigt alle drei Aufgaben einmalig in sicherem `no_std` Rust auf einem formal beschränkten Mikrokernel.** Eine verifizierbare Basis. Eine typisierte API-Oberfläche. Viele Hardware-Backends.
 
-#### Die vier strategischen Wetten
+### Die vier strategischen Wetten
 
 | | Wette | Bedeutung |
 |:---|:---|:---|
@@ -328,7 +340,7 @@ Heute muss jede BCI-Anwendung pro Gerät ein eigenes binäres Wire-Format neu pa
 | 🔒 | **Strukturelle Privatsphäre** | Capabilities, die rohe kognitive Daten leaken würden, existieren nicht als Typen. Compile-Time-Refusal. |
 | 🌐 | **Offenes Ökosystem** | Apache-2.0 OR MIT für Code, CC-BY-SA-4.0 für Spezifikationen. Jede Schicht ist auditierbar, forkbar, austauschbar. |
 
-#### Status
+### Status
 
 | Phase | Inhalt | Zeitpunkt |
 |:---|:---|:---:|
@@ -337,26 +349,27 @@ Heute muss jede BCI-Anwendung pro Gerät ein eigenes binäres Wire-Format neu pa
 | **Phase 2** | FDA 510(k) Q-Sub für Cognitive Hypervisor · IEEE P2731 | 🔵 Q3 2026 |
 | **Phase 3** | Erste kommerzielle Bereitstellung | 🔵 2027 |
 
-</details>
+[⬆ Nach oben](#english)
 
-<details>
-<summary><b>Español · Spanish</b></summary>
+---
 
-<a name="español"></a>
+<a id="spanish"></a>
 
-### **AxonOS — el sistema operativo cognitivo abierto que conecta la IA con las interfaces cerebro-computadora**
+## 🇪🇸 Español
+
+**AxonOS — el sistema operativo cognitivo abierto que conecta la IA con las interfaces cerebro-computadora.**
 
 Kernel de código abierto en `#![no_std]` Rust. Jitter sub-milisegundo en ARM Cortex-M comercial. Límites superiores de WCRT verificados formalmente mediante Kani Bounded Model Checking. **Privacidad estructural** — las capacidades sensibles no existen en el sistema de tipos, por lo que el uso indebido es rechazado en tiempo de compilación, no comprobado en tiempo de ejecución.
 
 Construido para los pacientes que dependen de interfaces asistivas de bucle cerrado, y para los ingenieros que se niegan a entregarlos sobre planificación best-effort.
 
-#### Por qué existe AxonOS
+### Por qué existe AxonOS
 
 Hoy, cada aplicación BCI debe reparsear un formato binario propio por dispositivo, reimplementar el control de capacidades, y reescribir el código de integración para cada nueva plataforma de hardware.
 
 **AxonOS hace las tres cosas una sola vez, en `no_std` Rust seguro, sobre un microkernel formalmente acotado.** Una base verificable. Una superficie API tipada. Múltiples backends de hardware.
 
-#### Las cuatro apuestas
+### Las cuatro apuestas
 
 | | Apuesta | Significado |
 |:---|:---|:---|
@@ -365,7 +378,7 @@ Hoy, cada aplicación BCI debe reparsear un formato binario propio por dispositi
 | 🔒 | **Privacidad estructural** | Las capacidades que filtrarían estado cognitivo crudo no existen como tipos. Rechazo en tiempo de compilación. |
 | 🌐 | **Ecosistema abierto** | Apache-2.0 OR MIT para código, CC-BY-SA-4.0 para especificaciones. Cualquiera puede auditar, bifurcar o reemplazar cualquier capa. |
 
-#### Estado
+### Estado
 
 | Fase | Contenido | Cuándo |
 |:---|:---|:---:|
@@ -374,28 +387,29 @@ Hoy, cada aplicación BCI debe reparsear un formato binario propio por dispositi
 | **Fase 2** | FDA 510(k) Q-Sub para Cognitive Hypervisor · IEEE P2731 | 🔵 Q3 2026 |
 | **Fase 3** | Primera implementación comercial | 🔵 2027 |
 
-</details>
+[⬆ Volver arriba](#english)
 
-<details>
-<summary><b>العربية · Arabic</b></summary>
+---
 
-<a name="العربية"></a>
+<a id="arabic"></a>
+
+## 🇸🇦 العربية
 
 <div dir="rtl" align="right">
 
-### **AxonOS — نظام التشغيل المعرفي مفتوح المصدر الذي يربط الذكاء الاصطناعي بواجهات الدماغ والحاسوب**
+**AxonOS — نظام التشغيل المعرفي مفتوح المصدر الذي يربط الذكاء الاصطناعي بواجهات الدماغ والحاسوب.**
 
 نواة مفتوحة المصدر مكتوبة بلغة `#![no_std]` Rust. اضطراب زمني أقل من ميلي ثانية على معالجات ARM Cortex-M التجارية. حدود عليا لزمن الاستجابة في أسوأ الحالات (WCRT) مُتحقق منها رسمياً عبر Kani Bounded Model Checking. **خصوصية بنيوية** — الصلاحيات الحساسة غير موجودة في نظام الأنواع، لذا فإن الاستخدام الخاطئ هو خطأ في وقت الترجمة وليس فحصاً في وقت التشغيل.
 
 تم بناؤه من أجل المرضى الذين يعتمدون على واجهات مساعدة ذات حلقة مغلقة، ومن أجل المهندسين الذين يرفضون شحنها بجدولة "أفضل جهد ممكن".
 
-#### لماذا يوجد AxonOS
+### لماذا يوجد AxonOS
 
 اليوم، يجب على كل تطبيق لواجهة الدماغ والحاسوب أن يعيد تحليل تنسيق ثنائي خاص لكل جهاز، وأن يعيد تنفيذ آلية بوابات الصلاحيات، وأن يعيد كتابة الشيفرة التكاملية لكل منصة عتاد جديدة.
 
 **يقوم AxonOS بهذه المهام الثلاث مرة واحدة، بلغة `no_std` Rust الآمنة، فوق نواة مصغرة محدودة رسمياً.** أساس واحد قابل للتحقق. سطح واجهة برمجية واحد بأنواع محددة. واجهات خلفية عتادية متعددة.
 
-#### الرهانات الأربعة
+### الرهانات الأربعة
 
 | | الرهان | ماذا يعني |
 |:---|:---|:---|
@@ -404,7 +418,7 @@ Hoy, cada aplicación BCI debe reparsear un formato binario propio por dispositi
 | 🔒 | **خصوصية بنيوية** | الصلاحيات التي قد تكشف الحالة المعرفية الخام (`RawEEG`، `EmotionState`) غير موجودة كأنواع. رفض في وقت الترجمة. |
 | 🌐 | **منظومة مفتوحة** | Apache-2.0 أو MIT للشيفرة، CC-BY-SA-4.0 للمواصفات. يمكن لأي شخص تدقيق أو نسخ أو استبدال أي طبقة. |
 
-#### الحالة
+### الحالة
 
 | المرحلة | المحتوى | الموعد |
 |:---|:---|:---:|
@@ -415,7 +429,7 @@ Hoy, cada aplicación BCI debe reparsear un formato binario propio por dispositi
 
 </div>
 
-</details>
+[⬆ العودة إلى الأعلى](#english)
 
 ---
 
