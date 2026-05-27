@@ -22,11 +22,11 @@
 
 <br/>
 
-[![SDK](https://img.shields.io/badge/SDK-v0.3.4-orange?style=flat-square)](https://github.com/AxonOS-org/axonos-sdk)
-[![Kernel](https://img.shields.io/badge/Kernel-v0.2.1-orange?style=flat-square)](https://github.com/AxonOS-org/axonos-kernel)
-[![ABI](https://img.shields.io/badge/Kernel%20ABI-v1-blueviolet?style=flat-square)](https://axonos.org/specifications.html)
+[![SDK](https://img.shields.io/badge/SDK-v0.3.4-0a4a8f?style=flat-square)](https://github.com/AxonOS-org/axonos-sdk)
+[![Kernel](https://img.shields.io/badge/Kernel-v0.2.1-0a4a8f?style=flat-square)](https://github.com/AxonOS-org/AxonOS-kernel)
+[![ABI](https://img.shields.io/badge/Kernel%20ABI-v1-0a4a8f?style=flat-square)](https://axonos.org/specifications.html)
 [![Rust](https://img.shields.io/badge/built%20with-Rust-CE422B?style=flat-square&logo=rust&logoColor=white)](https://www.rust-lang.org/)
-[![License](https://img.shields.io/badge/license-Apache--2.0%20OR%20MIT-blue?style=flat-square)](#licensing)
+[![License](https://img.shields.io/badge/license-Apache--2.0%20OR%20MIT-475569?style=flat-square)](#licensing)
 
 ### [🌐 axonos.org](https://axonos.org) · [📐 仕様](https://axonos.org/specifications.html) · [🧰 SDK](https://axonos.org/sdk.html) · [📖 記事](https://medium.com/@AxonOS) · [💬 connect@axonos.org](mailto:connect@axonos.org)
 
@@ -103,7 +103,7 @@ SDK は Rust リファレンスバインディングです。C FFI、Python、We
 
 |                                                                              | リポジトリ           | 目的                                                                              | 言語     | 最新       |
 |:----------------------------------------------------------------------------:|:---------------------|:----------------------------------------------------------------------------------|:--------:|:-----------|
-| [⬢](https://github.com/AxonOS-org/axonos-kernel)                              | **axonos-kernel**    | ハードリアルタイムマイクロカーネル — 8 クレート、形式的に境界づけられた WCRT、28 Kani ハーネス | Rust     | `v0.2.1`   |
+| [⬢](https://github.com/AxonOS-org/AxonOS-kernel)                              | **AxonOS-kernel**    | ハードリアルタイムマイクロカーネル — 8 クレート、形式的に境界づけられた WCRT、28 Kani ハーネス | Rust     | `v0.2.1`   |
 | [⬢](https://github.com/AxonOS-org/axonos-sdk)                                 | **axonos-sdk**       | アプリケーション境界 — 型付きインテント、能力マニフェスト、カーネル ABI v1            | Rust     | `v0.3.4`   |
 | [⬢](https://github.com/AxonOS-org/axonos-consent)                             | **axonos-consent**   | 認知メッシュカップリングのためのプロトコルレベル同意施行 (MMP)                       | Rust     | `v0.4.0`   |
 | [⬢](https://github.com/AxonOS-org/axonos-swarm)                               | **axonos-swarm**     | マルチノード調整 — Neural PTP 同期、スウォームスケジューリング                       | Rust     | `v0.2.0`   |
@@ -205,7 +205,7 @@ flowchart LR
 
 **構築と保守:Denis Yermakou**
 
-[connect@axonos.org](mailto:connect@axonos.org) · [LinkedIn](https://www.linkedin.com/in/denis-yermakou) · [Medium](https://medium.com/@AxonOS) · [Site](https://axonos.org)
+[denis@axonos.org](mailto:denis@axonos.org) · [LinkedIn](https://www.linkedin.com/in/denis-yermakou) · [Medium](https://medium.com/@AxonOS) · [Site](https://axonos.org)
 
 <sub>Singapore · Zurich · Berlin · Milano · San Mateo</sub>
 

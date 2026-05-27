@@ -15,13 +15,13 @@
 
 <br/>
 
-[![Standard](https://img.shields.io/badge/Standard-v1.0.0-1d1d1f?style=flat-square)](https://github.com/AxonOS-org/axonos-standard)
-[![Kernel](https://img.shields.io/badge/Kernel-v0.2.1-1d1d1f?style=flat-square)](https://github.com/AxonOS-org/axonos-kernel)
-[![SDK](https://img.shields.io/badge/SDK-v0.3.4-1d1d1f?style=flat-square)](https://github.com/AxonOS-org/axonos-sdk)
-[![Consent](https://img.shields.io/badge/Consent-v0.4.0-1d1d1f?style=flat-square)](https://github.com/AxonOS-org/axonos-consent)
+[![Standard](https://img.shields.io/badge/Standard-v1.0.0-0a4a8f?style=flat-square)](https://github.com/AxonOS-org/axonos-standard)
+[![Kernel](https://img.shields.io/badge/Kernel-v0.2.1-0a4a8f?style=flat-square)](https://github.com/AxonOS-org/axonos-kernel)
+[![SDK](https://img.shields.io/badge/SDK-v0.3.4-0a4a8f?style=flat-square)](https://github.com/AxonOS-org/axonos-sdk)
+[![Consent](https://img.shields.io/badge/Consent-v0.4.0-0a4a8f?style=flat-square)](https://github.com/AxonOS-org/axonos-consent)
 [![Rust](https://img.shields.io/badge/Built%20with-Rust-CE422B?style=flat-square&logo=rust&logoColor=white)](https://www.rust-lang.org/)
-[![License](https://img.shields.io/badge/License-Apache--2.0%20OR%20MIT-6e6e73?style=flat-square)](#licensing)
-[![Verified](https://img.shields.io/badge/Verified-Kani%20BMC-6e6e73?style=flat-square)](https://model-checking.github.io/kani/)
+[![License](https://img.shields.io/badge/License-Apache--2.0%20OR%20MIT-475569?style=flat-square)](#licensing)
+[![Verified](https://img.shields.io/badge/Verified-Kani%20BMC-0d7a5f?style=flat-square)](https://model-checking.github.io/kani/)
 
 <br/>
 
@@ -58,10 +58,10 @@ independently verified.
 
 |  | Commitment | What it means in practice |
 |:---:|:---|:---|
-| · | **Hard real-time on commodity hardware** | `#![no_std]` Rust on ARMv8-M. No GC, no allocator on the hot path, no unbounded panics. Memory safety is structural. |
-| · | **Formally bounded WCRT** | Every critical-path operation has a Kani-verified upper bound. Latency is *proven*, not benchmarked. |
-| · | **Structural privacy** | Capabilities that would leak raw cognitive state (`RawEEG`, `EmotionState`, `CognitiveProfile`) do not exist as types. |
-| · | **Open ecosystem** | Apache-2.0 OR MIT for code, CC-BY-SA-4.0 for specifications. Every repository is public. Anyone can audit, fork, or replace any layer. |
+| **1** | **Hard real-time on commodity hardware** | `#![no_std]` Rust on ARMv8-M. No GC, no allocator on the hot path, no unbounded panics. Memory safety is structural. |
+| **2** | **Formally bounded WCRT** | Every critical-path operation has a Kani-verified upper bound. Latency is *proven*, not benchmarked. |
+| **3** | **Structural privacy** | Capabilities that would leak raw cognitive state (`RawEEG`, `EmotionState`, `CognitiveProfile`) do not exist as types. |
+| **4** | **Open ecosystem** | Apache-2.0 OR MIT for code, CC-BY-SA-4.0 for specifications. Every repository is public. Anyone can audit, fork, or replace any layer. |
 
 ---
 
@@ -105,8 +105,8 @@ flowchart LR
     F[Cognitive Hypervisor<br/>TrustZone-S] -.->|isolates| C
     G[Consent FSM<br/>axonos-consent] -.->|gates| D
 
-    classDef kernel fill:#1d1d1f,stroke:#3b82f6,color:#fff,stroke-width:2px
-    classDef secure fill:#1d1d1f,stroke:#10b981,color:#fff,stroke-width:2px
+    classDef kernel fill:#0a4a8f,stroke:#0a4a8f,color:#fff,stroke-width:2px
+    classDef secure fill:#0d7a5f,stroke:#0d7a5f,color:#fff,stroke-width:2px
     class C kernel
     class F,G secure
 ```

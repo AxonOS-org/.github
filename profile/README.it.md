@@ -22,11 +22,11 @@
 
 <br/>
 
-[![SDK](https://img.shields.io/badge/SDK-v0.3.4-orange?style=flat-square)](https://github.com/AxonOS-org/axonos-sdk)
-[![Kernel](https://img.shields.io/badge/Kernel-v0.2.1-orange?style=flat-square)](https://github.com/AxonOS-org/axonos-kernel)
-[![ABI](https://img.shields.io/badge/Kernel%20ABI-v1-blueviolet?style=flat-square)](https://axonos.org/specifications.html)
+[![SDK](https://img.shields.io/badge/SDK-v0.3.4-0a4a8f?style=flat-square)](https://github.com/AxonOS-org/axonos-sdk)
+[![Kernel](https://img.shields.io/badge/Kernel-v0.2.1-0a4a8f?style=flat-square)](https://github.com/AxonOS-org/AxonOS-kernel)
+[![ABI](https://img.shields.io/badge/Kernel%20ABI-v1-0a4a8f?style=flat-square)](https://axonos.org/specifications.html)
 [![Rust](https://img.shields.io/badge/built%20with-Rust-CE422B?style=flat-square&logo=rust&logoColor=white)](https://www.rust-lang.org/)
-[![License](https://img.shields.io/badge/license-Apache--2.0%20OR%20MIT-blue?style=flat-square)](#licensing)
+[![License](https://img.shields.io/badge/license-Apache--2.0%20OR%20MIT-475569?style=flat-square)](#licensing)
 
 ### [🌐 axonos.org](https://axonos.org) · [📐 Specifiche](https://axonos.org/specifications.html) · [🧰 SDK](https://axonos.org/sdk.html) · [📖 Articoli](https://medium.com/@AxonOS) · [💬 connect@axonos.org](mailto:connect@axonos.org)
 
@@ -103,7 +103,7 @@ Tutti i sei repository sono pubblici. Codice sorgente sotto Apache-2.0 OR MIT. S
 
 |                                                                              | Repository           | Scopo                                                                              | Linguaggio | Ultima     |
 |:----------------------------------------------------------------------------:|:---------------------|:-----------------------------------------------------------------------------------|:----------:|:-----------|
-| [⬢](https://github.com/AxonOS-org/axonos-kernel)                              | **axonos-kernel**    | Microkernel hard real-time — 8 crate, WCRT formalmente vincolato, 28 harness Kani  | Rust       | `v0.2.1`   |
+| [⬢](https://github.com/AxonOS-org/AxonOS-kernel)                              | **AxonOS-kernel**    | Microkernel hard real-time — 8 crate, WCRT formalmente vincolato, 28 harness Kani  | Rust       | `v0.2.1`   |
 | [⬢](https://github.com/AxonOS-org/axonos-sdk)                                 | **axonos-sdk**       | Confine applicativo — intent tipati, manifest di capability, ABI del kernel v1     | Rust       | `v0.3.4`   |
 | [⬢](https://github.com/AxonOS-org/axonos-consent)                             | **axonos-consent**   | Enforcement del consenso a livello di protocollo per il cognitive mesh (MMP)       | Rust       | `v0.4.0`   |
 | [⬢](https://github.com/AxonOS-org/axonos-swarm)                               | **axonos-swarm**     | Coordinamento multi-nodo — sincronizzazione Neural PTP, scheduling di swarm        | Rust       | `v0.2.0`   |
@@ -205,7 +205,7 @@ flowchart LR
 
 **Costruito e mantenuto da Denis Yermakou**
 
-[connect@axonos.org](mailto:connect@axonos.org) · [LinkedIn](https://www.linkedin.com/in/denis-yermakou) · [Medium](https://medium.com/@AxonOS) · [Site](https://axonos.org)
+[denis@axonos.org](mailto:denis@axonos.org) · [LinkedIn](https://www.linkedin.com/in/denis-yermakou) · [Medium](https://medium.com/@AxonOS) · [Site](https://axonos.org)
 
 <sub>Singapore · Zurich · Berlin · Milano · San Mateo</sub>
 
