@@ -23,7 +23,7 @@
 <br/>
 
 [![SDK](https://img.shields.io/badge/SDK-v0.3.4-orange?style=flat-square)](https://github.com/AxonOS-org/axonos-sdk)
-[![Kernel](https://img.shields.io/badge/Kernel-v0.2.1-orange?style=flat-square)](https://github.com/AxonOS-org/AxonOS-kernel)
+[![Kernel](https://img.shields.io/badge/Kernel-v0.2.1-orange?style=flat-square)](https://github.com/AxonOS-org/axonos-kernel)
 [![ABI](https://img.shields.io/badge/Kernel%20ABI-v1-blueviolet?style=flat-square)](https://axonos.org/specifications.html)
 [![Rust](https://img.shields.io/badge/built%20with-Rust-CE422B?style=flat-square&logo=rust&logoColor=white)](https://www.rust-lang.org/)
 [![License](https://img.shields.io/badge/license-Apache--2.0%20OR%20MIT-blue?style=flat-square)](#licensing)
@@ -103,7 +103,7 @@ SDK 是 Rust 参考绑定。C FFI、Python、WebAssembly、JNI 和 Swift 绑定�
 
 |                                                                              | 仓库                 | 用途                                                                              | 语言     | 最新版本   |
 |:----------------------------------------------------------------------------:|:---------------------|:----------------------------------------------------------------------------------|:--------:|:-----------|
-| [⬢](https://github.com/AxonOS-org/AxonOS-kernel)                              | **AxonOS-kernel**    | 硬实时微内核 — 8 个 crate,形式化验证的 WCRT,28 个 Kani 验证桩                    | Rust     | `v0.2.1`   |
+| [⬢](https://github.com/AxonOS-org/axonos-kernel)                              | **axonos-kernel**    | 硬实时微内核 — 8 个 crate,形式化验证的 WCRT,28 个 Kani 验证桩                    | Rust     | `v0.2.1`   |
 | [⬢](https://github.com/AxonOS-org/axonos-sdk)                                 | **axonos-sdk**       | 应用边界 — 类型化意图、能力清单、内核 ABI v1                                       | Rust     | `v0.3.4`   |
 | [⬢](https://github.com/AxonOS-org/axonos-consent)                             | **axonos-consent**   | 用于认知网格耦合的协议级同意执行 (MMP)                                            | Rust     | `v0.4.0`   |
 | [⬢](https://github.com/AxonOS-org/axonos-swarm)                               | **axonos-swarm**     | 多节点协调 — Neural PTP 同步,集群调度                                              | Rust     | `v0.2.0`   |
@@ -205,7 +205,7 @@ flowchart LR
 
 **由 Denis Yermakou 构建和维护**
 
-[denis@axonos.org](mailto:denis@axonos.org) · [LinkedIn](https://www.linkedin.com/in/denis-yermakou) · [Medium](https://medium.com/@AxonOS) · [Site](https://axonos.org)
+[connect@axonos.org](mailto:connect@axonos.org) · [LinkedIn](https://www.linkedin.com/in/denis-yermakou) · [Medium](https://medium.com/@AxonOS) · [Site](https://axonos.org)
 
 <sub>Singapore · Zurich · Berlin · Milano · San Mateo</sub>
 

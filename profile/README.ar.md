@@ -23,7 +23,7 @@
 <br/>
 
 [![SDK](https://img.shields.io/badge/SDK-v0.3.4-orange?style=flat-square)](https://github.com/AxonOS-org/axonos-sdk)
-[![Kernel](https://img.shields.io/badge/Kernel-v0.2.1-orange?style=flat-square)](https://github.com/AxonOS-org/AxonOS-kernel)
+[![Kernel](https://img.shields.io/badge/Kernel-v0.2.1-orange?style=flat-square)](https://github.com/AxonOS-org/axonos-kernel)
 [![ABI](https://img.shields.io/badge/Kernel%20ABI-v1-blueviolet?style=flat-square)](https://axonos.org/specifications.html)
 [![Rust](https://img.shields.io/badge/built%20with-Rust-CE422B?style=flat-square&logo=rust&logoColor=white)](https://www.rust-lang.org/)
 [![License](https://img.shields.io/badge/license-Apache--2.0%20OR%20MIT-blue?style=flat-square)](#licensing)
@@ -109,7 +109,7 @@ SDK هو الربط المرجعي بلغة Rust. روابط C FFI و Python و 
 
 |                                                                              | المستودع              | الغرض                                                                              | اللغة    | الأحدث     |
 |:----------------------------------------------------------------------------:|:---------------------|:----------------------------------------------------------------------------------|:--------:|:-----------|
-| [⬢](https://github.com/AxonOS-org/AxonOS-kernel)                              | **AxonOS-kernel**    | نواة مصغرة ذات زمن حقيقي صارم — 8 صناديق، WCRT محدود رسمياً، 28 أداة تحقق Kani    | Rust     | `v0.2.1`   |
+| [⬢](https://github.com/AxonOS-org/axonos-kernel)                              | **axonos-kernel**    | نواة مصغرة ذات زمن حقيقي صارم — 8 صناديق، WCRT محدود رسمياً، 28 أداة تحقق Kani    | Rust     | `v0.2.1`   |
 | [⬢](https://github.com/AxonOS-org/axonos-sdk)                                 | **axonos-sdk**       | حدود التطبيق — نوايا مُنوَّعة، بيانات الصلاحيات، ABI النواة v1                    | Rust     | `v0.3.4`   |
 | [⬢](https://github.com/AxonOS-org/axonos-consent)                             | **axonos-consent**   | إنفاذ الموافقة على مستوى البروتوكول لاقتران الشبكة المعرفية (MMP)                 | Rust     | `v0.4.0`   |
 | [⬢](https://github.com/AxonOS-org/axonos-swarm)                               | **axonos-swarm**     | تنسيق متعدد العقد — مزامنة Neural PTP، جدولة السرب                                | Rust     | `v0.2.0`   |
@@ -217,7 +217,7 @@ flowchart LR
 
 **بُني وصُين بواسطة Denis Yermakou**
 
-[denis@axonos.org](mailto:denis@axonos.org) · [LinkedIn](https://www.linkedin.com/in/denis-yermakou) · [Medium](https://medium.com/@AxonOS) · [Site](https://axonos.org)
+[connect@axonos.org](mailto:connect@axonos.org) · [LinkedIn](https://www.linkedin.com/in/denis-yermakou) · [Medium](https://medium.com/@AxonOS) · [Site](https://axonos.org)
 
 <sub>Singapore · Zurich · Berlin · Milano · San Mateo</sub>
 
