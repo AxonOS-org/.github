@@ -16,9 +16,9 @@
 <br/>
 
 [![Standard](https://img.shields.io/badge/Standard-v1.0.0-0a4a8f?style=flat-square)](https://github.com/AxonOS-org/axonos-standard)
-[![Kernel](https://img.shields.io/badge/Kernel-v0.2.1-0a4a8f?style=flat-square)](https://github.com/AxonOS-org/axonos-kernel)
-[![SDK](https://img.shields.io/badge/SDK-v0.3.4-0a4a8f?style=flat-square)](https://github.com/AxonOS-org/axonos-sdk)
-[![Consent](https://img.shields.io/badge/Consent-v0.4.0-0a4a8f?style=flat-square)](https://github.com/AxonOS-org/axonos-consent)
+[![Kernel](https://img.shields.io/badge/Kernel-v0.3.0-0a4a8f?style=flat-square)](https://github.com/AxonOS-org/axonos-kernel)
+[![SDK](https://img.shields.io/badge/SDK-v0.3.5-0a4a8f?style=flat-square)](https://github.com/AxonOS-org/axonos-sdk)
+[![Consent](https://img.shields.io/badge/Consent-v0.5.0-0a4a8f?style=flat-square)](https://github.com/AxonOS-org/axonos-consent)
 [![Rust](https://img.shields.io/badge/Built%20with-Rust-CE422B?style=flat-square&logo=rust&logoColor=white)](https://www.rust-lang.org/)
 [![License](https://img.shields.io/badge/License-Apache--2.0%20OR%20MIT-475569?style=flat-square)](#licensing)
 [![Verified](https://img.shields.io/badge/Verified-Kani%20BMC-0d7a5f?style=flat-square)](https://model-checking.github.io/kani/)
@@ -79,18 +79,23 @@ Three honest paths, depending on what you want.
 
 ## The stack
 
-All seven repositories are public. Source under Apache-2.0 OR MIT.
-Specifications under CC-BY-SA-4.0. There are no private repositories.
+Every repository is public. Source under Apache-2.0 OR MIT, specifications
+under CC-BY-SA-4.0. There are no private repositories. Each repository has one
+role.
 
-|  | Repository | Purpose | Language | Latest |
+|  | Repository | Role | Language | Latest |
 |:---:|:---|:---|:---:|:---|
-| ⬢ | [**`axonos-standard`**](https://github.com/AxonOS-org/axonos-standard) | Canonical technical standard and architecture manual | Markdown | `v1.0.0` |
-| ⬢ | [**`axonos-kernel`**](https://github.com/AxonOS-org/axonos-kernel) | Hard real-time microkernel — 8 crates, formally bounded WCRT, 28 Kani harnesses | Rust | `v0.2.1` |
-| ⬢ | [**`axonos-sdk`**](https://github.com/AxonOS-org/axonos-sdk) | Application boundary — typed intents, capability manifests, kernel ABI v1 | Rust | `v0.3.4` |
-| ⬢ | [**`axonos-consent`**](https://github.com/AxonOS-org/axonos-consent) | Protocol-level consent enforcement — `#![no_std]` reference crate, 28 Kani harnesses + fuzz suite | Rust | `v0.4.0` |
-| ⬢ | [**`axonos-swarm`**](https://github.com/AxonOS-org/axonos-swarm) | Multi-node coordination — Neural PTP synchronisation, swarm scheduling | Rust | `v0.2.0` |
-| ⬢ | [**`axonos-rfcs`**](https://github.com/AxonOS-org/axonos-rfcs) | Engineering specifications — 8 numbered RFCs, normative once finalised | Markdown | active |
-| ⬢ | [**`axon-bci-gateway`**](https://github.com/AxonOS-org/axon-bci-gateway) | Acquisition-boundary gateway (OpenBCI fork, MIT preserved from upstream) | HTML | active |
+| ⬢ | [**`axonos-standard`**](https://github.com/AxonOS-org/axonos-standard) | Normative architecture — the canonical technical standard | Markdown | `v1.0.0` |
+| ⬢ | [**`axonos-rfcs`**](https://github.com/AxonOS-org/axonos-rfcs) | Design-change process — numbered engineering RFCs, normative once finalised | Markdown | active |
+| ⬢ | [**`axonos-kernel`**](https://github.com/AxonOS-org/axonos-kernel) | Execution substrate — hard real-time microkernel, formally bounded WCRT | Rust | `v0.3.0` |
+| ⬢ | [**`axonos-sdk`**](https://github.com/AxonOS-org/axonos-sdk) | Application boundary — typed intents, capability manifests, kernel ABI v1 | Rust | `v0.3.5` |
+| ⬢ | [**`axonos-consent`**](https://github.com/AxonOS-org/axonos-consent) | Consent / co-authorisation subsystem — `#![no_std]` reference crate | Rust | `v0.5.0` |
+| ⬢ | [**`axonos-validation`**](https://github.com/AxonOS-org/axonos-validation) | Evidence and trace record — measurement traces and reference post-processing | Python | record |
+| ⬢ | [**`axon-bci-gateway`**](https://github.com/AxonOS-org/axon-bci-gateway) | Acquisition bridge — OpenBCI fork, MIT preserved from upstream | HTML | active |
+| ⬢ | [**`axonos-swarm`**](https://github.com/AxonOS-org/axonos-swarm) | Long-horizon distributed timing — multi-node Neural PTP coordination | Rust | `v0.2.1` |
+| ⬢ | [**`AxonOS`**](https://github.com/AxonOS-org/AxonOS) | Public entry point — landing, concept, and links into the stack | — | — |
+
+<sub>A dedicated wire / conformance repository (`axonos-protocol`) is not yet public; the wire format and conformance suite are currently specified within [`axonos-standard`](https://github.com/AxonOS-org/axonos-standard) and [`axonos-rfcs`](https://github.com/AxonOS-org/axonos-rfcs).</sub>
 
 ---
 
@@ -138,7 +143,7 @@ everything else.
 </tr>
 <tr>
   <td align="center">
-    <h2>28</h2>
+    <h2>30</h2>
     <sub>Kani BMC harnesses<br/>upper bounds proven</sub>
   </td>
   <td align="center">
