@@ -22,8 +22,8 @@
 
 <br/>
 
-[![SDK](https://img.shields.io/badge/SDK-v0.3.4-0a4a8f?style=flat-square)](https://github.com/AxonOS-org/axonos-sdk)
-[![Kernel](https://img.shields.io/badge/Kernel-v0.2.1-0a4a8f?style=flat-square)](https://github.com/AxonOS-org/AxonOS-kernel)
+[![SDK](https://img.shields.io/badge/SDK-v0.3.5-0a4a8f?style=flat-square)](https://github.com/AxonOS-org/axonos-sdk)
+[![Kernel](https://img.shields.io/badge/Kernel-v0.3.0-0a4a8f?style=flat-square)](https://github.com/AxonOS-org/AxonOS-kernel)
 [![ABI](https://img.shields.io/badge/Kernel%20ABI-v1-0a4a8f?style=flat-square)](https://axonos.org/specifications.html)
 [![Rust](https://img.shields.io/badge/built%20with-Rust-CE422B?style=flat-square&logo=rust&logoColor=white)](https://www.rust-lang.org/)
 [![License](https://img.shields.io/badge/license-Apache--2.0%20OR%20MIT-475569?style=flat-square)](#licensing)
@@ -103,10 +103,10 @@ SDK 是 Rust 参考绑定。C FFI、Python、WebAssembly、JNI 和 Swift 绑定�
 
 |                                                                              | 仓库                 | 用途                                                                              | 语言     | 最新版本   |
 |:----------------------------------------------------------------------------:|:---------------------|:----------------------------------------------------------------------------------|:--------:|:-----------|
-| [⬢](https://github.com/AxonOS-org/AxonOS-kernel)                              | **AxonOS-kernel**    | 硬实时微内核 — 8 个 crate,形式化验证的 WCRT,28 个 Kani 验证桩                    | Rust     | `v0.2.1`   |
-| [⬢](https://github.com/AxonOS-org/axonos-sdk)                                 | **axonos-sdk**       | 应用边界 — 类型化意图、能力清单、内核 ABI v1                                       | Rust     | `v0.3.4`   |
-| [⬢](https://github.com/AxonOS-org/axonos-consent)                             | **axonos-consent**   | 用于认知网格耦合的协议级同意执行 (MMP)                                            | Rust     | `v0.4.0`   |
-| [⬢](https://github.com/AxonOS-org/axonos-swarm)                               | **axonos-swarm**     | 多节点协调 — Neural PTP 同步,集群调度                                              | Rust     | `v0.2.0`   |
+| [⬢](https://github.com/AxonOS-org/AxonOS-kernel)                              | **AxonOS-kernel**    | 硬实时微内核 — 8 个 crate,形式化验证的 WCRT,28 个 Kani 验证桩                    | Rust     | `v0.3.0`   |
+| [⬢](https://github.com/AxonOS-org/axonos-sdk)                                 | **axonos-sdk**       | 应用边界 — 类型化意图、能力清单、内核 ABI v1                                       | Rust     | `v0.3.5`   |
+| [⬢](https://github.com/AxonOS-org/axonos-consent)                             | **axonos-consent**   | 用于认知网格耦合的协议级同意执行 (MMP)                                            | Rust     | `v0.5.0`   |
+| [⬢](https://github.com/AxonOS-org/axonos-swarm)                               | **axonos-swarm**     | 多节点协调 — Neural PTP 同步,集群调度                                              | Rust     | `v0.2.1`   |
 | [⬢](https://github.com/AxonOS-org/axonos-rfcs)                                | **axonos-rfcs**      | 工程规范 — 8 个编号 RFC,规范性,CC-BY-SA-4.0                                       | Markdown | active     |
 | [⬢](https://github.com/AxonOS-org/axon-bci-gateway)                           | **axon-bci-gateway** | 硬件采集网关 (OpenBCI 分叉,从上游保留 MIT)                                        | HTML     | active     |
 
@@ -154,7 +154,7 @@ flowchart LR
 </tr>
 <tr>
   <td align="center">
-    <h2>28</h2>
+    <h2>30</h2>
     <sub>Kani BMC 验证桩<br/>上界已证明</sub>
   </td>
   <td align="center">

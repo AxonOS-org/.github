@@ -22,8 +22,8 @@
 
 <br/>
 
-[![SDK](https://img.shields.io/badge/SDK-v0.3.4-0a4a8f?style=flat-square)](https://github.com/AxonOS-org/axonos-sdk)
-[![Kernel](https://img.shields.io/badge/Kernel-v0.2.1-0a4a8f?style=flat-square)](https://github.com/AxonOS-org/AxonOS-kernel)
+[![SDK](https://img.shields.io/badge/SDK-v0.3.5-0a4a8f?style=flat-square)](https://github.com/AxonOS-org/axonos-sdk)
+[![Kernel](https://img.shields.io/badge/Kernel-v0.3.0-0a4a8f?style=flat-square)](https://github.com/AxonOS-org/AxonOS-kernel)
 [![ABI](https://img.shields.io/badge/Kernel%20ABI-v1-0a4a8f?style=flat-square)](https://axonos.org/specifications.html)
 [![Rust](https://img.shields.io/badge/built%20with-Rust-CE422B?style=flat-square&logo=rust&logoColor=white)](https://www.rust-lang.org/)
 [![License](https://img.shields.io/badge/license-Apache--2.0%20OR%20MIT-475569?style=flat-square)](#licensing)
@@ -103,10 +103,10 @@ SDK は Rust リファレンスバインディングです。C FFI、Python、We
 
 |                                                                              | リポジトリ           | 目的                                                                              | 言語     | 最新       |
 |:----------------------------------------------------------------------------:|:---------------------|:----------------------------------------------------------------------------------|:--------:|:-----------|
-| [⬢](https://github.com/AxonOS-org/AxonOS-kernel)                              | **AxonOS-kernel**    | ハードリアルタイムマイクロカーネル — 8 クレート、形式的に境界づけられた WCRT、28 Kani ハーネス | Rust     | `v0.2.1`   |
-| [⬢](https://github.com/AxonOS-org/axonos-sdk)                                 | **axonos-sdk**       | アプリケーション境界 — 型付きインテント、能力マニフェスト、カーネル ABI v1            | Rust     | `v0.3.4`   |
-| [⬢](https://github.com/AxonOS-org/axonos-consent)                             | **axonos-consent**   | 認知メッシュカップリングのためのプロトコルレベル同意施行 (MMP)                       | Rust     | `v0.4.0`   |
-| [⬢](https://github.com/AxonOS-org/axonos-swarm)                               | **axonos-swarm**     | マルチノード調整 — Neural PTP 同期、スウォームスケジューリング                       | Rust     | `v0.2.0`   |
+| [⬢](https://github.com/AxonOS-org/AxonOS-kernel)                              | **AxonOS-kernel**    | ハードリアルタイムマイクロカーネル — 8 クレート、形式的に境界づけられた WCRT、28 Kani ハーネス | Rust     | `v0.3.0`   |
+| [⬢](https://github.com/AxonOS-org/axonos-sdk)                                 | **axonos-sdk**       | アプリケーション境界 — 型付きインテント、能力マニフェスト、カーネル ABI v1            | Rust     | `v0.3.5`   |
+| [⬢](https://github.com/AxonOS-org/axonos-consent)                             | **axonos-consent**   | 認知メッシュカップリングのためのプロトコルレベル同意施行 (MMP)                       | Rust     | `v0.5.0`   |
+| [⬢](https://github.com/AxonOS-org/axonos-swarm)                               | **axonos-swarm**     | マルチノード調整 — Neural PTP 同期、スウォームスケジューリング                       | Rust     | `v0.2.1`   |
 | [⬢](https://github.com/AxonOS-org/axonos-rfcs)                                | **axonos-rfcs**      | 工学仕様書 — 8 つの番号付き RFC、規範的、CC-BY-SA-4.0                                 | Markdown | active     |
 | [⬢](https://github.com/AxonOS-org/axon-bci-gateway)                           | **axon-bci-gateway** | ハードウェア取得ゲートウェイ (OpenBCI フォーク、上流から MIT 保持)                   | HTML     | active     |
 
@@ -154,7 +154,7 @@ flowchart LR
 </tr>
 <tr>
   <td align="center">
-    <h2>28</h2>
+    <h2>30</h2>
     <sub>Kani BMC ハーネス<br/>上限を証明</sub>
   </td>
   <td align="center">

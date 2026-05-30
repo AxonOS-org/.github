@@ -22,8 +22,8 @@
 
 <br/>
 
-[![SDK](https://img.shields.io/badge/SDK-v0.3.4-0a4a8f?style=flat-square)](https://github.com/AxonOS-org/axonos-sdk)
-[![Kernel](https://img.shields.io/badge/Kernel-v0.2.1-0a4a8f?style=flat-square)](https://github.com/AxonOS-org/AxonOS-kernel)
+[![SDK](https://img.shields.io/badge/SDK-v0.3.5-0a4a8f?style=flat-square)](https://github.com/AxonOS-org/axonos-sdk)
+[![Kernel](https://img.shields.io/badge/Kernel-v0.3.0-0a4a8f?style=flat-square)](https://github.com/AxonOS-org/AxonOS-kernel)
 [![ABI](https://img.shields.io/badge/Kernel%20ABI-v1-0a4a8f?style=flat-square)](https://axonos.org/specifications.html)
 [![Rust](https://img.shields.io/badge/built%20with-Rust-CE422B?style=flat-square&logo=rust&logoColor=white)](https://www.rust-lang.org/)
 [![License](https://img.shields.io/badge/license-Apache--2.0%20OR%20MIT-475569?style=flat-square)](#licensing)
@@ -109,10 +109,10 @@ SDK هو الربط المرجعي بلغة Rust. روابط C FFI و Python و 
 
 |                                                                              | المستودع              | الغرض                                                                              | اللغة    | الأحدث     |
 |:----------------------------------------------------------------------------:|:---------------------|:----------------------------------------------------------------------------------|:--------:|:-----------|
-| [⬢](https://github.com/AxonOS-org/AxonOS-kernel)                              | **AxonOS-kernel**    | نواة مصغرة ذات زمن حقيقي صارم — 8 صناديق، WCRT محدود رسمياً، 28 أداة تحقق Kani    | Rust     | `v0.2.1`   |
-| [⬢](https://github.com/AxonOS-org/axonos-sdk)                                 | **axonos-sdk**       | حدود التطبيق — نوايا مُنوَّعة، بيانات الصلاحيات، ABI النواة v1                    | Rust     | `v0.3.4`   |
-| [⬢](https://github.com/AxonOS-org/axonos-consent)                             | **axonos-consent**   | إنفاذ الموافقة على مستوى البروتوكول لاقتران الشبكة المعرفية (MMP)                 | Rust     | `v0.4.0`   |
-| [⬢](https://github.com/AxonOS-org/axonos-swarm)                               | **axonos-swarm**     | تنسيق متعدد العقد — مزامنة Neural PTP، جدولة السرب                                | Rust     | `v0.2.0`   |
+| [⬢](https://github.com/AxonOS-org/AxonOS-kernel)                              | **AxonOS-kernel**    | نواة مصغرة ذات زمن حقيقي صارم — 8 صناديق، WCRT محدود رسمياً، 28 أداة تحقق Kani    | Rust     | `v0.3.0`   |
+| [⬢](https://github.com/AxonOS-org/axonos-sdk)                                 | **axonos-sdk**       | حدود التطبيق — نوايا مُنوَّعة، بيانات الصلاحيات، ABI النواة v1                    | Rust     | `v0.3.5`   |
+| [⬢](https://github.com/AxonOS-org/axonos-consent)                             | **axonos-consent**   | إنفاذ الموافقة على مستوى البروتوكول لاقتران الشبكة المعرفية (MMP)                 | Rust     | `v0.5.0`   |
+| [⬢](https://github.com/AxonOS-org/axonos-swarm)                               | **axonos-swarm**     | تنسيق متعدد العقد — مزامنة Neural PTP، جدولة السرب                                | Rust     | `v0.2.1`   |
 | [⬢](https://github.com/AxonOS-org/axonos-rfcs)                                | **axonos-rfcs**      | مواصفات هندسية — 8 RFCs مرقمة، معيارية، CC-BY-SA-4.0                              | Markdown | نشط        |
 | [⬢](https://github.com/AxonOS-org/axon-bci-gateway)                           | **axon-bci-gateway** | بوابة استحواذ العتاد (فرع من OpenBCI، رخصة MIT محفوظة من المنبع)                 | HTML     | نشط        |
 
@@ -164,7 +164,7 @@ flowchart LR
 </tr>
 <tr>
   <td align="center">
-    <h2>28</h2>
+    <h2>30</h2>
     <sub>أدوات تحقق Kani BMC<br/>حدود عليا مُبرهنة</sub>
   </td>
   <td align="center">

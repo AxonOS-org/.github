@@ -22,8 +22,8 @@
 
 <br/>
 
-[![SDK](https://img.shields.io/badge/SDK-v0.3.4-0a4a8f?style=flat-square)](https://github.com/AxonOS-org/axonos-sdk)
-[![Kernel](https://img.shields.io/badge/Kernel-v0.2.1-0a4a8f?style=flat-square)](https://github.com/AxonOS-org/AxonOS-kernel)
+[![SDK](https://img.shields.io/badge/SDK-v0.3.5-0a4a8f?style=flat-square)](https://github.com/AxonOS-org/axonos-sdk)
+[![Kernel](https://img.shields.io/badge/Kernel-v0.3.0-0a4a8f?style=flat-square)](https://github.com/AxonOS-org/AxonOS-kernel)
 [![ABI](https://img.shields.io/badge/Kernel%20ABI-v1-0a4a8f?style=flat-square)](https://axonos.org/specifications.html)
 [![Rust](https://img.shields.io/badge/built%20with-Rust-CE422B?style=flat-square&logo=rust&logoColor=white)](https://www.rust-lang.org/)
 [![License](https://img.shields.io/badge/license-Apache--2.0%20OR%20MIT-475569?style=flat-square)](#licensing)
@@ -103,10 +103,10 @@ Les six dépôts sont publics. Code source sous Apache-2.0 OR MIT. Spécificatio
 
 |                                                                              | Dépôt                | Objectif                                                                          | Langage  | Dernière   |
 |:----------------------------------------------------------------------------:|:---------------------|:----------------------------------------------------------------------------------|:--------:|:-----------|
-| [⬢](https://github.com/AxonOS-org/AxonOS-kernel)                              | **AxonOS-kernel**    | Microkernel temps réel strict — 8 crates, WCRT formellement borné, 28 harnais Kani | Rust     | `v0.2.1`   |
-| [⬢](https://github.com/AxonOS-org/axonos-sdk)                                 | **axonos-sdk**       | Frontière applicative — intentions typées, manifestes de capacités, ABI kernel v1 | Rust     | `v0.3.4`   |
-| [⬢](https://github.com/AxonOS-org/axonos-consent)                             | **axonos-consent**   | Consentement au niveau protocole pour le couplage cognitive mesh (MMP)            | Rust     | `v0.4.0`   |
-| [⬢](https://github.com/AxonOS-org/axonos-swarm)                               | **axonos-swarm**     | Coordination multi-nœuds — synchronisation Neural PTP, ordonnancement de swarm    | Rust     | `v0.2.0`   |
+| [⬢](https://github.com/AxonOS-org/AxonOS-kernel)                              | **AxonOS-kernel**    | Microkernel temps réel strict — 8 crates, WCRT formellement borné, 28 harnais Kani | Rust     | `v0.3.0`   |
+| [⬢](https://github.com/AxonOS-org/axonos-sdk)                                 | **axonos-sdk**       | Frontière applicative — intentions typées, manifestes de capacités, ABI kernel v1 | Rust     | `v0.3.5`   |
+| [⬢](https://github.com/AxonOS-org/axonos-consent)                             | **axonos-consent**   | Consentement au niveau protocole pour le couplage cognitive mesh (MMP)            | Rust     | `v0.5.0`   |
+| [⬢](https://github.com/AxonOS-org/axonos-swarm)                               | **axonos-swarm**     | Coordination multi-nœuds — synchronisation Neural PTP, ordonnancement de swarm    | Rust     | `v0.2.1`   |
 | [⬢](https://github.com/AxonOS-org/axonos-rfcs)                                | **axonos-rfcs**      | Spécifications d'ingénierie — 8 RFC numérotés, normatifs, CC-BY-SA-4.0            | Markdown | actif      |
 | [⬢](https://github.com/AxonOS-org/axon-bci-gateway)                           | **axon-bci-gateway** | Passerelle d'acquisition matérielle (fork d'OpenBCI, MIT préservé de l'upstream)  | HTML     | actif      |
 
@@ -154,7 +154,7 @@ flowchart LR
 </tr>
 <tr>
   <td align="center">
-    <h2>28</h2>
+    <h2>30</h2>
     <sub>Harnais Kani BMC<br/>bornes supérieures prouvées</sub>
   </td>
   <td align="center">
