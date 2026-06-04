@@ -97,7 +97,7 @@ role.
 | ⬢ | [**`AxonOS`**](https://github.com/AxonOS-org/AxonOS) | Public entry point — landing, concept, and links into the stack | — | — |
 | ⬢ | [**`become-the-brain-os`**](https://github.com/AxonOS-org/become-the-brain-os) | Community front door — browser game that teaches the runtime, no install | HTML/JS | `v0.3.3` |
 
-<sub>A dedicated wire / conformance repository (`axonos-protocol`) is not yet public; the wire format and conformance suite are currently specified within [`axonos-standard`](https://github.com/AxonOS-org/axonos-standard) and [`axonos-rfcs`](https://github.com/AxonOS-org/axonos-rfcs).</sub>
+<sub>[`axonos-protocol`](https://github.com/AxonOS-org/axonos-protocol) — network-level consent protocol; `no_std`, zero-alloc, bounded CBOR frames and an exhaustive consent state machine. [`axonos-conformance`](https://github.com/AxonOS-org/axonos-conformance) — byte-exact conformance surface for the RFC-0005 capability manifest and the RFC-0006 intent wire format, cross-checked across Rust, Python, C, JavaScript, and Java in CI.</sub>
 
 ---
 
@@ -107,7 +107,7 @@ role.
 flowchart LR
     A[EEG/EMG sensors<br/>ADS1299 · 24-bit] -->|raw| B[Acquisition gateway<br/>nRF52840]
     B -->|filtered| C[AxonOS kernel<br/>Rust no_std<br/>Cortex-M4F]
-    C -->|WCRT 972µs| D[Cognitive scheduler]
+    C -->|WCRT ≤1000µs, proven| D[Cognitive scheduler]
     D -->|typed intent| E[Application<br/>via SDK]
     F[Cognitive Hypervisor<br/>TrustZone-S] -.->|isolates| C
     G[Consent FSM<br/>axonos-consent] -.->|gates| D
@@ -130,19 +130,19 @@ everything else.
 
 <table align="center">
 <tr>
-  <td align="center" width="220">
-    <h2>972 µs</h2>
-    <sub>Kernel WCRT, measured<br/>STM32F407 @ 168 MHz</sub>
-  </td>
-  <td align="center" width="220">
-    <h2>2.1 µs</h2>
-    <sub>Worst-case jitter σ<br/>vs Linux 1323 µs</sub>
-  </td>
-  <td align="center" width="220">
-    <h2>630×</h2>
-    <sub>Improvement factor<br/>over Linux mainline</sub>
-  </td>
-</tr>
+    <td align="center" width="220">
+      <h2>≤ 1000 µs</h2>
+      <sub>End-to-end WCRT, upper bound<br/><b>L1 — machine-checked proof</b></sub>
+    </td>
+    <td align="center" width="220">
+      <h2>≤ 0.5 µs</h2>
+      <sub>IPC slot latency, upper bound<br/><b>L1 — machine-checked proof</b></sub>
+    </td>
+    <td align="center" width="220">
+      <h2>≤ 1648 cyc</h2>
+      <sub>Consent-withdrawal bound<br/><b>L1 — machine-checked proof</b></sub>
+    </td>
+  </tr>
 <tr>
   <td align="center">
     <h2>30</h2>
@@ -161,10 +161,16 @@ everything else.
 
 <br/>
 
-Each number is traceable to a repository. The evidence taxonomy —
-**L1** formally proven, **L2** measured, **L3** independently validated —
-is defined in [`VALIDATION.md`](https://github.com/AxonOS-org/axonos-standard/blob/main/VALIDATION.md).
-The public stack currently holds L1 and L2 evidence; L3 is not yet claimed.
+The evidence taxonomy — **L1** formally proven, **L2** measured on reference
+hardware, **L3** independently validated — is defined in
+[`VALIDATION.md`](https://github.com/AxonOS-org/axonos-standard/blob/main/VALIDATION.md),
+and every claim is graded in
+[`CLAIMS.md`](https://github.com/AxonOS-org/axonos-standard/blob/main/CLAIMS.md).
+The bounds above are **L1**: machine-checked proofs, published and proof-linked.
+The corresponding **L2** worst-observed figures (a 972 µs / 2.1 µs σ / 0-miss soak,
+and the derived improvement factor) are **measured, but their raw traces are
+publication-pending** and are recorded as such in `CLAIMS.md` — not presented here
+as settled facts. **L3** independent reproduction is **not claimed**.
 
 ---
 
