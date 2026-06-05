@@ -15,10 +15,10 @@
 
 <br/>
 
-[![Standard](https://img.shields.io/badge/Standard-v1.0.0-0a4a8f?style=flat-square)](https://github.com/AxonOS-org/axonos-standard)
-[![Kernel](https://img.shields.io/badge/Kernel-v0.3.0-0a4a8f?style=flat-square)](https://github.com/AxonOS-org/axonos-kernel)
-[![SDK](https://img.shields.io/badge/SDK-v0.3.5-0a4a8f?style=flat-square)](https://github.com/AxonOS-org/axonos-sdk)
-[![Consent](https://img.shields.io/badge/Consent-v0.5.0-0a4a8f?style=flat-square)](https://github.com/AxonOS-org/axonos-consent)
+[![Standard](https://img.shields.io/github/v/tag/AxonOS-org/axonos-standard?sort=semver&style=flat-square&label=Standard&color=0a4a8f)](https://github.com/AxonOS-org/axonos-standard/releases)
+[![Kernel](https://img.shields.io/github/v/tag/AxonOS-org/axonos-kernel?sort=semver&style=flat-square&label=Kernel&color=0a4a8f)](https://github.com/AxonOS-org/axonos-kernel/releases)
+[![Consent](https://img.shields.io/github/v/tag/AxonOS-org/axonos-consent?sort=semver&style=flat-square&label=Consent&color=0a4a8f)](https://github.com/AxonOS-org/axonos-consent/releases)
+[![Protocol](https://img.shields.io/github/v/tag/AxonOS-org/axonos-protocol?sort=semver&style=flat-square&label=Protocol&color=0a4a8f)](https://github.com/AxonOS-org/axonos-protocol/releases)
 [![Rust](https://img.shields.io/badge/Built%20with-Rust-CE422B?style=flat-square&logo=rust&logoColor=white)](https://www.rust-lang.org/)
 [![License](https://img.shields.io/badge/License-Apache--2.0%20OR%20MIT-475569?style=flat-square)](#licensing)
 [![Verified](https://img.shields.io/badge/Verified-Kani%20BMC-0d7a5f?style=flat-square)](https://model-checking.github.io/kani/)
@@ -85,19 +85,59 @@ role.
 
 |  | Repository | Role | Language | Latest |
 |:---:|:---|:---|:---:|:---|
-| ⬢ | [**`axonos-standard`**](https://github.com/AxonOS-org/axonos-standard) | Normative architecture — the canonical technical standard | Markdown | `v1.0.0` |
+| ⬢ | [**`axonos-standard`**](https://github.com/AxonOS-org/axonos-standard) | Normative architecture — the canonical technical standard | Markdown | ![](https://img.shields.io/github/v/tag/AxonOS-org/axonos-standard?sort=semver&style=flat-square&label=&color=0a4a8f) |
 | ⬢ | [**`axonos-rfcs`**](https://github.com/AxonOS-org/axonos-rfcs) | Design-change process — numbered engineering RFCs, normative once finalised | Markdown | active |
-| ⬢ | [**`axonos-kernel`**](https://github.com/AxonOS-org/axonos-kernel) | Execution substrate — hard real-time microkernel, formally bounded WCRT | Rust | `v0.3.0` |
-| ⬢ | [**`axonos-sdk`**](https://github.com/AxonOS-org/axonos-sdk) | Application boundary — typed intents, capability manifests, kernel ABI v1 | Rust | `v0.3.5` |
-| ⬢ | [**`axonos-sdk-python`**](https://github.com/AxonOS-org/axonos-sdk-python) | Application boundary (Python) — RFC-0006 wire format and capability model, byte-compatible with the Rust SDK | Python | `v0.1.0` |
-| ⬢ | [**`axonos-consent`**](https://github.com/AxonOS-org/axonos-consent) | Consent / co-authorisation subsystem — `#![no_std]` reference crate | Rust | `v0.5.0` |
+| ⬢ | [**`axonos-kernel`**](https://github.com/AxonOS-org/axonos-kernel) | Execution substrate — hard real-time microkernel, formally bounded WCRT | Rust | ![](https://img.shields.io/github/v/tag/AxonOS-org/axonos-kernel?sort=semver&style=flat-square&label=&color=0a4a8f) |
+| ⬢ | [**`axonos-sdk`**](https://github.com/AxonOS-org/axonos-sdk) | Application boundary — typed intents, capability manifests, kernel ABI v1 | Rust | ![](https://img.shields.io/github/v/tag/AxonOS-org/axonos-sdk?sort=semver&style=flat-square&label=&color=0a4a8f) |
+| ⬢ | [**`axonos-sdk-python`**](https://github.com/AxonOS-org/axonos-sdk-python) | Application boundary (Python) — RFC-0006 wire format, byte-compatible with the Rust SDK | Python | ![](https://img.shields.io/github/v/tag/AxonOS-org/axonos-sdk-python?sort=semver&style=flat-square&label=&color=0a4a8f) |
+| ⬢ | [**`axonos-consent`**](https://github.com/AxonOS-org/axonos-consent) | Consent / co-authorisation subsystem — `#![no_std]` reference crate | Rust | ![](https://img.shields.io/github/v/tag/AxonOS-org/axonos-consent?sort=semver&style=flat-square&label=&color=0a4a8f) |
+| ⬢ | [**`axonos-protocol`**](https://github.com/AxonOS-org/axonos-protocol) | Network-level consent protocol — `no_std`, zero-alloc, bounded CBOR frames and an exhaustive consent state machine | Rust | ![](https://img.shields.io/github/v/tag/AxonOS-org/axonos-protocol?sort=semver&style=flat-square&label=&color=0a4a8f) |
+| ⬢ | [**`axonos-conformance`**](https://github.com/AxonOS-org/axonos-conformance) | Byte-exact conformance — RFC-0005 capability manifest &amp; RFC-0006 intent wire format, cross-checked across Rust, Python, C, JavaScript, Java in CI | multi | active |
 | ⬢ | [**`axonos-validation`**](https://github.com/AxonOS-org/axonos-validation) | Evidence and trace record — measurement traces and reference post-processing | Python | record |
-| ⬢ | [**`axon-bci-gateway`**](https://github.com/AxonOS-org/axon-bci-gateway) | Acquisition bridge — OpenBCI fork, MIT preserved from upstream | HTML | active |
-| ⬢ | [**`axonos-swarm`**](https://github.com/AxonOS-org/axonos-swarm) | Long-horizon distributed timing — multi-node Neural PTP coordination | Rust | `v0.2.1` |
+| ⬢ | [**`axon-bci-gateway`**](https://github.com/AxonOS-org/axon-bci-gateway) | Acquisition bridge — OpenBCI fork, MIT preserved from upstream | HTML | ![](https://img.shields.io/github/v/tag/AxonOS-org/axon-bci-gateway?sort=semver&style=flat-square&label=&color=0a4a8f) |
+| ⬢ | [**`axonos-swarm`**](https://github.com/AxonOS-org/axonos-swarm) | Long-horizon distributed timing — multi-node Neural PTP coordination | Rust | ![](https://img.shields.io/github/v/tag/AxonOS-org/axonos-swarm?sort=semver&style=flat-square&label=&color=0a4a8f) |
 | ⬢ | [**`AxonOS`**](https://github.com/AxonOS-org/AxonOS) | Public entry point — landing, concept, and links into the stack | — | — |
-| ⬢ | [**`become-the-brain-os`**](https://github.com/AxonOS-org/become-the-brain-os) | Community front door — browser game that teaches the runtime, no install | HTML/JS | `v0.3.3` |
+| ⬢ | [**`become-the-brain-os`**](https://github.com/AxonOS-org/become-the-brain-os) | Community front door — browser game that teaches the runtime, no install | HTML/JS | ![](https://img.shields.io/github/v/tag/AxonOS-org/become-the-brain-os?sort=semver&style=flat-square&label=&color=0a4a8f) |
 
-<sub>[`axonos-protocol`](https://github.com/AxonOS-org/axonos-protocol) — network-level consent protocol; `no_std`, zero-alloc, bounded CBOR frames and an exhaustive consent state machine. [`axonos-conformance`](https://github.com/AxonOS-org/axonos-conformance) — byte-exact conformance surface for the RFC-0005 capability manifest and the RFC-0006 intent wire format, cross-checked across Rust, Python, C, JavaScript, and Java in CI.</sub>
+---
+
+## The full path: electrode to intent
+
+A complete brain–computer interface operating system is a continuous chain — from
+a raw electrode signal to a typed, consented intent, and back to a safe failure
+state. AxonOS is building that chain in the open. This map is deliberately honest
+about what is shipped, what is partial, and what is still ahead.
+
+| Stage | Provided by | Status |
+|:---|:---|:---:|
+| Electrode acquisition / ADC bridge | `axon-bci-gateway` (OpenBCI) | **partial** |
+| Monotonic timestamping | `axonos-kernel` | **live** |
+| Deterministic handoff — SPSC IPC, ring buffers | `axonos-kernel` | **live** |
+| Signal conditioning / artifact rejection (DSP) | dedicated DSP layer | **planned** |
+| On-device intent classification | reference classifier | **planned** |
+| Typed intent ABI — RFC-0006 | `axonos-sdk`, `axonos-sdk-python` | **live** |
+| Byte-exact conformance | `axonos-conformance` | **live** |
+| Consent &amp; capability gate — RFC-0005 | `axonos-consent`, `axonos-protocol`, kernel gate | **live** |
+| Application boundary | `axonos-sdk` | **live** |
+| Audit &amp; reproducible traces | `axonos-validation` | **live** *(L2 traces pending)* |
+| Safe failure state | `axonos-kernel` | **live** |
+
+### What a complete BCI OS still needs
+
+The execution core, the consent and capability layer, and the conformance surface
+are in place. To be a full operating system — not only a standard and a kernel —
+AxonOS still needs, and is sequencing on its roadmap:
+
+- a dedicated **acquisition driver** and a fixed-point **DSP pipeline** (signal → features), plus a reference **on-device classifier**;
+- a deterministic **simulator**, so a developer can run the full path without hardware;
+- a structured **safety case** (hazard analysis, FMEA, residual-risk argument) and a formal **threat model** for cognitive data — as engineering artifacts, not regulatory claims;
+- a **privacy-vault enforcement layer** that guarantees raw neural data never crosses the application boundary;
+- a public **conformance program** and an **independent-implementer challenge**, so a third party can build a compatible kernel and SDK from the specification alone;
+- a path from founder-led to **foundation / technical-steering** governance.
+
+These are roadmap items, not present capabilities. They are published here so the
+distance between today's reference implementation and a complete, independently
+implementable BCI operating system is **visible rather than hidden**.
 
 ---
 
@@ -145,12 +185,12 @@ everything else.
   </tr>
 <tr>
   <td align="center">
-    <h2>30</h2>
+    <h2>30+</h2>
     <sub>Kani BMC harnesses<br/>upper bounds proven</sub>
   </td>
   <td align="center">
-    <h2>0</h2>
-    <sub>Lines of unsafe code<br/>forbidden crate-wide</sub>
+    <h2>2</h2>
+    <sub>Audited `unsafe` operations (kernel)<br/>`forbid(unsafe)` in consent &amp; protocol</sub>
   </td>
   <td align="center">
     <h2>42+</h2>
@@ -167,10 +207,12 @@ hardware, **L3** independently validated — is defined in
 and every claim is graded in
 [`CLAIMS.md`](https://github.com/AxonOS-org/axonos-standard/blob/main/CLAIMS.md).
 The bounds above are **L1**: machine-checked proofs, published and proof-linked.
-The corresponding **L2** worst-observed figures (a 972 µs / 2.1 µs σ / 0-miss soak,
-and the derived improvement factor) are **measured, but their raw traces are
-publication-pending** and are recorded as such in `CLAIMS.md` — not presented here
-as settled facts. **L3** independent reproduction is **not claimed**.
+The corresponding **L2** worst-case figures — end-to-end latency, jitter, and the
+resulting improvement over a general-purpose OS — come from internal long-duration
+soak testing. Until their raw traces are published in `axonos-validation`, **no
+measured performance figure is claimed here**; the figures are held as
+publication-pending and graded in `CLAIMS.md`. **L3** independent reproduction is
+**not claimed**.
 
 ---
 
