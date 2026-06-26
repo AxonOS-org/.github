@@ -30,6 +30,36 @@ independently verified.
 
 ---
 
+## See it work — and verify it yourself
+
+Nothing here asks for trust. Every claim is runnable in **one click** or **three commands**, and each prints a pass/fail you can check.
+
+**One click**
+
+- ▶ **Play it** — [**Neural Boundary Game**](https://axonos.org/neural-boundary-game.html): the consent, least-privilege, sealed-vault and StimGuard model, live in the browser on the same deterministic core the kernel uses. Every run emits a byte-for-byte replayable proof.
+- 📄 **Read the analysis** — [**Zenodo preprint**](https://doi.org/10.5281/zenodo.20552007) (DOI `10.5281/zenodo.20552007`): EDF schedulability (R1 = 972 µs inside a 4 ms deadline), capability isolation, falsifiable predictions — *predicted from datasheet cycle counts, no measurement claims*.
+
+**Three commands** — clone and run; each is reproducible on any machine
+
+```sh
+# 1 · the full path, electrode -> typed intent, verified bit-for-bit
+git clone https://github.com/AxonOS-org/axonos-e2e-demo && cd axonos-e2e-demo && ./run.sh --verify
+
+# 2 · the kernel: 72 tests, then a machine-checked proof
+git clone https://github.com/AxonOS-org/axonos-kernel && cd axonos-kernel
+cargo test --workspace
+cargo kani setup && ( cd axonos-spsc/kani-proofs && cargo kani )
+
+# 3 · the DSP + classifier machinery, bit-exact against conformance vectors
+git clone https://github.com/AxonOS-org/axonos-signal-pipeline && cd axonos-signal-pipeline && cargo test
+```
+
+One wire format, **five languages, byte-identical** — [`axonos-conformance`](https://github.com/AxonOS-org/axonos-conformance) re-checks Rust = Python = C = JavaScript = Java in CI on every push.
+
+> What you are checking: the proofs are machine-checked (**L1**); the demos are deterministic and reproducible; the on-hardware worst-case numbers (**L2**) are **not yet claimed** — their status is tracked, claim by claim, in [`CLAIMS.md`](https://github.com/AxonOS-org/axonos-standard/blob/main/CLAIMS.md).
+
+---
+
 ## The four commitments
 
 |       | Commitment                               | What it means in practice                                                                                                              |
@@ -69,6 +99,8 @@ role.
 | ⬢ | [**`axonos-consent`**](https://github.com/AxonOS-org/axonos-consent)           | Consent / co-authorisation subsystem — `#![no_std]` reference crate                                                                               | Rust     | [![](https://img.shields.io/github/v/tag/AxonOS-org/axonos-consent?sort=semver&style=flat-square&label=&color=0a4a8f)](https://github.com/AxonOS-org/axonos-consent/releases) |
 | ⬢ | [**`axonos-protocol`**](https://github.com/AxonOS-org/axonos-protocol)         | Network-level consent protocol — `no_std`, zero-alloc, bounded CBOR frames and an exhaustive consent state machine                                | Rust     | [![](https://img.shields.io/github/v/tag/AxonOS-org/axonos-protocol?sort=semver&style=flat-square&label=&color=0a4a8f)](https://github.com/AxonOS-org/axonos-protocol/releases) |
 | ⬢ | [**`axonos-conformance`**](https://github.com/AxonOS-org/axonos-conformance)   | Byte-exact conformance — RFC-0005 capability manifest & RFC-0006 intent wire format, cross-checked across Rust, Python, C, JavaScript, Java in CI | multi    | active                                                                                                                                       |
+| ⬢ | [**`axonos-signal-pipeline`**](https://github.com/AxonOS-org/axonos-signal-pipeline) | Signal pipeline — fixed-point DSP filter bank, features, MDM/LDA classifier inference, calibration; vector-pinned, no trained model | Rust | [![](https://img.shields.io/github/v/tag/AxonOS-org/axonos-signal-pipeline?sort=semver&style=flat-square&label=&color=0a4a8f)](https://github.com/AxonOS-org/axonos-signal-pipeline/releases) |
+| ⬢ | [**`axonos-e2e-demo`**](https://github.com/AxonOS-org/axonos-e2e-demo) | End-to-end reference — synthetic signal -> typed consent-bound intent, verified bit-for-bit on every run | Python | active |
 | ⬢ | [**`axonos-validation`**](https://github.com/AxonOS-org/axonos-validation)     | Evidence and trace record — measurement traces and reference post-processing                                                                      | Python   | record                                                                                                                                       |
 | ⬢ | [**`axon-bci-gateway`**](https://github.com/AxonOS-org/axon-bci-gateway)       | Acquisition bridge — OpenBCI fork, MIT preserved from upstream                                                                                    | HTML     | [![](https://img.shields.io/github/v/tag/AxonOS-org/axon-bci-gateway?sort=semver&style=flat-square&label=&color=0a4a8f)](https://github.com/AxonOS-org/axon-bci-gateway/releases) |
 | ⬢ | [**`axonos-swarm`**](https://github.com/AxonOS-org/axonos-swarm)               | Long-horizon distributed timing — multi-node Neural PTP coordination                                                                              | Rust     | [![](https://img.shields.io/github/v/tag/AxonOS-org/axonos-swarm?sort=semver&style=flat-square&label=&color=0a4a8f)](https://github.com/AxonOS-org/axonos-swarm/releases) |
@@ -94,8 +126,8 @@ about what is shipped, what is partial, and what is still ahead.
 | Electrode acquisition / ADC bridge             | `axon-bci-gateway` (OpenBCI)                     | **partial**                    |
 | Monotonic timestamping                         | `axonos-kernel`                                  | **live**                       |
 | Deterministic handoff — SPSC IPC, ring buffers | `axonos-kernel`                                  | **live**                       |
-| Signal conditioning / artifact rejection (DSP) | dedicated DSP layer                              | **planned**                    |
-| On-device intent classification                | reference classifier                             | **planned**                    |
+| Signal conditioning — fixed-point IIR bank (DC blocker · notch · band-pass) | [`axonos-signal-pipeline`](https://github.com/AxonOS-org/axonos-signal-pipeline) | **live** *(machinery, vector-pinned)* |
+| Feature extraction & classifier inference (MDM / LDA) | [`axonos-signal-pipeline`](https://github.com/AxonOS-org/axonos-signal-pipeline) | **live** *(no trained model yet)* |
 | Typed intent ABI — RFC-0006                    | `axonos-sdk`, `axonos-sdk-python`                | **live**                       |
 | Byte-exact conformance                         | `axonos-conformance`                             | **live**                       |
 | Consent & capability gate — RFC-0005           | `axonos-consent`, `axonos-protocol`, kernel gate | **live**                       |
@@ -109,7 +141,7 @@ The execution core, the consent and capability layer, and the conformance surfac
 are in place. To be a full operating system — not only a standard and a kernel —
 AxonOS still needs, and is sequencing on its roadmap:
 
-- a dedicated **acquisition driver** and a fixed-point **DSP pipeline** (signal → features), plus a reference **on-device classifier**;
+- a **trained model and measured accuracy / latency / power** for the fixed-point DSP and classifier machinery already shipped in [`axonos-signal-pipeline`](https://github.com/AxonOS-org/axonos-signal-pipeline) — the pipeline is implemented and vector-pinned; what is pending is a trained model and on-hardware numbers — plus a dedicated **acquisition driver**;
 - a deterministic **simulator**, so a developer can run the full path without hardware;
 - a structured **safety case** (hazard analysis, FMEA, residual-risk argument) and a formal **threat model** for cognitive data — as engineering artifacts, not regulatory claims;
 - a **privacy-vault enforcement layer** that guarantees raw neural data never crosses the application boundary;
