@@ -1,0 +1,30 @@
+name: Refresh radar stats on the profile
+
+# Every 3 hours, pull the community radar's published numbers and refresh the
+# live stats block in profile/README.md (between the RADAR:START / RADAR:END
+# markers). Commits through the Contents API with this repo's own GITHUB_TOKEN,
+# so the commit is verified and needs no personal access token. The rest of the
+# profile is never touched.
+
+on:
+  schedule:
+    - cron: "43 */3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: radar-stats-profile
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    name: Refresh the live radar stats
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      GITHUB_TOKEN: ${{ github.token }}
+    steps:
+      - name: Refresh profile/README.md radar block from the radar's data
+        run: python3 scripts/update_profile.py
