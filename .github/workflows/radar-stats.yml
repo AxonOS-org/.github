@@ -26,5 +26,6 @@ jobs:
     env:
       GITHUB_TOKEN: ${{ github.token }}
     steps:
+      - uses: actions/checkout@v4
       - name: Refresh profile/README.md radar block from the radar's data
         run: python3 scripts/update_profile.py
