@@ -69,9 +69,9 @@ formula as everyone else, with no boosting.
 
 <p align="center"><a href="https://axonos-bci.github.io/axonos-community-radar/report.html"><b>📊 The State of Open BCI — read the full report →</b></a></p>
 
-<p align="center"><img src="https://img.shields.io/badge/projects-120-0a4a8f?style=flat-square" alt="projects: 120"> <img src="https://img.shields.io/badge/total_stars-191.3k-0a4a8f?style=flat-square" alt="total stars: 191.3k"> <img src="https://img.shields.io/badge/over_1k-14-0a4a8f?style=flat-square" alt="over 1k: 14"> <img src="https://img.shields.io/badge/active_30d-118-0d7a5f?style=flat-square" alt="active 30d: 118"> <img src="https://img.shields.io/badge/builders-13-0a4a8f?style=flat-square" alt="builders: 13"> <img src="https://img.shields.io/badge/languages-18-0a4a8f?style=flat-square" alt="languages: 18"></p>
+<p align="center"><img src="https://img.shields.io/badge/projects-120-0a4a8f?style=flat-square" alt="projects: 120"> <img src="https://img.shields.io/badge/total_stars-393.8k-0a4a8f?style=flat-square" alt="total stars: 393.8k"> <img src="https://img.shields.io/badge/over_1k-16-0a4a8f?style=flat-square" alt="over 1k: 16"> <img src="https://img.shields.io/badge/active_30d-118-0d7a5f?style=flat-square" alt="active 30d: 118"> <img src="https://img.shields.io/badge/builders-14-0a4a8f?style=flat-square" alt="builders: 14"> <img src="https://img.shields.io/badge/languages-18-0a4a8f?style=flat-square" alt="languages: 18"></p>
 
-<sub>One click for the exhaustive view — a Gartner-style reach×engagement quadrant, category and evidence breakdowns, and a full table of all 120 tracked resources. Currently leading by reach: `pytorch` · `onnx` · `onnxruntime` · `omi`. Auto-refreshed from the radar every 3 hours · last update <b>02 Jul 2026, 22:47 UTC</b>.</sub>
+<sub>One click for the exhaustive view — a Gartner-style reach×engagement quadrant, category and evidence breakdowns, and a full table of all 120 tracked resources. Currently leading by reach: `tensorflow` · `pytorch` · `Ciphey` · `onnxruntime`. Auto-refreshed from the radar every 3 hours · last update <b>03 Jul 2026, 04:30 UTC</b>.</sub>
 <!-- RADAR:END -->
 
 ---
