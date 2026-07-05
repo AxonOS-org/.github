@@ -1,0 +1,51 @@
+cff-version: 1.2.0
+title: >-
+  AxonOS — the open cognitive operating system for
+  brain–computer interfaces
+message: >-
+  If you use AxonOS, its specification, or its verified
+  bounds in your work, please cite the project and the
+  peer-readable preprint below.
+type: software
+authors:
+  - name: The AxonOS Project
+    website: 'https://axonos.org'
+  - given-names: Denis
+    family-names: Yermakou
+repository-code: 'https://github.com/AxonOS-org'
+url: 'https://axonos.org'
+abstract: >-
+  A hard real-time neural operating system for
+  brain–computer interfaces: an open-source #![no_std] Rust
+  microkernel on ARM Cortex-M with a formally bounded
+  worst-case response time, a capability model in which
+  raw-cognitive-state permissions do not exist as types,
+  and a consent state machine enforced below the
+  application layer. Every quantitative claim is graded by
+  evidence level (L1 formally proven, L2 measured, L3
+  independently validated) and catalogued in CLAIMS.md.
+keywords:
+  - brain-computer-interface
+  - real-time-operating-system
+  - formal-verification
+  - rust
+  - no-std
+  - neurotechnology
+  - capability-security
+  - model-checking
+license: Apache-2.0 OR MIT
+preferred-citation:
+  type: article
+  title: >-
+    An Analytical Microkernel Design for Safety-Critical
+    Brain–Computer Interfaces: Schedulability, Capability
+    Isolation, and Falsifiable Predictions
+  authors:
+    - given-names: Denis
+      family-names: Yermakou
+  doi: 10.5281/zenodo.20552007
+  url: 'https://doi.org/10.5281/zenodo.20552007'
+  year: 2026
+  publisher:
+    name: Zenodo
+  license: CC-BY-4.0

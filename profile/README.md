@@ -161,7 +161,7 @@ AxonOS still needs, and is sequencing on its roadmap:
 - a deterministic **simulator**, so a developer can run the full path without hardware;
 - a structured **safety case** (hazard analysis, FMEA, residual-risk argument) and a formal **threat model** for cognitive data — as engineering artifacts, not regulatory claims;
 - a **privacy-vault enforcement layer** that guarantees raw neural data never crosses the application boundary;
-- a public **conformance program** and an **independent-implementer challenge**, so a third party can build a compatible kernel and SDK from the specification alone;
+- a public **conformance program** and an **independent-implementer challenge** — the real test of a standard is whether a stranger can build a byte-compatible kernel and SDK from [`axonos-standard`](https://github.com/AxonOS-org/axonos-standard) and the RFCs *alone*, with no access to this source, and pass [`axonos-conformance`](https://github.com/AxonOS-org/axonos-conformance) unchanged. That is the bar AxonOS is building toward;
 - a path from founder-led to **foundation / technical-steering** governance.
 
 These are roadmap items, not present capabilities. They are published here so the
@@ -176,7 +176,7 @@ implementable BCI operating system is **visible rather than hidden**.
 flowchart LR
     A[EEG/EMG sensors<br/>ADS1299 · 24-bit] -->|raw| B[Acquisition gateway<br/>nRF52840]
     B -->|filtered| C[AxonOS kernel<br/>Rust no_std<br/>Cortex-M4F]
-    C -->|WCRT ≤1000µs, proven| D[Cognitive scheduler]
+    C -->|WCRT 972µs, proven| D[Cognitive scheduler]
     D -->|typed intent| E[Application<br/>via SDK]
     F[Cognitive Hypervisor<br/>TrustZone-S] -.->|isolates| C
     G[Consent FSM<br/>axonos-consent] -.->|gates| D
@@ -196,7 +196,7 @@ everything else.
 
 | Bound | Figure | Evidence |
 | ----- | ------ | -------- |
-| End-to-end WCRT, upper bound | **≤ 1000 µs** | L1 — machine-checked proof |
+| End-to-end WCRT, upper bound | **972 µs** *(rounded to ≤ 1000 µs)* | L1 — machine-checked proof |
 | IPC slot latency, upper bound | **≤ 0.5 µs** | L1 — machine-checked proof |
 | Consent-withdrawal bound | **≤ 1648 cyc** | L1 — machine-checked proof |
 | Kani BMC harnesses | **30+** | upper bounds proven |
@@ -294,6 +294,32 @@ project records them as such.
 | Security disclosures      | <security@axonos.org> · 90-day coordinated disclosure                                              |
 | Clinical partnerships     | <connect@axonos.org>                                                                               |
 | General correspondence    | <connect@axonos.org>                                                                               |
+
+---
+
+## Cite this work
+
+AxonOS ships a [`CITATION.cff`](https://github.com/AxonOS-org/.github/blob/main/CITATION.cff),
+so every repository in the organisation exposes a **"Cite this repository"**
+button. For the peer-readable analysis, cite the preprint:
+
+```bibtex
+@article{axonos2026microkernel,
+  title   = {An Analytical Microkernel Design for Safety-Critical
+             Brain--Computer Interfaces: Schedulability, Capability
+             Isolation, and Falsifiable Predictions},
+  author  = {Yermakou, Denis},
+  year    = {2026},
+  doi     = {10.5281/zenodo.20552007},
+  url     = {https://doi.org/10.5281/zenodo.20552007},
+  note    = {Analytical bounds; predictions P1--P5; no measurement claims},
+  license = {CC-BY-4.0}
+}
+```
+
+The preprint is **analytical and falsifiable** — it states, up front, the
+findings that would prove it wrong. If you reproduce or refute any bound, the
+project wants to hear it: <connect@axonos.org>.
 
 ---
 
