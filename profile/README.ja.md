@@ -9,6 +9,8 @@
 
 ### ブレイン・コンピュータ・インターフェースのためのオープン認知オペレーティングシステム。
 
+*英語版ページが正となり、最初に更新されます。ライブデータと最新セクションは[英語版](./README.md)に掲載されています。*
+
 <br/>
 
 [![🇬🇧 English](https://img.shields.io/badge/%F0%9F%87%AC%F0%9F%87%A7-English-012169?style=for-the-badge&labelColor=ffffff)](./README.md)
@@ -120,7 +122,7 @@ SDK は Rust リファレンスバインディングです。C FFI、Python、We
 flowchart LR
     A[EEG/EMG センサー<br/>ADS1299 · 24-bit] -->|raw| B[BCI ゲートウェイ<br/>nRF52840]
     B -->|filtered| C[AxonOS カーネル<br/>Rust no_std<br/>Cortex-M4F]
-    C -->|WCRT<br/>972µs| D[認知<br/>スケジューラ]
+    C -->|WCRT<br/>≤ 1 ms (L1)| D[認知<br/>スケジューラ]
     D -->|typed intent| E[アプリケーション<br/>via SDK]
     F[Cognitive Hypervisor<br/>TrustZone-S] -.->|isolates| C
     G[同意層<br/>MMP protocol] -.->|gates| D
@@ -140,8 +142,8 @@ flowchart LR
 <table align="center">
 <tr>
   <td align="center" width="200">
-    <h2>972 µs</h2>
-    <sub>カーネル WCRT 実測<br/>STM32F407 @ 168 MHz</sub>
+    <h2>≤ 1 ms</h2>
+    <sub>カーネル WCRT 証明済み（L1）<br/>STM32F407 @ 168 MHz</sub>
   </td>
   <td align="center" width="200">
     <h2>2.1 µs</h2>

@@ -9,6 +9,8 @@
 
 ### Il sistema operativo cognitivo aperto per le interfacce cervello-computer.
 
+*La pagina inglese è quella canonica e viene aggiornata per prima; i dati live e le sezioni più recenti compaiono [lì](./README.md).*
+
 <br/>
 
 [![🇬🇧 English](https://img.shields.io/badge/%F0%9F%87%AC%F0%9F%87%A7-English-012169?style=for-the-badge&labelColor=ffffff)](./README.md)
@@ -120,7 +122,7 @@ Tutti i sei repository sono pubblici. Codice sorgente sotto Apache-2.0 OR MIT. S
 flowchart LR
     A[Sensori EEG/EMG<br/>ADS1299 · 24-bit] -->|raw| B[Gateway BCI<br/>nRF52840]
     B -->|filtered| C[Kernel AxonOS<br/>Rust no_std<br/>Cortex-M4F]
-    C -->|WCRT<br/>972µs| D[Scheduler<br/>cognitivo]
+    C -->|WCRT<br/>≤ 1 ms (L1)| D[Scheduler<br/>cognitivo]
     D -->|typed intent| E[Applicazione<br/>via SDK]
     F[Cognitive Hypervisor<br/>TrustZone-S] -.->|isolates| C
     G[Livello consenso<br/>MMP protocol] -.->|gates| D
@@ -140,8 +142,8 @@ flowchart LR
 <table align="center">
 <tr>
   <td align="center" width="200">
-    <h2>972 µs</h2>
-    <sub>WCRT del kernel, misurato<br/>STM32F407 @ 168 MHz</sub>
+    <h2>≤ 1 ms</h2>
+    <sub>WCRT del kernel, dimostrato (L1)<br/>STM32F407 @ 168 MHz</sub>
   </td>
   <td align="center" width="200">
     <h2>2.1 µs</h2>

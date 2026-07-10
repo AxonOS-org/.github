@@ -9,6 +9,8 @@
 
 ### 面向脑机接口的开放认知操作系统。
 
+*英文页面为权威版本并率先更新；实时数据与最新章节见[英文页面](./README.md)。*
+
 <br/>
 
 [![🇬🇧 English](https://img.shields.io/badge/%F0%9F%87%AC%F0%9F%87%A7-English-012169?style=for-the-badge&labelColor=ffffff)](./README.md)
@@ -120,7 +122,7 @@ SDK 是 Rust 参考绑定。C FFI、Python、WebAssembly、JNI 和 Swift 绑定�
 flowchart LR
     A[EEG/EMG 传感器<br/>ADS1299 · 24-bit] -->|raw| B[BCI 网关<br/>nRF52840]
     B -->|filtered| C[AxonOS 内核<br/>Rust no_std<br/>Cortex-M4F]
-    C -->|WCRT<br/>972µs| D[认知<br/>调度器]
+    C -->|WCRT<br/>≤ 1 ms (L1)| D[认知<br/>调度器]
     D -->|typed intent| E[应用<br/>via SDK]
     F[Cognitive Hypervisor<br/>TrustZone-S] -.->|isolates| C
     G[同意层<br/>MMP protocol] -.->|gates| D
@@ -140,8 +142,8 @@ flowchart LR
 <table align="center">
 <tr>
   <td align="center" width="200">
-    <h2>972 µs</h2>
-    <sub>内核 WCRT 实测<br/>STM32F407 @ 168 MHz</sub>
+    <h2>≤ 1 ms</h2>
+    <sub>内核 WCRT 已证明（L1）<br/>STM32F407 @ 168 MHz</sub>
   </td>
   <td align="center" width="200">
     <h2>2.1 µs</h2>

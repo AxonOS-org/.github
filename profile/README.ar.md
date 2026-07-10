@@ -9,6 +9,8 @@
 
 ### نظام التشغيل المعرفي المفتوح لواجهات الدماغ والحاسوب.
 
+*الصفحة الإنجليزية هي المرجع الرسمي ويتم تحديثها أولاً؛ البيانات الحية والأقسام الأحدث تظهر [هناك](./README.md).*
+
 <br/>
 
 [![🇬🇧 English](https://img.shields.io/badge/%F0%9F%87%AC%F0%9F%87%A7-English-012169?style=for-the-badge&labelColor=ffffff)](./README.md)
@@ -128,7 +130,7 @@ SDK هو الربط المرجعي بلغة Rust. روابط C FFI و Python و 
 flowchart LR
     A[مستشعرات EEG/EMG<br/>ADS1299 · 24-bit] -->|raw| B[بوابة BCI<br/>nRF52840]
     B -->|filtered| C[نواة AxonOS<br/>Rust no_std<br/>Cortex-M4F]
-    C -->|WCRT<br/>972µs| D[المُجدول<br/>المعرفي]
+    C -->|WCRT<br/>≤ 1 ms (L1)| D[المُجدول<br/>المعرفي]
     D -->|typed intent| E[التطبيق<br/>via SDK]
     F[المراقب المعرفي<br/>TrustZone-S] -.->|isolates| C
     G[طبقة الموافقة<br/>MMP protocol] -.->|gates| D
@@ -150,8 +152,8 @@ flowchart LR
 <table align="center">
 <tr>
   <td align="center" width="200">
-    <h2>972 µs</h2>
-    <sub>WCRT النواة، مقاس<br/>STM32F407 @ 168 MHz</sub>
+    <h2>≤ 1 ms</h2>
+    <sub>WCRT النواة، مُثبَت (L1)<br/>STM32F407 @ 168 MHz</sub>
   </td>
   <td align="center" width="200">
     <h2>2.1 µs</h2>

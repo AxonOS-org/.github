@@ -6,7 +6,7 @@
 
 🇬🇧 [English](https://github.com/AxonOS-org/.github/blob/main/profile/README.md) · 🇯🇵 [日本語](https://github.com/AxonOS-org/.github/blob/main/profile/README.ja.md) · 🇨🇳 [中文](https://github.com/AxonOS-org/.github/blob/main/profile/README.zh.md) · 🇮🇹 [Italiano](https://github.com/AxonOS-org/.github/blob/main/profile/README.it.md) · 🇫🇷 [Français](https://github.com/AxonOS-org/.github/blob/main/profile/README.fr.md) · 🇩🇪 [Deutsch](https://github.com/AxonOS-org/.github/blob/main/profile/README.de.md) · 🇪🇸 [Español](https://github.com/AxonOS-org/.github/blob/main/profile/README.es.md) · 🇸🇦 [العربية](https://github.com/AxonOS-org/.github/blob/main/profile/README.ar.md)
 
-[![Standard](https://img.shields.io/github/v/tag/AxonOS-org/axonos-standard?sort=semver&style=flat-square&label=Standard&color=0a4a8f)](https://github.com/AxonOS-org/axonos-standard/releases) [![Kernel](https://img.shields.io/github/v/tag/AxonOS-org/axonos-kernel?sort=semver&style=flat-square&label=Kernel&color=0a4a8f)](https://github.com/AxonOS-org/axonos-kernel/releases) [![Consent](https://img.shields.io/github/v/tag/AxonOS-org/axonos-consent?sort=semver&style=flat-square&label=Consent&color=0a4a8f)](https://github.com/AxonOS-org/axonos-consent/releases) [![Protocol](https://img.shields.io/github/v/tag/AxonOS-org/axonos-protocol?sort=semver&style=flat-square&label=Protocol&color=0a4a8f)](https://github.com/AxonOS-org/axonos-protocol/releases) [![Rust](https://img.shields.io/badge/Built%20with-Rust-CE422B?style=flat-square&logo=rust&logoColor=white)](https://www.rust-lang.org/) [![License](https://img.shields.io/badge/License-Apache--2.0%20OR%20MIT-475569?style=flat-square)](#licensing) [![Verified](https://img.shields.io/badge/Verified-Kani%20BMC-0d7a5f?style=flat-square)](https://model-checking.github.io/kani/)
+[![Standard](https://img.shields.io/github/v/tag/AxonOS-org/axonos-standard?sort=semver&style=flat-square&label=Standard&color=0a4a8f)](https://github.com/AxonOS-org/axonos-standard/releases) [![Kernel](https://img.shields.io/github/v/tag/AxonOS-org/axonos-kernel?sort=semver&style=flat-square&label=Kernel&color=0a4a8f)](https://github.com/AxonOS-org/axonos-kernel/releases) [![Consent](https://img.shields.io/github/v/tag/AxonOS-org/axonos-consent?sort=semver&style=flat-square&label=Consent&color=0a4a8f)](https://github.com/AxonOS-org/axonos-consent/releases) [![Protocol](https://img.shields.io/github/v/tag/AxonOS-org/axonos-protocol?sort=semver&style=flat-square&label=Protocol&color=0a4a8f)](https://github.com/AxonOS-org/axonos-protocol/releases) [![Rust](https://img.shields.io/badge/Built%20with-Rust-CE422B?style=flat-square&logo=rust&logoColor=white)](https://www.rust-lang.org/) [![License](https://img.shields.io/badge/License-Apache--2.0%20OR%20MIT-475569?style=flat-square)](#licensing) [![Verified](https://img.shields.io/badge/Verified-Kani%20BMC-0d7a5f?style=flat-square)](https://model-checking.github.io/kani/) [![Ecosystem pulse](https://img.shields.io/endpoint?url=https%3A%2F%2Faxonos-bci.github.io%2Faxonos-community-radar%2Fdata%2Fbadge-ecosystem.json&style=flat-square)](https://axonos-bci.github.io/axonos-community-radar/)
 
 **[axonos.org](https://axonos.org)** · **[Specifications](https://axonos.org/specifications.html)** · **[SDK](https://axonos.org/sdk.html)** · **[Research](https://axonos.org/research.html)** · **[Articles](https://medium.com/@AxonOS)** · **<connect@axonos.org>**
 
@@ -84,6 +84,10 @@ formula as everyone else, with no boosting.
 | **2** | **Formally bounded WCRT**                | Every critical-path operation has a Kani-verified upper bound. Latency is *proven*, not benchmarked.                                   |
 | **3** | **Structural privacy**                   | Capabilities that would leak raw cognitive state (`RawEEG`, `EmotionState`, `CognitiveProfile`) do not exist as types.                 |
 | **4** | **Open ecosystem**                       | Apache-2.0 OR MIT for code, CC-BY-SA-4.0 for specifications. Every repository is public. Anyone can audit, fork, or replace any layer. |
+
+---
+
+The consent layer's proof files read like the promises they keep — [`fsm_no_invalid_transitions.rs`](https://github.com/AxonOS-org/axonos-consent/blob/main/kani/fsm_no_invalid_transitions.rs) · [`handle_withdraw_terminates.rs`](https://github.com/AxonOS-org/axonos-consent/blob/main/kani/handle_withdraw_terminates.rs) · [`co_authorisation_requires_two_parties.rs`](https://github.com/AxonOS-org/axonos-consent/blob/main/kani/co_authorisation_requires_two_parties.rs) · [`signature_verification_constant_time.rs`](https://github.com/AxonOS-org/axonos-consent/blob/main/kani/signature_verification_constant_time.rs) · [`cbor_decoder_bounded.rs`](https://github.com/AxonOS-org/axonos-consent/blob/main/kani/cbor_decoder_bounded.rs) — five machine-checked Kani harnesses; the kernel's thirty are re-proved at every [release gate](https://github.com/AxonOS-org/axonos-kernel/blob/main/.github/workflows/release-gate.yml).
 
 ---
 
@@ -176,7 +180,7 @@ implementable BCI operating system is **visible rather than hidden**.
 flowchart LR
     A[EEG/EMG sensors<br/>ADS1299 · 24-bit] -->|raw| B[Acquisition gateway<br/>nRF52840]
     B -->|filtered| C[AxonOS kernel<br/>Rust no_std<br/>Cortex-M4F]
-    C -->|WCRT 972µs, proven| D[Cognitive scheduler]
+    C -->|WCRT ≤ 1 ms, proven L1| D[Cognitive scheduler]
     D -->|typed intent| E[Application<br/>via SDK]
     F[Cognitive Hypervisor<br/>TrustZone-S] -.->|isolates| C
     G[Consent FSM<br/>axonos-consent] -.->|gates| D
@@ -196,12 +200,12 @@ everything else.
 
 | Bound | Figure | Evidence |
 | ----- | ------ | -------- |
-| End-to-end WCRT, upper bound | **972 µs** *(rounded to ≤ 1000 µs)* | L1 — machine-checked proof |
-| IPC slot latency, upper bound | **≤ 0.5 µs** | L1 — machine-checked proof |
-| Consent-withdrawal bound | **≤ 1648 cyc** | L1 — machine-checked proof |
-| Kani BMC harnesses | **30+** | upper bounds proven |
-| Audited `unsafe` operations (kernel) | **2** | `forbid(unsafe)` in consent & protocol |
-| Long-form architecture articles | **42+** | on Medium |
+| End-to-end WCRT, proven upper bound | **≤ 1000 µs** | **L1** — [`axonos-scheduler` BMC harnesses](https://github.com/AxonOS-org/axonos-kernel/blob/main/axonos-scheduler/kani-proofs/src/main.rs) · *worst observed 972 µs over ≈ 10.8 M epochs, 0 misses — L2, trace publication pending ([C-1·L2](https://github.com/AxonOS-org/axonos-standard/blob/main/CLAIMS.md))* |
+| IPC slot latency, proven upper bound | **≤ 0.5 µs** | **L1** — [`axonos-spsc` BMC harnesses](https://github.com/AxonOS-org/axonos-kernel/blob/main/axonos-spsc/kani-proofs/src/main.rs) |
+| Consent-withdrawal, proven upper bound | **≤ 1648 cycles** *(≈ 9.8 µs @ 168 MHz)* | **L1** — [`handle_withdraw_terminates.rs`](https://github.com/AxonOS-org/axonos-consent/blob/main/kani/handle_withdraw_terminates.rs) |
+| Kani BMC harnesses | **36** *(kernel 30 · consent 6)* | the kernel's thirty are re-proved at every [release gate](https://github.com/AxonOS-org/axonos-kernel/blob/main/.github/workflows/release-gate.yml) |
+| Audited `unsafe` operations (kernel) | **2** | `#![forbid(unsafe_code)]` across consent, protocol, and five kernel crates |
+| Long-form architecture articles | **42+** | [on Medium](https://medium.com/@AxonOS) |
 
 The evidence taxonomy — **L1** formally proven, **L2** measured on reference
 hardware, **L3** independently validated — is defined in [`VALIDATION.md`](https://github.com/AxonOS-org/axonos-standard/blob/main/VALIDATION.md),
@@ -251,7 +255,7 @@ and Swift bindings are on the [published roadmap](https://axonos.org/sdk.html).
 | Phase       | What                                                                    | When     |
 | ----------- | ----------------------------------------------------------------------- | -------- |
 | **Phase 0** | Architecture, RFCs, SDK API surface, kernel verification harnesses      | Complete |
-| **Phase 1** | Clinical-grade 8-channel development kit · ALS centre pilot             | Q2 2026  |
+| **Phase 1** | Clinical-grade 8-channel development kit · ALS centre pilot             | 2026 — in progress |
 | **Phase 2** | FDA 510(k) Q-Sub for the Cognitive Hypervisor · IEEE P2731 contribution | Q3 2026  |
 | **Phase 3** | First commercial deployment via Foundation members                      | 2027     |
 
