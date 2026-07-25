@@ -71,7 +71,7 @@ formula as everyone else, with no boosting.
 
 <p align="center"><img src="https://img.shields.io/badge/projects-120-0a4a8f?style=flat-square" alt="projects: 120"> <img src="https://img.shields.io/badge/total_stars-45.2k-0a4a8f?style=flat-square" alt="total stars: 45.2k"> <img src="https://img.shields.io/badge/over_1k-9-0a4a8f?style=flat-square" alt="over 1k: 9"> <img src="https://img.shields.io/badge/active_30d-111-0d7a5f?style=flat-square" alt="active 30d: 111"> <img src="https://img.shields.io/badge/builders-12-0a4a8f?style=flat-square" alt="builders: 12"> <img src="https://img.shields.io/badge/languages-18-0a4a8f?style=flat-square" alt="languages: 18"></p>
 
-<sub>One click for the exhaustive view — a Gartner-style reach×engagement quadrant, category and evidence breakdowns, and a full table of all 120 tracked resources. Currently leading by reach: `omi` · `wukong-robot` · `mne-python` · `NeuroKit`. Auto-refreshed from the radar every 3 hours · last update <b>25 Jul 2026, 19:57 UTC</b>.</sub>
+<sub>One click for the exhaustive view — a Gartner-style reach×engagement quadrant, category and evidence breakdowns, and a full table of all 120 tracked resources. Currently leading by reach: `omi` · `wukong-robot` · `mne-python` · `NeuroKit`. Auto-refreshed from the radar every 3 hours · last update <b>25 Jul 2026, 22:38 UTC</b>.</sub>
 <!-- RADAR:END -->
 
 ---
