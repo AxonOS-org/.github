@@ -103,11 +103,68 @@ Three honest paths, depending on what you want.
 
 ---
 
+## One organism
+
+The repositories are not a list — they are organs of one body, and each one
+exists because the body needs that function:
+
+```mermaid
+flowchart TB
+    subgraph LAW["Law — what must hold"]
+        STD[axonos-standard]
+        RFC[axonos-rfcs]
+        VALID[axonos-validation]
+    end
+    subgraph CORE["Core — the running body"]
+        GW[axon-bci-gateway] --> SP[axonos-signal-pipeline] --> K[axonos-kernel]
+        K --> CO[axonos-consent] --> PR[axonos-protocol]
+        SW[axonos-swarm] -.-> PR
+    end
+    subgraph LIMBS["Limbs — how applications touch it"]
+        SDK[axonos-sdk]
+        SDKP[axonos-sdk-python]
+        SDKS[axonos-sdk-swift]
+    end
+    subgraph IMMUNE["Immune system — byte-drift is rejected"]
+        CONF[axonos-conformance]
+        E2E[axonos-e2e-demo]
+    end
+    subgraph SENSES["Senses — the field, observed"]
+        RADAR[axonos-community-radar]
+    end
+    subgraph SKIN["Skin — where people first touch it"]
+        SITE[axonos.org]
+        NBG[neural-boundary-game]
+        BTB[become-the-brain-os]
+    end
+    LAW --> CORE
+    CORE --> LIMBS
+    LIMBS --> IMMUNE
+    RADAR -. observes the whole field, AxonOS included .-> SKIN
+
+    classDef law fill:#0a4a8f,stroke:#0a4a8f,color:#fff
+    classDef sense fill:#0d7a5f,stroke:#0d7a5f,color:#fff
+    class STD,RFC,VALID law
+    class RADAR sense
+```
+
+The law constrains the core; SDK limbs give applications a typed grip on it;
+the conformance immune system rejects byte-drift across five languages before
+it spreads; the [radar](https://axonos-bci.github.io/axonos-community-radar/)
+is the organism's senses — a living, scored map of the whole open-BCI field in
+which AxonOS ranks by the same formula as everyone else; the games and the
+site are the skin where people first touch it. Remove any organ and something
+specific stops working.
+
+---
+
 ## The stack
 
-Every repository is public. Source under Apache-2.0 OR MIT, specifications
-under CC-BY-SA-4.0. There are no private repositories. Each repository has one
-role.
+Source under Apache-2.0 OR MIT, specifications under CC-BY-SA-4.0. Every
+repository below is public and has one role. One component in the wider
+ecosystem is private by design — the scoring engine behind the community
+radar; its inputs, outputs, methodology and that boundary are stated openly
+[on the radar itself](https://axonos-bci.github.io/axonos-community-radar/).
 
 |   | Repository                                                                     | Role                                                                                                                                              | Language | Latest                                                                                                                                       |
 | --- | ------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -116,6 +173,7 @@ role.
 | ⬢ | [**`axonos-kernel`**](https://github.com/AxonOS-org/axonos-kernel)             | Execution substrate — hard real-time microkernel, formally bounded WCRT                                                                           | Rust     | [![](https://img.shields.io/github/v/tag/AxonOS-org/axonos-kernel?sort=semver&style=flat-square&label=&color=0a4a8f)](https://github.com/AxonOS-org/axonos-kernel/releases) |
 | ⬢ | [**`axonos-sdk`**](https://github.com/AxonOS-org/axonos-sdk)                   | Application boundary — typed intents, capability manifests, kernel ABI v1                                                                         | Rust     | [![](https://img.shields.io/github/v/tag/AxonOS-org/axonos-sdk?sort=semver&style=flat-square&label=&color=0a4a8f)](https://github.com/AxonOS-org/axonos-sdk/releases) |
 | ⬢ | [**`axonos-sdk-python`**](https://github.com/AxonOS-org/axonos-sdk-python)     | Application boundary (Python) — RFC-0006 wire format, byte-compatible with the Rust SDK                                                           | Python   | [![](https://img.shields.io/github/v/tag/AxonOS-org/axonos-sdk-python?sort=semver&style=flat-square&label=&color=0a4a8f)](https://github.com/AxonOS-org/axonos-sdk-python/releases) |
+| ⬢ | [**`axonos-sdk-swift`**](https://github.com/AxonOS-org/axonos-sdk-swift)       | Application boundary (Swift) — typed neural intent streams, ABI v1, async/await + Combine                                                        | Swift    | active                                                                                                                                       |
 | ⬢ | [**`axonos-consent`**](https://github.com/AxonOS-org/axonos-consent)           | Consent / co-authorisation subsystem — `#![no_std]` reference crate                                                                               | Rust     | [![](https://img.shields.io/github/v/tag/AxonOS-org/axonos-consent?sort=semver&style=flat-square&label=&color=0a4a8f)](https://github.com/AxonOS-org/axonos-consent/releases) |
 | ⬢ | [**`axonos-protocol`**](https://github.com/AxonOS-org/axonos-protocol)         | Network-level consent protocol — `no_std`, zero-alloc, bounded CBOR frames and an exhaustive consent state machine                                | Rust     | [![](https://img.shields.io/github/v/tag/AxonOS-org/axonos-protocol?sort=semver&style=flat-square&label=&color=0a4a8f)](https://github.com/AxonOS-org/axonos-protocol/releases) |
 | ⬢ | [**`axonos-conformance`**](https://github.com/AxonOS-org/axonos-conformance)   | Byte-exact conformance — RFC-0005 capability manifest & RFC-0006 intent wire format, cross-checked across Rust, Python, C, JavaScript, Java in CI | multi    | active                                                                                                                                       |
@@ -127,10 +185,12 @@ role.
 | ⬢ | [**`AxonOS`**](https://github.com/AxonOS-org/AxonOS)                           | Public entry point — landing, concept, and links into the stack                                                                                   | —        | —                                                                                                                                           |
 | ⬢ | [**`become-the-brain-os`**](https://github.com/AxonOS-org/become-the-brain-os) | Community front door — browser game that teaches the runtime, no install                                                                          | HTML/JS  | [![](https://img.shields.io/github/v/tag/AxonOS-org/become-the-brain-os?sort=semver&style=flat-square&label=&color=0a4a8f)](https://github.com/AxonOS-org/become-the-brain-os/releases) |
 | ⬢ | [**`neural-boundary-game`**](https://github.com/AxonOS-BCI/neural-boundary-game) | Interactive demo — deterministic Rust/WASM model of the sovereignty architecture (consent, least-privilege scopes, sealed vault, StimGuard), playable in-browser, byte-for-byte replayable | Rust/WASM | [![](https://img.shields.io/github/v/tag/AxonOS-BCI/neural-boundary-game?sort=semver&style=flat-square&label=&color=0a4a8f)](https://github.com/AxonOS-BCI/neural-boundary-game/releases) |
+| ⬢ | [**`axonos-community-radar`**](https://github.com/AxonOS-BCI/axonos-community-radar) | The organism's senses — a living, scored map of the open-BCI field (120 projects, refreshed ~3 h); AxonOS ranked by the same formula as everyone else | Python/JS | [![](https://img.shields.io/github/v/tag/AxonOS-BCI/axonos-community-radar?sort=semver&style=flat-square&label=&color=0a4a8f)](https://github.com/AxonOS-BCI/axonos-community-radar/releases) |
 
-> `neural-boundary-game` lives in the **AxonOS-BCI** org and ships under
-> **AGPL-3.0-only OR AxonOS Commercial** — it is the application-layer demo, not
-> part of the permissive Apache/MIT core.
+> `neural-boundary-game` and `axonos-community-radar` live in the
+> **AxonOS-BCI** account. The game ships under **AGPL-3.0-only OR AxonOS
+> Commercial** — it is the application-layer demo, not part of the permissive
+> Apache/MIT core.
 
 ---
 
