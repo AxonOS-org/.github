@@ -54,9 +54,80 @@ cargo kani setup && ( cd axonos-spsc/kani-proofs && cargo kani )
 git clone https://github.com/AxonOS-org/axonos-signal-pipeline && cd axonos-signal-pipeline && cargo test
 ```
 
+**Three more, added as the stack grew** — each answers a different kind of doubt
+
+```sh
+# 4 · the organs running as one body: electrode -> vault -> posture, from a seed
+git clone https://github.com/AxonOS-org/axonos-stack && cd axonos-stack
+cargo run --locked --bin session -- --seed 7 --frames 3000 | diff - reference/session-7.txt
+# silence means the transcript reproduced byte for byte on your machine
+
+# 5 · the relevance score behind the public map, recomputed from its own evidence
+git clone https://github.com/AxonOS-org/axonos-brs && cd axonos-brs && cargo test
+# 20 vectors are real projects with their published evidence and pinned scores
+
+# 6 · who wrote the automated commits on the live map, and whether GitHub signed them
+gh api repos/AxonOS-BCI/axonos-community-radar/commits \
+  --jq '.[0:10][] | "\(.commit.verification.verified)  \(.author.login)"'
+```
+
+The fourth is the one worth dwelling on. The reference session is not a demo of
+a happy path: the simulated front end lifts an electrode at 4.8 s, and the
+transcript records the system withdrawing the right to actuate 96 ms later while
+continuing to record. The last line is an accounting identity — *delivered +
+lost = produced* — and if it ever fails, one of the three components is lying
+about what it saw. CI diffs that transcript on every push, so a dependency that
+changes observable behaviour fails the build with a diff of exactly what moved.
+
 One wire format, **five languages, byte-identical** — [`axonos-conformance`](https://github.com/AxonOS-org/axonos-conformance) re-checks Rust = Python = C = JavaScript = Java in CI on every push.
 
 > What you are checking: the proofs are machine-checked (**L1**); the demos are deterministic and reproducible; the on-hardware worst-case numbers (**L2**) are **not yet claimed** — their status is tracked, claim by claim, in [`CLAIMS.md`](https://github.com/AxonOS-org/axonos-standard/blob/main/CLAIMS.md).
+
+---
+
+## What the checks actually caught
+
+A verification story is only worth reading if it has failures in it. These are
+this month's, with the measurement that produced each. They are here because a
+project that publishes only its successes has put its failures somewhere else.
+
+**A timing assumption refuted by our own published data.** The admission test
+for the real-time chain omitted blocking and interference — a normal
+simplification, and here a wrong one. RFC-0001 publishes two figures measured on
+the same board: the admitted task set sums to **694.2 µs**, and the end-to-end
+worst case is **972 µs**. The **277.8 µs** between them — 28.6 % of the budget,
+of which at most 6.5 µs is jitter — is precisely the terms the test was leaving
+out. The assumption was not merely undischarged; it was contradicted by our own
+measurement, and nobody had subtracted the two numbers.
+[RFC-0008 §4a](https://github.com/AxonOS-org/axonos-rfcs/blob/main/rfcs/0008-deadline-closure-acquisition-chain.md)
+
+**A score that could not rank.** The public map's relevance score is displayed
+on every card and decides what is on the map at all. Measured across 117 scored
+projects it took **nine distinct values**: 19 % sat at exactly 100 and 31 % at
+exactly the inclusion gate. It was a category label wearing a number. Replacing
+the combiner — saturating instead of summing and clamping — produced **35**
+distinct values with the ceiling empty and the gate unchanged.
+[`axonos-brs`](https://github.com/AxonOS-org/axonos-brs)
+
+**Two bounds that disagreed, found only by running the parts together.** The
+privacy vault issues grants denominated in bits; its audit log holds 64 entries;
+and it refuses to release anything it cannot record. A 3 200-bit grant was
+therefore capped at 2 048, so the number written in the grant was not the one
+that stopped it and no reader could tell. Both behaviours were individually
+correct and individually tested. Only the integration session surfaced the
+disagreement — which is the argument for having one.
+[RFC-0009 §N5](https://github.com/AxonOS-org/axonos-rfcs/blob/main/rfcs/0009-bounded-disclosure-sealed-neural-data.md)
+
+**An unpaid side channel in a boundary that exists to have none.** The same
+vault refused a request when its window was empty — a refusal that depends on
+the *data* rather than on the caller's permissions, so a caller could ask "is
+this device recording?" for free and without limit, outside the information
+budget entirely. Now the probe is charged: a thousand attempts against a 128-bit
+grant yield four answers and then a refusal.
+
+Each of these is written up where it belongs, with the deviation recorded
+against the specification that names it. Neither RFC-0008 nor RFC-0009 may leave
+draft status while its own conformance table still lists an unmet requirement.
 
 ---
 
