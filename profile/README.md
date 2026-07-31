@@ -131,6 +131,82 @@ draft status while its own conformance table still lists an unmet requirement.
 
 ---
 
+## If you wanted to prove this wrong
+
+Most projects tell you what they claim. Almost none tell you where to push. The
+list below is where a determined sceptic should look, what specifically would
+falsify each claim, and — where the answer is already known — what has been
+found. It is not a hedge; it is the shortest path to being right about us.
+
+**The real-time guarantee.** The published worst case is 972 µs against a 4 ms
+deadline. It rests on a task set of 694.2 µs plus 277.8 µs of terms measured but
+not modelled, and on the assumption that the acquisition chain is the only work
+on that core. *Falsified by:* an oscilloscope trace on an STM32F407 showing a
+response beyond 4 ms under any load the design admits, or a demonstration that
+the chain can be preempted by work the analysis does not count. The L3 fixture
+that would settle this does not exist yet, and the RFC says so rather than
+implying otherwise.
+
+**The alignment result.** `R̄^{-1/2}(P G_c Pᵀ)R̄^{-1/2} = U G_c Uᵀ` with `U`
+orthogonal — alignment reduces inter-subject difference to a rotation and cannot
+remove it. *Falsified by:* a whitener satisfying `W R Wᵀ = I` that removes the
+residual rotation, which would contradict the polar decomposition, or an
+arithmetic error in the derivation. Verified numerically to 1e-7 on random SPD
+inputs; the algebra is three lines and is written out in full.
+
+**The information bound.** For a grant of β bits, the mutual information between
+the sealed window and everything an application learns is at most β. *Falsified
+by:* a channel that carries information across the boundary without being
+charged. One such channel was found and closed — a refusal that depended on the
+window let a caller poll device liveness for free — and RFC-0009 §7 enumerates
+the remaining ones it knows about. If you find another, that section is wrong
+and should say so.
+
+**The determinism.** Same seed, same bytes, any machine. *Falsified by:* one run
+of `cargo run --locked --bin session -- --seed 7 --frames 3000` on your hardware
+that does not `diff` clean against the checked-in transcript. This is the
+cheapest attack on the list and the one we would most want to hear about.
+
+**Cross-language agreement.** One wire format decoded identically in Rust,
+Python, C, JavaScript and Java. *Falsified by:* an input on which any two
+implementations disagree by a byte. The vectors are public; the disagreement
+would be a bug report we could not argue with.
+
+**What is not claimed, so cannot be falsified here.** No accuracy figure. No
+transfer property. No latency or power measured on hardware. No clinical claim
+of any kind. If you find any of those asserted anywhere in these repositories,
+that is a defect and we want the issue.
+
+---
+
+## The numbers, and where each one comes from
+
+Every quantitative figure this organisation publishes, its evidence level, and
+the artefact it is derived from. A figure absent from this table is a figure we
+do not publish.
+
+| Figure | Value | Level | Derived from |
+|:--|--:|:--:|:--|
+| Chain worst-case response | 972 µs | L2 | RFC-0001 · 12-hour run, 10.8 M epochs, STM32F407 |
+| Admitted task set | 694.2 µs | L2 | RFC-0001 · four tasks, per-task figures published |
+| Blocking + interference residual | 277.8 µs | L2, inferred | the difference of the two above, minus jitter |
+| Release jitter, σ | 2.1 µs | L2 | RFC-0001 |
+| Release jitter, P99.9 | 6.5 µs | L2 | RFC-0001 |
+| Utilisation ceiling | 0.25 | policy | RFC-0001 · admitted set runs at 0.174 |
+| Jitter-limited SNR at 100 Hz | 57.6 dB | L1 | −20·log₁₀(2π·f·σ), arithmetic |
+| Goertzel coefficient accuracy | 1 count in ~31 700 | L1 | tested against the closed form |
+| Alignment residual is orthogonal | to 1e-8 | L1 | numeric check of the polar decomposition |
+| Kani proofs, kernel | 30 | L1 | machine-checked, re-run in CI |
+| Conformance languages | 5 | L1 | byte-identical decode, re-checked per push |
+| Scored projects on the live map | 120 | measured | published payload, refreshed every 3 h |
+| Repositories scanned per run | 3 163 | measured | published run record |
+
+**Not in this table, and therefore not claimed:** classification accuracy,
+information transfer rate, power draw, on-hardware latency, session length,
+electrode count in a real deployment.
+
+---
+
 ## 📡 The open BCI field — live
 
 <!-- RADAR:START -->
