@@ -182,28 +182,44 @@ that is a defect and we want the issue.
 ## The numbers, and where each one comes from
 
 Every quantitative figure this organisation publishes, its evidence level, and
-the artefact it is derived from. A figure absent from this table is a figure we
-do not publish.
+the artefact it derives from. **L1** is formally proven, **L2** measured on
+reference hardware, **L3** independently reproduced. A figure absent from this
+table is a figure we do not publish.
 
 | Figure | Value | Level | Derived from |
 |:--|--:|:--:|:--|
-| Chain worst-case response | 972 µs | L2 | RFC-0001 · 12-hour run, 10.8 M epochs, STM32F407 |
-| Admitted task set | 694.2 µs | L2 | RFC-0001 · four tasks, per-task figures published |
-| Blocking + interference residual | 277.8 µs | L2, inferred | the difference of the two above, minus jitter |
-| Release jitter, σ | 2.1 µs | L2 | RFC-0001 |
-| Release jitter, P99.9 | 6.5 µs | L2 | RFC-0001 |
-| Utilisation ceiling | 0.25 | policy | RFC-0001 · admitted set runs at 0.174 |
-| Jitter-limited SNR at 100 Hz | 57.6 dB | L1 | −20·log₁₀(2π·f·σ), arithmetic |
-| Goertzel coefficient accuracy | 1 count in ~31 700 | L1 | tested against the closed form |
-| Alignment residual is orthogonal | to 1e-8 | L1 | numeric check of the polar decomposition |
-| Kani proofs, kernel | 30 | L1 | machine-checked, re-run in CI |
-| Conformance languages | 5 | L1 | byte-identical decode, re-checked per push |
+| End-to-end WCRT, proven upper bound | ≤ 1000 µs | **L1** | [`axonos-scheduler` BMC harnesses](https://github.com/AxonOS-org/axonos-kernel/blob/main/axonos-scheduler/kani-proofs/src/main.rs) |
+| End-to-end WCRT, worst observed | 972 µs | L2 | RFC-0001 · 12 h, 10.8 M epochs, 0 misses, STM32F407 — *raw trace publication pending* |
+| Admitted task set, Σ Cᵢ | 694.2 µs | L2 | RFC-0001 · four tasks, each published separately |
+| Blocking + interference residual | 277.8 µs | L2, inferred | the difference of the two rows above, less jitter — [RFC-0008 §4a](https://github.com/AxonOS-org/axonos-rfcs/blob/main/rfcs/0008-deadline-closure-acquisition-chain.md) |
+| IPC slot latency, proven upper bound | ≤ 0.5 µs | **L1** | [`axonos-spsc` BMC harnesses](https://github.com/AxonOS-org/axonos-kernel/blob/main/axonos-spsc/kani-proofs/src/main.rs) |
+| Consent withdrawal, proven upper bound | ≤ 1648 cycles *(≈ 9.8 µs @ 168 MHz)* | **L1** | [`handle_withdraw_terminates.rs`](https://github.com/AxonOS-org/axonos-consent/blob/main/kani/handle_withdraw_terminates.rs) |
+| Release jitter, σ | 2.1 µs | L2 | RFC-0001 — *trace publication pending* |
+| Release jitter, P99.9 | 6.5 µs | L2 | RFC-0001 — *trace publication pending* |
+| Utilisation ceiling | 0.25 | policy | RFC-0001 · the admitted set runs at 0.174 |
+| Jitter-limited SNR at 100 Hz | 57.6 dB | **L1** | −20·log₁₀(2π·f·σ) — arithmetic over the σ above |
+| Goertzel coefficient accuracy | 1 count in ≈ 31 700 | **L1** | tested against the closed form in `axonos-signal-pipeline` |
+| Alignment residual is orthogonal | to 1e-8 | **L1** | numeric check of the polar decomposition |
+| Kani BMC harnesses | 36 *(kernel 30 · consent 6)* | **L1** | re-proved at every [release gate](https://github.com/AxonOS-org/axonos-kernel/blob/main/.github/workflows/release-gate.yml) |
+| Audited `unsafe` operations, kernel | 2 | **L1** | `#![forbid(unsafe_code)]` across consent, protocol and five kernel crates |
+| Conformance languages, byte-identical | 5 | **L1** | re-checked on every push |
 | Scored projects on the live map | 120 | measured | published payload, refreshed every 3 h |
 | Repositories scanned per run | 3 163 | measured | published run record |
+| Long-form architecture articles | 42+ | — | [on Medium](https://medium.com/@AxonOS) |
+
+The distinction in the first two rows is the one that matters and the one most
+often collapsed. **≤ 1000 µs is proven**; 972 µs is the worst thing anyone has
+*seen*. A proof and an observation are different kinds of statement, and until
+the raw traces land in
+[`axonos-validation`](https://github.com/AxonOS-org/axonos-validation) **no
+measured performance figure is claimed here** — the L2 rows are held as
+publication-pending and graded in
+[`CLAIMS.md`](https://github.com/AxonOS-org/axonos-standard/blob/main/CLAIMS.md).
+**L3 independent reproduction is not claimed for anything.**
 
 **Not in this table, and therefore not claimed:** classification accuracy,
-information transfer rate, power draw, on-hardware latency, session length,
-electrode count in a real deployment.
+information transfer rate, power draw, on-hardware end-to-end latency in a
+deployment, session length, electrode count in real use.
 
 ---
 
@@ -442,28 +458,6 @@ everything else.
 
 ---
 
-## By the numbers
-
-| Bound | Figure | Evidence |
-| ----- | ------ | -------- |
-| End-to-end WCRT, proven upper bound | **≤ 1000 µs** | **L1** — [`axonos-scheduler` BMC harnesses](https://github.com/AxonOS-org/axonos-kernel/blob/main/axonos-scheduler/kani-proofs/src/main.rs) · *worst observed 972 µs over ≈ 10.8 M epochs, 0 misses — L2, trace publication pending ([C-1·L2](https://github.com/AxonOS-org/axonos-standard/blob/main/CLAIMS.md))* |
-| IPC slot latency, proven upper bound | **≤ 0.5 µs** | **L1** — [`axonos-spsc` BMC harnesses](https://github.com/AxonOS-org/axonos-kernel/blob/main/axonos-spsc/kani-proofs/src/main.rs) |
-| Consent-withdrawal, proven upper bound | **≤ 1648 cycles** *(≈ 9.8 µs @ 168 MHz)* | **L1** — [`handle_withdraw_terminates.rs`](https://github.com/AxonOS-org/axonos-consent/blob/main/kani/handle_withdraw_terminates.rs) |
-| Kani BMC harnesses | **36** *(kernel 30 · consent 6)* | the kernel's thirty are re-proved at every [release gate](https://github.com/AxonOS-org/axonos-kernel/blob/main/.github/workflows/release-gate.yml) |
-| Audited `unsafe` operations (kernel) | **2** | `#![forbid(unsafe_code)]` across consent, protocol, and five kernel crates |
-| Long-form architecture articles | **42+** | [on Medium](https://medium.com/@AxonOS) |
-
-The evidence taxonomy — **L1** formally proven, **L2** measured on reference
-hardware, **L3** independently validated — is defined in [`VALIDATION.md`](https://github.com/AxonOS-org/axonos-standard/blob/main/VALIDATION.md),
-and every claim is graded in [`CLAIMS.md`](https://github.com/AxonOS-org/axonos-standard/blob/main/CLAIMS.md).
-The bounds above are **L1**: machine-checked proofs, published and proof-linked.
-The corresponding **L2** worst-case figures — end-to-end latency, jitter, and the
-resulting improvement over a general-purpose OS — come from internal long-duration
-soak testing. Until their raw traces are published in `axonos-validation`, **no
-measured performance figure is claimed here**; the figures are held as
-publication-pending and graded in `CLAIMS.md`. **L3** independent reproduction is **not claimed**.
-
----
 
 ## Quick start
 
