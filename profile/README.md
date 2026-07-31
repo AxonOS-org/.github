@@ -223,6 +223,86 @@ deployment, session length, electrode count in real use.
 
 ---
 
+## The constraints this is built against
+
+Not architecture — physics and biology. Every design decision downstream is
+either forced by one of these or is arbitrary, and knowing which is which is the
+difference between an engineering argument and a preference.
+
+**A scalp electrode measures tens of microvolts through skin, bone and hair.**
+The signal of interest sits under the electrode's own thermal noise for most of
+its bandwidth, and the largest thing in the recording is usually not brain at
+all — it is the mains, at fifty or sixty hertz, arriving through the body as an
+antenna. This is why the pipeline notches before it does anything else, why the
+front end runs at gain 24, and why an amplitude threshold is measured in ADC
+counts rather than volts: the conversion needs a reference voltage and a gain
+that belong to the acquisition hardware, and a DSP stage asserting them would be
+claiming to know a board it cannot see.
+
+**Cortical intent does not wait.** The window between a decision and its
+expression is short enough that a control loop which misses it produces
+something worse than no assistance — it produces an action the person has
+already stopped intending. That is the entire reason a deadline here is a hard
+one and not a target, and why an admission test that cannot refuse is not a
+test.
+
+**Electrodes drift, and the person moves.** Gel spreads, impedance falls for
+twenty minutes and then rises, a jaw clench swamps every channel, and a
+half-lifted electrode produces a signal that looks plausible and means nothing.
+A system that assumes a stationary source is a system that will act confidently
+on garbage in the fifth minute of use.
+
+**Every subject's head is a different mixing matrix.** Skull thickness, gyral
+folding and electrode placement combine into a linear mixture that is unique to
+the person and the session. This is why cross-subject transfer is hard, and why
+a claim of calibration-free decoding needs a stronger argument than a working
+demo — the demo may simply have found two subjects whose mixtures were similar.
+
+**A brain-computer interface reads intention.** Not a heart rate, not a step
+count. The record is not sensitive because it is medical; it is sensitive
+because it is *upstream of speech* — it can contain the thing a person decided
+and did not say. That asymmetry is why the privacy boundary is not a feature
+placed beside the others but a constraint the rest is built inside of.
+
+---
+
+## What is genuinely unsolved
+
+Written down because the honest version of a roadmap includes the parts nobody
+knows how to do, and because a project that lists only tractable work is
+describing a product rather than a field.
+
+**Calibration-free decoding across subjects.** Alignment reduces the difference
+between two people's recordings to a residual rotation and provably cannot
+remove it. Whether that rotation is benign depends on the montage, and nobody
+has a general answer — the successful reports come from fixed layouts where the
+mixing matrices were already similar. An implementation cannot settle this; only
+recordings can.
+
+**Worst-case execution time on a modern core.** Caches, branch prediction and
+memory controllers make a tight upper bound either unattainable or so
+conservative it wastes most of the machine. Every hard-real-time system on such
+hardware is trading one of those away, and saying which is the honest part.
+
+**Long-session non-stationarity.** Signal statistics drift over an hour in ways
+that are not a simple function of anything observable at the electrode. Online
+adaptation tracks the drift it can see; the part it cannot see is why decoders
+degrade over a session and why a fresh calibration still helps after one.
+
+**Enforcing consent at the point of use.** A revocation is enforceable on the
+device that holds the data. Once a reduction has left, the guarantee becomes a
+legal one rather than a technical one, and no protocol yet makes an already
+transmitted value unusable on request. Bounding what leaves is a partial answer,
+and it is stated as partial.
+
+**Establishing that a signal is voluntary.** A decoder reports what it detects.
+Whether the person meant it — whether it was intent rather than a reflex, a
+startle, or the residue of a previous instruction — is not visible in the
+signal, and the difference matters most in exactly the cases where a device is
+most useful.
+
+---
+
 ## 📡 The open BCI field — live
 
 <!-- RADAR:START -->
