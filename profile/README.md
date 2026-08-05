@@ -21,6 +21,7 @@
 | looking for the code | [Quick start](#quick-start) · [The stack](#the-stack) · [Architecture](#architecture) |
 | wondering why it is built this way | [The constraints this is built against](#the-constraints-this-is-built-against) — the physics and biology, not the preferences |
 | checking whether we overclaim | [What AxonOS does not claim](#what-axonos-does-not-claim) · [What is genuinely unsolved](#what-is-genuinely-unsolved) |
+| holding a vulnerability | **security@axonos.org** — a coordinated-disclosure window is offered and the finding is published either way. See [`SECURITY.md`](https://github.com/AxonOS-org/axonos-kernel/blob/main/SECURITY.md) in any repository |
 
 **One command, ninety seconds, no account:**
 
@@ -328,7 +329,7 @@ Nothing here asks for trust. Every claim is runnable in **one click** or **three
 **One click**
 
 - ▶ **Play it** — [**Neural Boundary Game**](https://axonos.org/neural-boundary-game.html): the consent, least-privilege, sealed-vault and StimGuard model, live in the browser on the same deterministic core the kernel uses. Every run emits a byte-for-byte replayable proof.
-- 📄 **Read the analysis** — [**Zenodo preprint**](https://doi.org/10.5281/zenodo.20552007) (DOI `10.5281/zenodo.20552007`): EDF schedulability (R1 = 972 µs inside a 4 ms deadline), capability isolation, falsifiable predictions — *predicted from datasheet cycle counts, no measurement claims*.
+- **Read the analysis** — [**Zenodo preprint**](https://doi.org/10.5281/zenodo.20552007) (DOI `10.5281/zenodo.20552007`): EDF schedulability (R1 = 972 µs inside a 4 ms deadline), capability isolation, falsifiable predictions — *predicted from datasheet cycle counts, no measurement claims*.
 
 **Three commands** — clone and run; each is reproducible on any machine
 
@@ -590,14 +591,14 @@ should be read as saying otherwise.
 
 ---
 
-## 📡 The open BCI field — live
+## The open BCI field — live
 
 <!-- RADAR:START -->
 The **AxonOS Community Radar** continuously maps every open-source brain–computer-interface
 project, tool and team building in the open — AxonOS included, ranked by the same public-signal
 formula as everyone else, with no boosting.
 
-<p align="center"><a href="https://axonos-bci.github.io/axonos-community-radar/report.html"><b>📊 The State of Open BCI — read the full report →</b></a></p>
+<p align="center"><a href="https://axonos-bci.github.io/axonos-community-radar/report.html"><b>The State of Open BCI — read the full report →</b></a></p>
 
 <p align="center"><img src="https://img.shields.io/badge/projects-120-0a4a8f?style=flat-square" alt="projects: 120"> <img src="https://img.shields.io/badge/total_stars-46.4k-0a4a8f?style=flat-square" alt="total stars: 46.4k"> <img src="https://img.shields.io/badge/over_1k-10-0a4a8f?style=flat-square" alt="over 1k: 10"> <img src="https://img.shields.io/badge/active_30d-110-0d7a5f?style=flat-square" alt="active 30d: 110"> <img src="https://img.shields.io/badge/builders-9-0a4a8f?style=flat-square" alt="builders: 9"> <img src="https://img.shields.io/badge/languages-16-0a4a8f?style=flat-square" alt="languages: 16"></p>
 
