@@ -117,9 +117,6 @@ placed beside the others but a constraint the rest is built inside of.
 
 ## One organism
 
-The repositories are not a list. They are organs of one body, and each one
-exists because the body needs that function:
-
 ```mermaid
 flowchart TB
     subgraph LAW["Law, what must hold"]
@@ -171,6 +168,14 @@ flowchart TB
     class HAL,VAULT,SUP skel
 ```
 
+<details>
+<summary>what each organ refuses to do, and why that matters more than what it does</summary>
+
+The repositories are not a list. They are organs of one body, and each one
+exists because the body needs that function:
+
+
+
 The skeleton is where the body meets the world: the HAL guarantees a sample is
 real, the vault guarantees it stays, and the supervisor decides whether anything
 may be acted on. The law constrains the core; SDK limbs give applications a
@@ -182,9 +187,14 @@ which AxonOS ranks by the same formula as everyone else; the games and the
 site are the skin where people first touch it. Remove any organ and something
 specific stops working.
 
+</details>
+
 ---
 
 ## The full path: electrode to intent
+
+<details>
+<summary>every stage a signal passes, with the arithmetic</summary>
 
 A complete brain–computer interface operating system is a continuous chain, from
 a raw electrode signal to a typed, consented intent, and back to a safe failure
@@ -243,6 +253,8 @@ These are roadmap items, not present capabilities. They are published here so th
 distance between today's reference implementation and a complete, independently
 implementable BCI operating system is **visible rather than hidden**.
 
+</details>
+
 ---
 
 ## The stack
@@ -287,6 +299,9 @@ radar; its inputs, outputs, methodology and that boundary are stated openly
 
 ## Architecture
 
+<details>
+<summary>layer diagram</summary>
+
 ```mermaid
 flowchart LR
     A[EEG/EMG sensors<br/>ADS1299 · 24-bit] -->|raw| B[Acquisition gateway<br/>nRF52840]
@@ -305,8 +320,9 @@ flowchart LR
 Every arrow is a contract. The [Standard](https://github.com/AxonOS-org/axonos-standard) defines what must hold at each boundary; an implementation is free in
 everything else.
 
----
+</details>
 
+---
 
 ## Quick start
 
@@ -340,6 +356,9 @@ and Swift bindings are on the [published roadmap](https://axonos.org/sdk.html).
 ---
 
 ## See it work, and verify it yourself
+
+<details>
+<summary>six commands, and what each one proves</summary>
 
 Nothing here asks for trust. Every claim is runnable in **one click** or **three commands**, and each prints a pass/fail you can check.
 
@@ -392,6 +411,8 @@ One wire format, **five languages, byte-identical** — [`axonos-conformance`](h
 
 > What you are checking: the proofs are machine-checked (**L1**); the demos are deterministic and reproducible; the on-hardware worst-case numbers (**L2**) are **not yet claimed**, their status is tracked, claim by claim, in [`CLAIMS.md`](https://github.com/AxonOS-org/axonos-standard/blob/main/CLAIMS.md).
 
+</details>
+
 ---
 
 ## The numbers, and where each one comes from
@@ -440,6 +461,9 @@ deployment, session length, electrode count in real use.
 
 ## What the checks actually caught
 
+<details>
+<summary>four defects found this month, each with its measurement</summary>
+
 A verification story is only worth reading if it has failures in it. These are
 this month's, with the measurement that produced each. They are here because a
 project that publishes only its successes has put its failures somewhere else.
@@ -482,9 +506,14 @@ Each of these is written up where it belongs, with the deviation recorded
 against the specification that names it. Neither RFC-0008 nor RFC-0009 may leave
 draft status while its own conformance table still lists an unmet requirement.
 
+</details>
+
 ---
 
 ## If you wanted to prove this wrong
+
+<details>
+<summary>where to attack, and what would falsify each claim</summary>
 
 Most projects tell you what they claim. Almost none tell you where to push. The
 list below is where a determined sceptic should look, what specifically would
@@ -530,9 +559,14 @@ transfer property. No latency or power measured on hardware. No clinical claim
 of any kind. If you find any of those asserted anywhere in these repositories,
 that is a defect and we want the issue.
 
+</details>
+
 ---
 
 ## What is genuinely unsolved
+
+<details>
+<summary>five problems nobody has solved, including us</summary>
 
 Written down because the honest version of a roadmap includes the parts nobody
 knows how to do, and because a project that lists only tractable work is
@@ -566,6 +600,8 @@ Whether the person meant it, whether it was intent and not a reflex, a
 startle, or the residue of a previous instruction, is not visible in the
 signal, and the difference matters most in exactly the cases where a device is
 most useful.
+
+</details>
 
 ---
 
@@ -653,6 +689,9 @@ Three honest paths, depending on what you want.
 
 ## Documentation
 
+<details>
+<summary>specifications, RFCs, threat model</summary>
+
 - [**Specifications**](https://axonos.org/specifications.html), kernel ABI v1, capability catalogue, `IntentObservation` wire format, RFC index
 - [**SDK and language bindings**](https://axonos.org/sdk.html). Rust today; C FFI, Python, WebAssembly, JNI, Swift on the published roadmap
 - [**Standards engagement**](https://axonos.org/standards.html). IEEE P2731 · IEC 62304 · ISO 13485 · FDA 510(k) · EU MDR
@@ -661,9 +700,14 @@ Three honest paths, depending on what you want.
 - [**Preprint**](https://doi.org/10.5281/zenodo.20552007) — *An Analytical Microkernel Design for Safety-Critical Brain–Computer Interfaces: Schedulability, Capability Isolation, and Falsifiable Predictions* (Zenodo, DOI `10.5281/zenodo.20552007`, CC-BY-4.0), analytical schedulability (R1 = 972 µs in a 4 ms deadline), capability isolation, falsifiable predictions P1–P5; no measurement claims
 - [**Long-form articles**](https://medium.com/@AxonOS) — 42+ pieces, one per major architectural decision
 
+</details>
+
 ---
 
 ## Contributing
+
+<details>
+<summary>how to open an issue that gets acted on</summary>
 
 | Path                      | Where                                                                                              |
 | ------------------------- | -------------------------------------------------------------------------------------------------- |
@@ -674,9 +718,14 @@ Three honest paths, depending on what you want.
 | Clinical partnerships     | <connect@axonos.org>                                                                               |
 | General correspondence    | <connect@axonos.org>                                                                               |
 
+</details>
+
 ---
 
 ## Cite this work
+
+<details>
+<summary>BibTeX, CFF, DOI</summary>
 
 AxonOS ships a [`CITATION.cff`](https://github.com/AxonOS-org/.github/blob/main/CITATION.cff),
 so every repository in the organisation exposes a **"Cite this repository"**
@@ -699,6 +748,8 @@ button. For the peer-readable analysis, cite the preprint:
 The preprint is **analytical and falsifiable**. It states, up front, the
 findings that would prove it wrong. If you reproduce or refute any bound, the
 project wants to hear it: <connect@axonos.org>.
+
+</details>
 
 ---
 
