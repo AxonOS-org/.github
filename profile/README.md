@@ -1,4 +1,4 @@
-[![AxonOS — open cognitive operating system for brain–computer interfaces](https://github.com/AxonOS-org/.github/raw/main/profile/banner.jpg)](/AxonOS-org/.github/blob/main/profile/banner.jpg)
+[![AxonOS, open cognitive operating system for brain–computer interfaces](https://github.com/AxonOS-org/.github/raw/main/profile/banner.jpg)](/AxonOS-org/.github/blob/main/profile/banner.jpg)
 
 # AxonOS
 
@@ -16,12 +16,12 @@
 
 | If you are… | Start here |
 |:--|:--|
-| deciding whether this is real | [The numbers, and where each one comes from](#the-numbers-and-where-each-one-comes-from) — every published figure, its evidence level, and the artefact it derives from |
-| an engineer, sceptical | [If you wanted to prove this wrong](#if-you-wanted-to-prove-this-wrong) — where to push, and what would falsify each claim |
+| deciding whether this is real | [The numbers, and where each one comes from](#the-numbers-and-where-each-one-comes-from), every published figure, its evidence level, and the artefact it derives from |
+| an engineer, sceptical | [If you wanted to prove this wrong](#if-you-wanted-to-prove-this-wrong), where to push, and what would falsify each claim |
 | looking for the code | [Quick start](#quick-start) · [The stack](#the-stack) · [Architecture](#architecture) |
-| wondering why it is built this way | [The constraints this is built against](#the-constraints-this-is-built-against) — the physics and biology, not the preferences |
+| wondering why it is built this way | [The constraints this is built against](#the-constraints-this-is-built-against): the physics and biology, not the preferences |
 | checking whether we overclaim | [What AxonOS does not claim](#what-axonos-does-not-claim) · [What is genuinely unsolved](#what-is-genuinely-unsolved) |
-| holding a vulnerability | **security@axonos.org** — a coordinated-disclosure window is offered and the finding is published either way. See [`SECURITY.md`](https://github.com/AxonOS-org/axonos-kernel/blob/main/SECURITY.md) in any repository |
+| holding a vulnerability | **security@axonos.org**: a coordinated-disclosure window is offered and the finding is published either way. See [`SECURITY.md`](https://github.com/AxonOS-org/axonos-kernel/blob/main/SECURITY.md) in any repository |
 
 **One command, ninety seconds, no account:**
 
@@ -30,10 +30,28 @@ git clone https://github.com/AxonOS-org/axonos-stack && cd axonos-stack
 cargo run --locked --bin session -- --seed 7 --frames 3000 | diff - reference/session-7.txt
 ```
 
-Silence means the whole chain — electrode to conditioning to privacy boundary to
-the right to act — reproduced byte for byte on your machine. The session is not
+Silence means the whole chain, electrode to conditioning to privacy boundary to
+the right to act, reproduced byte for byte on your machine. The session is not
 a happy path: an electrode lifts partway through and the transcript records the
 system withdrawing the right to actuate 96 ms later, while it keeps recording.
+
+---
+
+## Who is writing this
+
+I am Denis Yermakou. I build AxonOS on my own, from Singapore.
+
+There is no team. If you are thinking of depending on this, that is a risk and
+you should know it from me rather than work it out later.
+
+It also explains a few things you might otherwise find strange. The
+specifications are unusually detailed because I have no colleague to remember
+what we decided. Almost everything is machine-checked because I have no
+reviewer. And this page keeps telling you how to prove me wrong because nobody
+else is going to do it for me.
+
+I read connect@axonos.org. If you find a mistake, an issue is more use to me
+than a polite silence.
 
 ---
 
@@ -44,11 +62,10 @@ interfaces. Open-source kernel in `#![no_std]` Rust on ARM Cortex-M.
 Formally bounded worst-case response time. Structural privacy that the
 application layer cannot bypass.
 
-It is **not** an AI-agent framework, **not** a chatbot runtime, **not** a
-generic Python SDK, and **not** a token project. Everything below the
-application — the timing guarantees, the neural-permission model, the
-consent state machine — is specified, openly licensed, and built to be
-independently verified.
+It is not an AI-agent framework, a chatbot runtime, a Python SDK or a token
+project. What sits below the application layer is the timing guarantee, the
+neural-permission model and the consent state machine. All three are
+specified, openly licensed, and built so that someone else can check them.
 
 > Applications should receive typed, consent-bound intent events —
 > never unrestricted raw neural streams.
@@ -57,14 +74,14 @@ independently verified.
 
 ## The constraints this is built against
 
-Not architecture — physics and biology. Every design decision downstream is
+Not architecture, physics and biology. Every design decision downstream is
 either forced by one of these or is arbitrary, and knowing which is which is the
 difference between an engineering argument and a preference.
 
 **A scalp electrode measures tens of microvolts through skin, bone and hair.**
 The signal of interest sits under the electrode's own thermal noise for most of
 its bandwidth, and the largest thing in the recording is usually not brain at
-all — it is the mains, at fifty or sixty hertz, arriving through the body as an
+all. It is the mains, at fifty or sixty hertz, arriving through the body as an
 antenna. This is why the pipeline notches before it does anything else, why the
 front end runs at gain 24, and why an amplitude threshold is measured in ADC
 counts rather than volts: the conversion needs a reference voltage and a gain
@@ -73,7 +90,7 @@ claiming to know a board it cannot see.
 
 **Cortical intent does not wait.** The window between a decision and its
 expression is short enough that a control loop which misses it produces
-something worse than no assistance — it produces an action the person has
+something worse than no assistance. It produces an action the person has
 already stopped intending. That is the entire reason a deadline here is a hard
 one and not a target, and why an admission test that cannot refuse is not a
 test.
@@ -88,11 +105,11 @@ on garbage in the fifth minute of use.
 folding and electrode placement combine into a linear mixture that is unique to
 the person and the session. This is why cross-subject transfer is hard, and why
 a claim of calibration-free decoding needs a stronger argument than a working
-demo — the demo may simply have found two subjects whose mixtures were similar.
+demo: the demo may simply have found two subjects whose mixtures were similar.
 
 **A brain-computer interface reads intention.** Not a heart rate, not a step
 count. The record is not sensitive because it is medical; it is sensitive
-because it is *upstream of speech* — it can contain the thing a person decided
+because it is *upstream of speech*. It can contain the thing a person decided
 and did not say. That asymmetry is why the privacy boundary is not a feature
 placed beside the others but a constraint the rest is built inside of.
 
@@ -100,39 +117,39 @@ placed beside the others but a constraint the rest is built inside of.
 
 ## One organism
 
-The repositories are not a list — they are organs of one body, and each one
+The repositories are not a list. They are organs of one body, and each one
 exists because the body needs that function:
 
 ```mermaid
 flowchart TB
-    subgraph LAW["Law — what must hold"]
+    subgraph LAW["Law, what must hold"]
         STD[axonos-standard]
         RFC[axonos-rfcs]
         VALID[axonos-validation]
     end
-    subgraph SKEL["Skeleton — where software meets silicon"]
+    subgraph SKEL["Skeleton, where software meets silicon"]
         HAL[axonos-hal]
         VAULT[axonos-vault]
         SUP[axonos-supervisor]
     end
-    subgraph CORE["Core — the running body"]
+    subgraph CORE["Core: the running body"]
         GW[axon-bci-gateway] --> SP[axonos-signal-pipeline] --> K[axonos-kernel]
         K --> CO[axonos-consent] --> PR[axonos-protocol]
         SW[axonos-swarm] -.-> PR
     end
-    subgraph LIMBS["Limbs — how applications touch it"]
+    subgraph LIMBS["Limbs, how applications touch it"]
         SDK[axonos-sdk]
         SDKP[axonos-sdk-python]
         SDKS[axonos-sdk-swift]
     end
-    subgraph IMMUNE["Immune system — byte-drift is rejected"]
+    subgraph IMMUNE["Immune system, byte-drift is rejected"]
         CONF[axonos-conformance]
         E2E[axonos-e2e-demo]
     end
-    subgraph SENSES["Senses — the field, observed"]
+    subgraph SENSES["Senses: the field, observed"]
         RADAR[axonos-community-radar]
     end
-    subgraph SKIN["Skin — where people first touch it"]
+    subgraph SKIN["Skin, where people first touch it"]
         SITE[axonos.org]
         NBG[neural-boundary-game]
         BTB[become-the-brain-os]
@@ -160,7 +177,7 @@ may be acted on. The law constrains the core; SDK limbs give applications a
 typed grip on it;
 the conformance immune system rejects byte-drift across five languages before
 it spreads; the [radar](https://axonos-bci.github.io/axonos-community-radar/)
-is the organism's senses — a living, scored map of the whole open-BCI field in
+is the organism's senses: a living, scored map of the whole open-BCI field in
 which AxonOS ranks by the same formula as everyone else; the games and the
 site are the skin where people first touch it. Remove any organ and something
 specific stops working.
@@ -169,7 +186,7 @@ specific stops working.
 
 ## The full path: electrode to intent
 
-A complete brain–computer interface operating system is a continuous chain — from
+A complete brain–computer interface operating system is a continuous chain, from
 a raw electrode signal to a typed, consented intent, and back to a safe failure
 state. AxonOS is building that chain in the open. This map is deliberately honest
 about what is shipped, what is partial, and what is still ahead.
@@ -181,12 +198,12 @@ about what is shipped, what is partial, and what is still ahead.
 | Privacy boundary on raw neural data            | `axonos-vault`                                   | live                           |
 | Signal-quality posture / right to act          | `axonos-supervisor`                              | live                           |
 | Monotonic timestamping                         | `axonos-kernel`                                  | **live**                       |
-| Deterministic handoff — SPSC IPC, ring buffers | `axonos-kernel`                                  | **live**                       |
-| Signal conditioning — fixed-point IIR bank (DC blocker · notch · band-pass) | [`axonos-signal-pipeline`](https://github.com/AxonOS-org/axonos-signal-pipeline) | **live** *(machinery, vector-pinned)* |
+| Deterministic handoff. SPSC IPC, ring buffers | `axonos-kernel`                                  | **live**                       |
+| Signal conditioning, fixed-point IIR bank (DC blocker · notch · band-pass) | [`axonos-signal-pipeline`](https://github.com/AxonOS-org/axonos-signal-pipeline) | **live** *(machinery, vector-pinned)* |
 | Feature extraction & classifier inference (MDM / LDA) | [`axonos-signal-pipeline`](https://github.com/AxonOS-org/axonos-signal-pipeline) | **live** *(no trained model yet)* |
-| Typed intent ABI — RFC-0006                    | `axonos-sdk`, `axonos-sdk-python`                | **live**                       |
+| Typed intent ABI. RFC-0006                    | `axonos-sdk`, `axonos-sdk-python`                | **live**                       |
 | Byte-exact conformance                         | `axonos-conformance`                             | **live**                       |
-| Consent & capability gate — RFC-0005           | `axonos-consent`, `axonos-protocol`, kernel gate | **live**                       |
+| Consent & capability gate. RFC-0005           | `axonos-consent`, `axonos-protocol`, kernel gate | **live**                       |
 | Application boundary                           | `axonos-sdk`                                     | **live**                       |
 | Audit & reproducible traces                    | `axonos-validation`                              | **live** *(L2 traces pending)* |
 | Safe failure state                             | `axonos-kernel`                                  | **live**                       |
@@ -194,7 +211,7 @@ about what is shipped, what is partial, and what is still ahead.
 ### What a complete BCI OS still needs
 
 The execution core, the consent and capability layer, and the conformance surface
-are in place. To be a full operating system — not only a standard and a kernel —
+are in place. To be a full operating system, not only a standard and a kernel —
 AxonOS still needs, and is sequencing on its roadmap:
 
 **Closed since this list was written:**
@@ -215,11 +232,11 @@ AxonOS still needs, and is sequencing on its roadmap:
 
 **Still needed, and sequenced on the roadmap:**
 
-- a **trained model and measured accuracy / latency / power** for the fixed-point DSP and classifier machinery already shipped in [`axonos-signal-pipeline`](https://github.com/AxonOS-org/axonos-signal-pipeline) — the pipeline is implemented and vector-pinned; what is pending is a trained model and on-hardware numbers;
-- **secure boot, firmware attestation and signed update** — the canonical hardware carries an ATECC608B secure element that no software in this organisation currently uses. For a device that reads a brain, unauthenticated firmware is the largest single hole in the design;
-- **power and energy management** — and, specifically, its interaction with the timing proofs: a frequency or sleep-state transition changes worst-case execution time, so `axonos-hal`'s budget must be re-closed at every transition rather than assumed across it;
-- a structured **safety case** (hazard analysis, FMEA, residual-risk argument) and a formal **threat model** for cognitive data — as engineering artifacts, not regulatory claims;
-- a public **conformance program** and an **independent-implementer challenge** — the real test of a standard is whether a stranger can build a byte-compatible kernel and SDK from [`axonos-standard`](https://github.com/AxonOS-org/axonos-standard) and the RFCs *alone*, with no access to this source, and pass [`axonos-conformance`](https://github.com/AxonOS-org/axonos-conformance) unchanged. That is the bar AxonOS is building toward;
+- a **trained model and measured accuracy / latency / power** for the fixed-point DSP and classifier machinery already shipped in [`axonos-signal-pipeline`](https://github.com/AxonOS-org/axonos-signal-pipeline): the pipeline is implemented and vector-pinned; what is pending is a trained model and on-hardware numbers;
+- **secure boot, firmware attestation and signed update**: the canonical hardware carries an ATECC608B secure element that no software in this organisation currently uses. For a device that reads a brain, unauthenticated firmware is the largest single hole in the design;
+- **power and energy management**, and, specifically, its interaction with the timing proofs: a frequency or sleep-state transition changes worst-case execution time, so `axonos-hal`'s budget must be re-closed at every transition rather than assumed across it;
+- a structured **safety case** (hazard analysis, FMEA, residual-risk argument) and a formal **threat model** for cognitive data, as engineering artifacts, not regulatory claims;
+- a public **conformance program** and an **independent-implementer challenge**: the real test of a standard is whether a stranger can build a byte-compatible kernel and SDK from [`axonos-standard`](https://github.com/AxonOS-org/axonos-standard) and the RFCs *alone*, with no access to this source, and pass [`axonos-conformance`](https://github.com/AxonOS-org/axonos-conformance) unchanged. That is the bar AxonOS is building toward;
 - a path from founder-led to **foundation / technical-steering** governance.
 
 These are roadmap items, not present capabilities. They are published here so the
@@ -232,38 +249,38 @@ implementable BCI operating system is **visible rather than hidden**.
 
 Source under Apache-2.0 OR MIT, specifications under CC-BY-SA-4.0. Every
 repository below is public and has one role. One component in the wider
-ecosystem is private by design — the scoring engine behind the community
+ecosystem is private by design: the scoring engine behind the community
 radar; its inputs, outputs, methodology and that boundary are stated openly
 [on the radar itself](https://axonos-bci.github.io/axonos-community-radar/).
 
 |   | Repository                                                                     | Role                                                                                                                                              | Language | Latest                                                                                                                                       |
 | --- | ------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| ⬢ | [**`axonos-standard`**](https://github.com/AxonOS-org/axonos-standard)         | Normative architecture — the canonical technical standard                                                                                         | Markdown | [![](https://img.shields.io/github/v/tag/AxonOS-org/axonos-standard?sort=semver&style=flat-square&label=&color=0a4a8f)](https://github.com/AxonOS-org/axonos-standard/releases) |
-| ⬢ | [**`axonos-rfcs`**](https://github.com/AxonOS-org/axonos-rfcs)                 | Design-change process — numbered engineering RFCs, normative once finalised                                                                       | Markdown | active                                                                                                                                       |
-| ⬢ | [**`axonos-kernel`**](https://github.com/AxonOS-org/axonos-kernel)             | Execution substrate — hard real-time microkernel, formally bounded WCRT                                                                           | Rust     | [![](https://img.shields.io/github/v/tag/AxonOS-org/axonos-kernel?sort=semver&style=flat-square&label=&color=0a4a8f)](https://github.com/AxonOS-org/axonos-kernel/releases) |
-| ⬢ | [**`axonos-sdk`**](https://github.com/AxonOS-org/axonos-sdk)                   | Application boundary — typed intents, capability manifests, kernel ABI v1                                                                         | Rust     | [![](https://img.shields.io/github/v/tag/AxonOS-org/axonos-sdk?sort=semver&style=flat-square&label=&color=0a4a8f)](https://github.com/AxonOS-org/axonos-sdk/releases) |
-| ⬢ | [**`axonos-sdk-python`**](https://github.com/AxonOS-org/axonos-sdk-python)     | Application boundary (Python) — RFC-0006 wire format, byte-compatible with the Rust SDK                                                           | Python   | [![](https://img.shields.io/github/v/tag/AxonOS-org/axonos-sdk-python?sort=semver&style=flat-square&label=&color=0a4a8f)](https://github.com/AxonOS-org/axonos-sdk-python/releases) |
-| ⬢ | [**`axonos-sdk-swift`**](https://github.com/AxonOS-org/axonos-sdk-swift)       | Application boundary (Swift) — typed neural intent streams, ABI v1, async/await + Combine                                                        | Swift    | active                                                                                                                                       |
-| ⬢ | [**`axonos-hal`**](https://github.com/AxonOS-org/axonos-hal)                     | The contract with silicon — sample frames, a timing budget that refuses configurations whose deadline the measured chain cannot meet, explicit degradation semantics; `no_std`, zero-alloc | Rust     | [![](https://img.shields.io/github/v/tag/AxonOS-org/axonos-hal?sort=semver&style=flat-square&label=&color=0a4a8f)](https://github.com/AxonOS-org/axonos-hal/releases) |
-| ⬢ | [**`axonos-vault`**](https://github.com/AxonOS-org/axonos-vault)                 | The privacy boundary — raw samples are unreadable by construction; only bounded, purpose-bound, budgeted reductions leave, and every one is recorded | Rust     | [![](https://img.shields.io/github/v/tag/AxonOS-org/axonos-vault?sort=semver&style=flat-square&label=&color=0a4a8f)](https://github.com/AxonOS-org/axonos-vault/releases) |
-| ⬢ | [**`axonos-supervisor`**](https://github.com/AxonOS-org/axonos-supervisor)       | The right to act — signal-quality posture gating actuation, never acquisition; degradation immediate, recovery earned, `Safe` terminal until a human resets | Rust     | [![](https://img.shields.io/github/v/tag/AxonOS-org/axonos-supervisor?sort=semver&style=flat-square&label=&color=0a4a8f)](https://github.com/AxonOS-org/axonos-supervisor/releases) |
-| ⬢ | [**`axonos-stack`**](https://github.com/AxonOS-org/axonos-stack)                 | The reference session — the three organs above wired together, deterministic from a seed, with a byte-exact transcript diffed in CI | Rust     | [![](https://img.shields.io/github/v/tag/AxonOS-org/axonos-stack?sort=semver&style=flat-square&label=&color=0a4a8f)](https://github.com/AxonOS-org/axonos-stack/releases) |
+| ⬢ | [**`axonos-standard`**](https://github.com/AxonOS-org/axonos-standard)         | Normative architecture: the canonical technical standard                                                                                         | Markdown | [![](https://img.shields.io/github/v/tag/AxonOS-org/axonos-standard?sort=semver&style=flat-square&label=&color=0a4a8f)](https://github.com/AxonOS-org/axonos-standard/releases) |
+| ⬢ | [**`axonos-rfcs`**](https://github.com/AxonOS-org/axonos-rfcs)                 | Design-change process, numbered engineering RFCs, normative once finalised                                                                       | Markdown | active                                                                                                                                       |
+| ⬢ | [**`axonos-kernel`**](https://github.com/AxonOS-org/axonos-kernel)             | Execution substrate, hard real-time microkernel, formally bounded WCRT                                                                           | Rust     | [![](https://img.shields.io/github/v/tag/AxonOS-org/axonos-kernel?sort=semver&style=flat-square&label=&color=0a4a8f)](https://github.com/AxonOS-org/axonos-kernel/releases) |
+| ⬢ | [**`axonos-sdk`**](https://github.com/AxonOS-org/axonos-sdk)                   | Application boundary, typed intents, capability manifests, kernel ABI v1                                                                         | Rust     | [![](https://img.shields.io/github/v/tag/AxonOS-org/axonos-sdk?sort=semver&style=flat-square&label=&color=0a4a8f)](https://github.com/AxonOS-org/axonos-sdk/releases) |
+| ⬢ | [**`axonos-sdk-python`**](https://github.com/AxonOS-org/axonos-sdk-python)     | Application boundary (Python). RFC-0006 wire format, byte-compatible with the Rust SDK                                                           | Python   | [![](https://img.shields.io/github/v/tag/AxonOS-org/axonos-sdk-python?sort=semver&style=flat-square&label=&color=0a4a8f)](https://github.com/AxonOS-org/axonos-sdk-python/releases) |
+| ⬢ | [**`axonos-sdk-swift`**](https://github.com/AxonOS-org/axonos-sdk-swift)       | Application boundary (Swift), typed neural intent streams, ABI v1, async/await + Combine                                                        | Swift    | active                                                                                                                                       |
+| ⬢ | [**`axonos-hal`**](https://github.com/AxonOS-org/axonos-hal)                     | The contract with silicon, sample frames, a timing budget that refuses configurations whose deadline the measured chain cannot meet, explicit degradation semantics; `no_std`, zero-alloc | Rust     | [![](https://img.shields.io/github/v/tag/AxonOS-org/axonos-hal?sort=semver&style=flat-square&label=&color=0a4a8f)](https://github.com/AxonOS-org/axonos-hal/releases) |
+| ⬢ | [**`axonos-vault`**](https://github.com/AxonOS-org/axonos-vault)                 | The privacy boundary, raw samples are unreadable by construction; only bounded, purpose-bound, budgeted reductions leave, and every one is recorded | Rust     | [![](https://img.shields.io/github/v/tag/AxonOS-org/axonos-vault?sort=semver&style=flat-square&label=&color=0a4a8f)](https://github.com/AxonOS-org/axonos-vault/releases) |
+| ⬢ | [**`axonos-supervisor`**](https://github.com/AxonOS-org/axonos-supervisor)       | The right to act, signal-quality posture gating actuation, never acquisition; degradation immediate, recovery earned, `Safe` terminal until a human resets | Rust     | [![](https://img.shields.io/github/v/tag/AxonOS-org/axonos-supervisor?sort=semver&style=flat-square&label=&color=0a4a8f)](https://github.com/AxonOS-org/axonos-supervisor/releases) |
+| ⬢ | [**`axonos-stack`**](https://github.com/AxonOS-org/axonos-stack)                 | The reference session: the three organs above wired together, deterministic from a seed, with a byte-exact transcript diffed in CI | Rust     | [![](https://img.shields.io/github/v/tag/AxonOS-org/axonos-stack?sort=semver&style=flat-square&label=&color=0a4a8f)](https://github.com/AxonOS-org/axonos-stack/releases) |
 | ⬢ | [**`axonos-consent`**](https://github.com/AxonOS-org/axonos-consent)           | Consent / co-authorisation subsystem — `#![no_std]` reference crate                                                                               | Rust     | [![](https://img.shields.io/github/v/tag/AxonOS-org/axonos-consent?sort=semver&style=flat-square&label=&color=0a4a8f)](https://github.com/AxonOS-org/axonos-consent/releases) |
 | ⬢ | [**`axonos-protocol`**](https://github.com/AxonOS-org/axonos-protocol)         | Network-level consent protocol — `no_std`, zero-alloc, bounded CBOR frames and an exhaustive consent state machine                                | Rust     | [![](https://img.shields.io/github/v/tag/AxonOS-org/axonos-protocol?sort=semver&style=flat-square&label=&color=0a4a8f)](https://github.com/AxonOS-org/axonos-protocol/releases) |
-| ⬢ | [**`axonos-conformance`**](https://github.com/AxonOS-org/axonos-conformance)   | Byte-exact conformance — RFC-0005 capability manifest & RFC-0006 intent wire format, cross-checked across Rust, Python, C, JavaScript, Java in CI | multi    | active                                                                                                                                       |
-| ⬢ | [**`axonos-signal-pipeline`**](https://github.com/AxonOS-org/axonos-signal-pipeline) | Signal pipeline — fixed-point DSP filter bank, features, MDM/LDA classifier inference, calibration; vector-pinned, no trained model | Rust | [![](https://img.shields.io/github/v/tag/AxonOS-org/axonos-signal-pipeline?sort=semver&style=flat-square&label=&color=0a4a8f)](https://github.com/AxonOS-org/axonos-signal-pipeline/releases) |
-| ⬢ | [**`axonos-e2e-demo`**](https://github.com/AxonOS-org/axonos-e2e-demo) | End-to-end reference — synthetic signal -> typed consent-bound intent, verified bit-for-bit on every run | Python | active |
-| ⬢ | [**`axonos-validation`**](https://github.com/AxonOS-org/axonos-validation)     | Evidence and trace record — measurement traces and reference post-processing                                                                      | Python   | record                                                                                                                                       |
-| ⬢ | [**`axon-bci-gateway`**](https://github.com/AxonOS-org/axon-bci-gateway)       | Acquisition bridge — OpenBCI fork, MIT preserved from upstream                                                                                    | HTML     | [![](https://img.shields.io/github/v/tag/AxonOS-org/axon-bci-gateway?sort=semver&style=flat-square&label=&color=0a4a8f)](https://github.com/AxonOS-org/axon-bci-gateway/releases) |
-| ⬢ | [**`axonos-swarm`**](https://github.com/AxonOS-org/axonos-swarm)               | Long-horizon distributed timing — multi-node Neural PTP coordination                                                                              | Rust     | [![](https://img.shields.io/github/v/tag/AxonOS-org/axonos-swarm?sort=semver&style=flat-square&label=&color=0a4a8f)](https://github.com/AxonOS-org/axonos-swarm/releases) |
-| ⬢ | [**`AxonOS`**](https://github.com/AxonOS-org/AxonOS)                           | Public entry point — landing, concept, and links into the stack                                                                                   | —        | —                                                                                                                                           |
-| ⬢ | [**`become-the-brain-os`**](https://github.com/AxonOS-org/become-the-brain-os) | Community front door — browser game that teaches the runtime, no install                                                                          | HTML/JS  | [![](https://img.shields.io/github/v/tag/AxonOS-org/become-the-brain-os?sort=semver&style=flat-square&label=&color=0a4a8f)](https://github.com/AxonOS-org/become-the-brain-os/releases) |
-| ⬢ | [**`neural-boundary-game`**](https://github.com/AxonOS-BCI/neural-boundary-game) | Interactive demo — deterministic Rust/WASM model of the sovereignty architecture (consent, least-privilege scopes, sealed vault, StimGuard), playable in-browser, byte-for-byte replayable | Rust/WASM | [![](https://img.shields.io/github/v/tag/AxonOS-BCI/neural-boundary-game?sort=semver&style=flat-square&label=&color=0a4a8f)](https://github.com/AxonOS-BCI/neural-boundary-game/releases) |
-| ⬢ | [**`axonos-community-radar`**](https://github.com/AxonOS-BCI/axonos-community-radar) | The organism's senses — a living, scored map of the open-BCI field (120 projects, refreshed ~3 h); AxonOS ranked by the same formula as everyone else | Python/JS | [![](https://img.shields.io/github/v/tag/AxonOS-BCI/axonos-community-radar?sort=semver&style=flat-square&label=&color=0a4a8f)](https://github.com/AxonOS-BCI/axonos-community-radar/releases) |
+| ⬢ | [**`axonos-conformance`**](https://github.com/AxonOS-org/axonos-conformance)   | Byte-exact conformance. RFC-0005 capability manifest & RFC-0006 intent wire format, cross-checked across Rust, Python, C, JavaScript, Java in CI | multi    | active                                                                                                                                       |
+| ⬢ | [**`axonos-signal-pipeline`**](https://github.com/AxonOS-org/axonos-signal-pipeline) | Signal pipeline, fixed-point DSP filter bank, features, MDM/LDA classifier inference, calibration; vector-pinned, no trained model | Rust | [![](https://img.shields.io/github/v/tag/AxonOS-org/axonos-signal-pipeline?sort=semver&style=flat-square&label=&color=0a4a8f)](https://github.com/AxonOS-org/axonos-signal-pipeline/releases) |
+| ⬢ | [**`axonos-e2e-demo`**](https://github.com/AxonOS-org/axonos-e2e-demo) | End-to-end reference, synthetic signal -> typed consent-bound intent, verified bit-for-bit on every run | Python | active |
+| ⬢ | [**`axonos-validation`**](https://github.com/AxonOS-org/axonos-validation)     | Evidence and trace record, measurement traces and reference post-processing                                                                      | Python   | record                                                                                                                                       |
+| ⬢ | [**`axon-bci-gateway`**](https://github.com/AxonOS-org/axon-bci-gateway)       | Acquisition bridge. OpenBCI fork, MIT preserved from upstream                                                                                    | HTML     | [![](https://img.shields.io/github/v/tag/AxonOS-org/axon-bci-gateway?sort=semver&style=flat-square&label=&color=0a4a8f)](https://github.com/AxonOS-org/axon-bci-gateway/releases) |
+| ⬢ | [**`axonos-swarm`**](https://github.com/AxonOS-org/axonos-swarm)               | Long-horizon distributed timing, multi-node Neural PTP coordination                                                                              | Rust     | [![](https://img.shields.io/github/v/tag/AxonOS-org/axonos-swarm?sort=semver&style=flat-square&label=&color=0a4a8f)](https://github.com/AxonOS-org/axonos-swarm/releases) |
+| ⬢ | [**`AxonOS`**](https://github.com/AxonOS-org/AxonOS)                           | Public entry point, landing, concept, and links into the stack                                                                                   | —        | —                                                                                                                                           |
+| ⬢ | [**`become-the-brain-os`**](https://github.com/AxonOS-org/become-the-brain-os) | Community front door, browser game that teaches the runtime, no install                                                                          | HTML/JS  | [![](https://img.shields.io/github/v/tag/AxonOS-org/become-the-brain-os?sort=semver&style=flat-square&label=&color=0a4a8f)](https://github.com/AxonOS-org/become-the-brain-os/releases) |
+| ⬢ | [**`neural-boundary-game`**](https://github.com/AxonOS-BCI/neural-boundary-game) | Interactive demo, deterministic Rust/WASM model of the sovereignty architecture (consent, least-privilege scopes, sealed vault, StimGuard), playable in-browser, byte-for-byte replayable | Rust/WASM | [![](https://img.shields.io/github/v/tag/AxonOS-BCI/neural-boundary-game?sort=semver&style=flat-square&label=&color=0a4a8f)](https://github.com/AxonOS-BCI/neural-boundary-game/releases) |
+| ⬢ | [**`axonos-community-radar`**](https://github.com/AxonOS-BCI/axonos-community-radar) | The organism's senses: a living, scored map of the open-BCI field (120 projects, refreshed ~3 h); AxonOS ranked by the same formula as everyone else | Python/JS | [![](https://img.shields.io/github/v/tag/AxonOS-BCI/axonos-community-radar?sort=semver&style=flat-square&label=&color=0a4a8f)](https://github.com/AxonOS-BCI/axonos-community-radar/releases) |
 
 > `neural-boundary-game` and `axonos-community-radar` live in the
 > **AxonOS-BCI** account. The game ships under **AGPL-3.0-only OR AxonOS
-> Commercial** — it is the application-layer demo, not part of the permissive
+> Commercial**. It is the application-layer demo, not part of the permissive
 > Apache/MIT core.
 
 ---
@@ -322,7 +339,7 @@ and Swift bindings are on the [published roadmap](https://axonos.org/sdk.html).
 
 ---
 
-## See it work — and verify it yourself
+## See it work, and verify it yourself
 
 Nothing here asks for trust. Every claim is runnable in **one click** or **three commands**, and each prints a pass/fail you can check.
 
@@ -331,7 +348,7 @@ Nothing here asks for trust. Every claim is runnable in **one click** or **three
 - ▶ **Play it** — [**Neural Boundary Game**](https://axonos.org/neural-boundary-game.html): the consent, least-privilege, sealed-vault and StimGuard model, live in the browser on the same deterministic core the kernel uses. Every run emits a byte-for-byte replayable proof.
 - **Read the analysis** — [**Zenodo preprint**](https://doi.org/10.5281/zenodo.20552007) (DOI `10.5281/zenodo.20552007`): EDF schedulability (R1 = 972 µs inside a 4 ms deadline), capability isolation, falsifiable predictions — *predicted from datasheet cycle counts, no measurement claims*.
 
-**Three commands** — clone and run; each is reproducible on any machine
+**Three commands**, clone and run; each is reproducible on any machine
 
 ```sh
 # 1 · the full path, electrode -> typed intent, verified bit-for-bit
@@ -346,7 +363,7 @@ cargo kani setup && ( cd axonos-spsc/kani-proofs && cargo kani )
 git clone https://github.com/AxonOS-org/axonos-signal-pipeline && cd axonos-signal-pipeline && cargo test
 ```
 
-**Three more, added as the stack grew** — each answers a different kind of doubt
+**Three more, added as the stack grew**, each answers a different kind of doubt
 
 ```sh
 # 4 · the organs running as one body: electrode -> vault -> posture, from a seed
@@ -367,13 +384,13 @@ The fourth is the one worth dwelling on. The reference session is not a demo of
 a happy path: the simulated front end lifts an electrode at 4.8 s, and the
 transcript records the system withdrawing the right to actuate 96 ms later while
 continuing to record. The last line is an accounting identity — *delivered +
-lost = produced* — and if it ever fails, one of the three components is lying
+lost = produced*, and if it ever fails, one of the three components is lying
 about what it saw. CI diffs that transcript on every push, so a dependency that
 changes observable behaviour fails the build with a diff of exactly what moved.
 
 One wire format, **five languages, byte-identical** — [`axonos-conformance`](https://github.com/AxonOS-org/axonos-conformance) re-checks Rust = Python = C = JavaScript = Java in CI on every push.
 
-> What you are checking: the proofs are machine-checked (**L1**); the demos are deterministic and reproducible; the on-hardware worst-case numbers (**L2**) are **not yet claimed** — their status is tracked, claim by claim, in [`CLAIMS.md`](https://github.com/AxonOS-org/axonos-standard/blob/main/CLAIMS.md).
+> What you are checking: the proofs are machine-checked (**L1**); the demos are deterministic and reproducible; the on-hardware worst-case numbers (**L2**) are **not yet claimed**, their status is tracked, claim by claim, in [`CLAIMS.md`](https://github.com/AxonOS-org/axonos-standard/blob/main/CLAIMS.md).
 
 ---
 
@@ -395,14 +412,14 @@ table is a figure we do not publish.
 | Release jitter, σ | 2.1 µs | L2 | RFC-0001 — *trace publication pending* |
 | Release jitter, P99.9 | 6.5 µs | L2 | RFC-0001 — *trace publication pending* |
 | Utilisation ceiling | 0.25 | policy | RFC-0001 · the admitted set runs at 0.174 |
-| Jitter-limited SNR at 100 Hz | 57.6 dB | **L1** | −20·log₁₀(2π·f·σ) — arithmetic over the σ above |
+| Jitter-limited SNR at 100 Hz | 57.6 dB | **L1** | −20·log₁₀(2π·f·σ), arithmetic over the σ above |
 | Goertzel coefficient accuracy | 1 count in ≈ 31 700 | **L1** | tested against the closed form in `axonos-signal-pipeline` |
 | Alignment residual is orthogonal | to 1e-8 | **L1** | numeric check of the polar decomposition |
 | Kani BMC harnesses | 36 *(kernel 30 · consent 6)* | **L1** | re-proved at every [release gate](https://github.com/AxonOS-org/axonos-kernel/blob/main/.github/workflows/release-gate.yml) |
 | Audited `unsafe` operations, kernel | 2 | **L1** | `#![forbid(unsafe_code)]` across consent, protocol and five kernel crates |
 | Conformance languages, byte-identical | 5 | **L1** | re-checked on every push |
 | Projects on the live map | ~120 | measured, live | [`data/radar.json`](https://github.com/AxonOS-BCI/axonos-community-radar/blob/main/data/radar.json), refreshed every 3 h. The near misses and the funnel behind them are published at the [map](https://axonos-bci.github.io/axonos-community-radar/) |
-| Repositories scanned per run | ~3 200 | measured, live | [`data/last_run.json`](https://github.com/AxonOS-BCI/axonos-community-radar/blob/main/data/last_run.json) — the exact figure moves every scan, so the table gives the order and links the number |
+| Repositories scanned per run | ~3 200 | measured, live | [`data/last_run.json`](https://github.com/AxonOS-BCI/axonos-community-radar/blob/main/data/last_run.json): the exact figure moves every scan, so the table gives the order and links the number |
 | Long-form architecture articles | 42+ | — | [on Medium](https://medium.com/@AxonOS) |
 
 The distinction in the first two rows is the one that matters and the one most
@@ -410,7 +427,7 @@ often collapsed. **≤ 1000 µs is proven**; 972 µs is the worst thing anyone h
 *seen*. A proof and an observation are different kinds of statement, and until
 the raw traces land in
 [`axonos-validation`](https://github.com/AxonOS-org/axonos-validation) **no
-measured performance figure is claimed here** — the L2 rows are held as
+measured performance figure is claimed here**: the L2 rows are held as
 publication-pending and graded in
 [`CLAIMS.md`](https://github.com/AxonOS-org/axonos-standard/blob/main/CLAIMS.md).
 **L3 independent reproduction is not claimed for anything.**
@@ -428,11 +445,11 @@ this month's, with the measurement that produced each. They are here because a
 project that publishes only its successes has put its failures somewhere else.
 
 **A timing assumption refuted by our own published data.** The admission test
-for the real-time chain omitted blocking and interference — a normal
+for the real-time chain omitted blocking and interference: a normal
 simplification, and here a wrong one. RFC-0001 publishes two figures measured on
 the same board: the admitted task set sums to **694.2 µs**, and the end-to-end
 worst case is **972 µs**. The **277.8 µs** between them — 28.6 % of the budget,
-of which at most 6.5 µs is jitter — is precisely the terms the test was leaving
+of which at most 6.5 µs is jitter, is precisely the terms the test was leaving
 out. The assumption was not merely undischarged; it was contradicted by our own
 measurement, and nobody had subtracted the two numbers.
 [RFC-0008 §4a](https://github.com/AxonOS-org/axonos-rfcs/blob/main/rfcs/0008-deadline-closure-acquisition-chain.md)
@@ -441,7 +458,7 @@ measurement, and nobody had subtracted the two numbers.
 on every card and decides what is on the map at all. Measured across 117 scored
 projects it took **nine distinct values**: 19 % sat at exactly 100 and 31 % at
 exactly the inclusion gate. It was a category label wearing a number. Replacing
-the combiner — saturating instead of summing and clamping — produced **35**
+the combiner, saturating instead of summing and clamping, produced **35**
 distinct values with the ceiling empty and the gate unchanged.
 [`axonos-brs`](https://github.com/AxonOS-org/axonos-brs)
 
@@ -451,11 +468,11 @@ and it refuses to release anything it cannot record. A 3 200-bit grant was
 therefore capped at 2 048, so the number written in the grant was not the one
 that stopped it and no reader could tell. Both behaviours were individually
 correct and individually tested. Only the integration session surfaced the
-disagreement — which is the argument for having one.
+disagreement. That is the argument for having one.
 [RFC-0009 §N5](https://github.com/AxonOS-org/axonos-rfcs/blob/main/rfcs/0009-bounded-disclosure-sealed-neural-data.md)
 
 **An unpaid side channel in a boundary that exists to have none.** The same
-vault refused a request when its window was empty — a refusal that depends on
+vault refused a request when its window was empty: a refusal that depends on
 the *data* rather than on the caller's permissions, so a caller could ask "is
 this device recording?" for free and without limit, outside the information
 budget entirely. Now the probe is charged: a thousand attempts against a 128-bit
@@ -471,7 +488,7 @@ draft status while its own conformance table still lists an unmet requirement.
 
 Most projects tell you what they claim. Almost none tell you where to push. The
 list below is where a determined sceptic should look, what specifically would
-falsify each claim, and — where the answer is already known — what has been
+falsify each claim, and, where the answer is already known, what has been
 found. It is not a hedge; it is the shortest path to being right about us.
 
 **The real-time guarantee.** The published worst case is 972 µs against a 4 ms
@@ -484,7 +501,7 @@ that would settle this does not exist yet, and the RFC says so rather than
 implying otherwise.
 
 **The alignment result.** `R̄^{-1/2}(P G_c Pᵀ)R̄^{-1/2} = U G_c Uᵀ` with `U`
-orthogonal — alignment reduces inter-subject difference to a rotation and cannot
+orthogonal, alignment reduces inter-subject difference to a rotation and cannot
 remove it. *Falsified by:* a whitener satisfying `W R Wᵀ = I` that removes the
 residual rotation, which would contradict the polar decomposition, or an
 arithmetic error in the derivation. Verified numerically to 1e-7 on random SPD
@@ -493,8 +510,8 @@ inputs; the algebra is three lines and is written out in full.
 **The information bound.** For a grant of β bits, the mutual information between
 the sealed window and everything an application learns is at most β. *Falsified
 by:* a channel that carries information across the boundary without being
-charged. One such channel was found and closed — a refusal that depended on the
-window let a caller poll device liveness for free — and RFC-0009 §7 enumerates
+charged. One such channel was found and closed: a refusal that depended on the
+window let a caller poll device liveness for free, and RFC-0009 §7 enumerates
 the remaining ones it knows about. If you find another, that section is wrong
 and should say so.
 
@@ -519,12 +536,12 @@ that is a defect and we want the issue.
 
 Written down because the honest version of a roadmap includes the parts nobody
 knows how to do, and because a project that lists only tractable work is
-describing a product rather than a field.
+describing a product and not a field.
 
 **Calibration-free decoding across subjects.** Alignment reduces the difference
 between two people's recordings to a residual rotation and provably cannot
 remove it. Whether that rotation is benign depends on the montage, and nobody
-has a general answer — the successful reports come from fixed layouts where the
+has a general answer: the successful reports come from fixed layouts where the
 mixing matrices were already similar. An implementation cannot settle this; only
 recordings can.
 
@@ -540,13 +557,13 @@ degrade over a session and why a fresh calibration still helps after one.
 
 **Enforcing consent at the point of use.** A revocation is enforceable on the
 device that holds the data. Once a reduction has left, the guarantee becomes a
-legal one rather than a technical one, and no protocol yet makes an already
+legal one and not a technical one, and no protocol yet makes an already
 transmitted value unusable on request. Bounding what leaves is a partial answer,
 and it is stated as partial.
 
 **Establishing that a signal is voluntary.** A decoder reports what it detects.
-Whether the person meant it — whether it was intent rather than a reflex, a
-startle, or the residue of a previous instruction — is not visible in the
+Whether the person meant it, whether it was intent and not a reflex, a
+startle, or the residue of a previous instruction, is not visible in the
 signal, and the difference matters most in exactly the cases where a device is
 most useful.
 
@@ -570,7 +587,7 @@ project records them as such.
 ## Status
 
 Dates appear here only where the work is inside this project's control.
-Everything else carries the condition that releases it — a date invented to
+Everything else carries the condition that releases it: a date invented to
 fill a column expires, and an expired date left standing says more about a
 project than an honest "blocked on X" ever did. RFC-0003 requires this of every
 pending claim in the specifications; the front page is held to the same rule.
@@ -582,7 +599,7 @@ pending claim in the specifications; the front page is held to the same rule.
 | **Phase 1** | Clinical-grade 8-channel development kit · ALS centre pilot | in progress |
 | **Phase 2** | Structured safety case (hazard analysis, FMEA, residual-risk argument) | **not started**; it is a prerequisite for anything regulatory and is named as one rather than assumed |
 | **Phase 2** | Regulatory engagement · standards-body contribution | **conditional** on the safety case and the L2 traces above. No date, because the condition is not ours to schedule |
-| **Phase 3** | Independent implementer passes [`axonos-conformance`](https://github.com/AxonOS-org/axonos-conformance) from the specifications alone | **the real bar**, and open to anyone — see the standing [challenge](https://github.com/AxonOS-org/axonos-conformance/blob/main/CHALLENGE.md) |
+| **Phase 3** | Independent implementer passes [`axonos-conformance`](https://github.com/AxonOS-org/axonos-conformance) from the specifications alone | **the real bar**, and open to anyone, see the standing [challenge](https://github.com/AxonOS-org/axonos-conformance/blob/main/CHALLENGE.md) |
 
 **What "complete" means here.** Phase 0 is complete in the sense that the
 artefacts exist, are versioned, are licensed, and are re-verified on every push.
@@ -591,18 +608,18 @@ should be read as saying otherwise.
 
 ---
 
-## The open BCI field — live
+## The open BCI field, live
 
 <!-- RADAR:START -->
 The **AxonOS Community Radar** continuously maps every open-source brain–computer-interface
-project, tool and team building in the open — AxonOS included, ranked by the same public-signal
+project, tool and team building in the open. AxonOS included, ranked by the same public-signal
 formula as everyone else, with no boosting.
 
-<p align="center"><a href="https://axonos-bci.github.io/axonos-community-radar/report.html"><b>The State of Open BCI — read the full report →</b></a></p>
+<p align="center"><a href="https://axonos-bci.github.io/axonos-community-radar/report.html"><b>The State of Open BCI, read the full report →</b></a></p>
 
 <p align="center"><img src="https://img.shields.io/badge/projects-120-0a4a8f?style=flat-square" alt="projects: 120"> <img src="https://img.shields.io/badge/total_stars-46.4k-0a4a8f?style=flat-square" alt="total stars: 46.4k"> <img src="https://img.shields.io/badge/over_1k-10-0a4a8f?style=flat-square" alt="over 1k: 10"> <img src="https://img.shields.io/badge/active_30d-110-0d7a5f?style=flat-square" alt="active 30d: 110"> <img src="https://img.shields.io/badge/builders-9-0a4a8f?style=flat-square" alt="builders: 9"> <img src="https://img.shields.io/badge/languages-16-0a4a8f?style=flat-square" alt="languages: 16"></p>
 
-<sub>One click for the exhaustive view — a Gartner-style reach×engagement quadrant, category and evidence breakdowns, and a full table of all 120 tracked resources. Currently leading by reach: `omi` · `wukong-robot` · `mne-python` · `NeuroKit`. Auto-refreshed from the radar every 3 hours · last update <b>05 Aug 2026, 17:10 UTC</b>.</sub>
+<sub>One click for the exhaustive view: a Gartner-style reach×engagement quadrant, category and evidence breakdowns, and a full table of all 120 tracked resources. Currently leading by reach: `omi` · `wukong-robot` · `mne-python` · `NeuroKit`. Auto-refreshed from the radar every 3 hours · last update <b>05 Aug 2026, 17:10 UTC</b>.</sub>
 <!-- RADAR:END -->
 
 ---
@@ -618,7 +635,7 @@ formula as everyone else, with no boosting.
 
 ---
 
-The consent layer's proof files read like the promises they keep — [`fsm_no_invalid_transitions.rs`](https://github.com/AxonOS-org/axonos-consent/blob/main/kani/fsm_no_invalid_transitions.rs) · [`handle_withdraw_terminates.rs`](https://github.com/AxonOS-org/axonos-consent/blob/main/kani/handle_withdraw_terminates.rs) · [`co_authorisation_requires_two_parties.rs`](https://github.com/AxonOS-org/axonos-consent/blob/main/kani/co_authorisation_requires_two_parties.rs) · [`signature_verification_constant_time.rs`](https://github.com/AxonOS-org/axonos-consent/blob/main/kani/signature_verification_constant_time.rs) · [`cbor_decoder_bounded.rs`](https://github.com/AxonOS-org/axonos-consent/blob/main/kani/cbor_decoder_bounded.rs) — five machine-checked Kani harnesses; the kernel's thirty are re-proved at every [release gate](https://github.com/AxonOS-org/axonos-kernel/blob/main/.github/workflows/release-gate.yml).
+The consent layer's proof files read like the promises they keep — [`fsm_no_invalid_transitions.rs`](https://github.com/AxonOS-org/axonos-consent/blob/main/kani/fsm_no_invalid_transitions.rs) · [`handle_withdraw_terminates.rs`](https://github.com/AxonOS-org/axonos-consent/blob/main/kani/handle_withdraw_terminates.rs) · [`co_authorisation_requires_two_parties.rs`](https://github.com/AxonOS-org/axonos-consent/blob/main/kani/co_authorisation_requires_two_parties.rs) · [`signature_verification_constant_time.rs`](https://github.com/AxonOS-org/axonos-consent/blob/main/kani/signature_verification_constant_time.rs) · [`cbor_decoder_bounded.rs`](https://github.com/AxonOS-org/axonos-consent/blob/main/kani/cbor_decoder_bounded.rs), five machine-checked Kani harnesses; the kernel's thirty are re-proved at every [release gate](https://github.com/AxonOS-org/axonos-kernel/blob/main/.github/workflows/release-gate.yml).
 
 ---
 
@@ -636,12 +653,12 @@ Three honest paths, depending on what you want.
 
 ## Documentation
 
-- [**Specifications**](https://axonos.org/specifications.html) — kernel ABI v1, capability catalogue, `IntentObservation` wire format, RFC index
-- [**SDK and language bindings**](https://axonos.org/sdk.html) — Rust today; C FFI, Python, WebAssembly, JNI, Swift on the published roadmap
-- [**Standards engagement**](https://axonos.org/standards.html) — IEEE P2731 · IEC 62304 · ISO 13485 · FDA 510(k) · EU MDR
-- [**Governance**](https://axonos.org/governance.html) — current state, transition plan, trademark policy
-- [**Engineering memo**](https://axonos.org/memo.html) — three-page summary for technical readers
-- [**Preprint**](https://doi.org/10.5281/zenodo.20552007) — *An Analytical Microkernel Design for Safety-Critical Brain–Computer Interfaces: Schedulability, Capability Isolation, and Falsifiable Predictions* (Zenodo, DOI `10.5281/zenodo.20552007`, CC-BY-4.0) — analytical schedulability (R1 = 972 µs in a 4 ms deadline), capability isolation, falsifiable predictions P1–P5; no measurement claims
+- [**Specifications**](https://axonos.org/specifications.html), kernel ABI v1, capability catalogue, `IntentObservation` wire format, RFC index
+- [**SDK and language bindings**](https://axonos.org/sdk.html). Rust today; C FFI, Python, WebAssembly, JNI, Swift on the published roadmap
+- [**Standards engagement**](https://axonos.org/standards.html). IEEE P2731 · IEC 62304 · ISO 13485 · FDA 510(k) · EU MDR
+- [**Governance**](https://axonos.org/governance.html), current state, transition plan, trademark policy
+- [**Engineering memo**](https://axonos.org/memo.html), three-page summary for technical readers
+- [**Preprint**](https://doi.org/10.5281/zenodo.20552007) — *An Analytical Microkernel Design for Safety-Critical Brain–Computer Interfaces: Schedulability, Capability Isolation, and Falsifiable Predictions* (Zenodo, DOI `10.5281/zenodo.20552007`, CC-BY-4.0), analytical schedulability (R1 = 972 µs in a 4 ms deadline), capability isolation, falsifiable predictions P1–P5; no measurement claims
 - [**Long-form articles**](https://medium.com/@AxonOS) — 42+ pieces, one per major architectural decision
 
 ---
@@ -679,7 +696,7 @@ button. For the peer-readable analysis, cite the preprint:
 }
 ```
 
-The preprint is **analytical and falsifiable** — it states, up front, the
+The preprint is **analytical and falsifiable**. It states, up front, the
 findings that would prove it wrong. If you reproduce or refute any bound, the
 project wants to hear it: <connect@axonos.org>.
 
