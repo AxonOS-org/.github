@@ -88,7 +88,10 @@ def build_block(radar):
         "project, tool and team building in the open \u2014 AxonOS included, ranked by the same public-signal",
         "formula as everyone else, with no boosting.",
         "",
-        f'<p align="center"><a href="{REPORT_URL}"><b>\U0001F4CA The State of Open BCI \u2014 '
+        # No emoji. The profile removes them by hand and this job put one back
+        # every three hours, which made a rule enforced downstream into a lie
+        # upstream. A rule that a scheduled job undoes is not a rule.
+        f'<p align="center"><a href="{REPORT_URL}"><b>The State of Open BCI \u2014 '
         "read the full report \u2192</b></a></p>",
         "",
         f'<p align="center">{badges}</p>',
