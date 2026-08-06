@@ -4,7 +4,7 @@
 
 ### The open cognitive operating system for brain–computer interfaces.
 
-🇬🇧 [English](https://github.com/AxonOS-org/.github/blob/main/profile/README.md) · 🇯🇵 [日本語](https://github.com/AxonOS-org/.github/blob/main/profile/README.ja.md) · 🇨🇳 [中文](https://github.com/AxonOS-org/.github/blob/main/profile/README.zh.md) · 🇮🇹 [Italiano](https://github.com/AxonOS-org/.github/blob/main/profile/README.it.md) · 🇫🇷 [Français](https://github.com/AxonOS-org/.github/blob/main/profile/README.fr.md) · 🇩🇪 [Deutsch](https://github.com/AxonOS-org/.github/blob/main/profile/README.de.md) · 🇪🇸 [Español](https://github.com/AxonOS-org/.github/blob/main/profile/README.es.md) · 🇸🇦 [العربية](https://github.com/AxonOS-org/.github/blob/main/profile/README.ar.md)
+[English](https://github.com/AxonOS-org/.github/blob/main/profile/README.md) · [日本語](https://github.com/AxonOS-org/.github/blob/main/profile/README.ja.md) · [中文](https://github.com/AxonOS-org/.github/blob/main/profile/README.zh.md) · [Italiano](https://github.com/AxonOS-org/.github/blob/main/profile/README.it.md) · [Français](https://github.com/AxonOS-org/.github/blob/main/profile/README.fr.md) · [Deutsch](https://github.com/AxonOS-org/.github/blob/main/profile/README.de.md) · [Español](https://github.com/AxonOS-org/.github/blob/main/profile/README.es.md) · [العربية](https://github.com/AxonOS-org/.github/blob/main/profile/README.ar.md)
 
 [![Standard](https://img.shields.io/github/v/tag/AxonOS-org/axonos-standard?sort=semver&style=flat-square&label=Standard&color=0a4a8f)](https://github.com/AxonOS-org/axonos-standard/releases) [![Kernel](https://img.shields.io/github/v/tag/AxonOS-org/axonos-kernel?sort=semver&style=flat-square&label=Kernel&color=0a4a8f)](https://github.com/AxonOS-org/axonos-kernel/releases) [![Consent](https://img.shields.io/github/v/tag/AxonOS-org/axonos-consent?sort=semver&style=flat-square&label=Consent&color=0a4a8f)](https://github.com/AxonOS-org/axonos-consent/releases) [![Protocol](https://img.shields.io/github/v/tag/AxonOS-org/axonos-protocol?sort=semver&style=flat-square&label=Protocol&color=0a4a8f)](https://github.com/AxonOS-org/axonos-protocol/releases) [![Rust](https://img.shields.io/badge/Built%20with-Rust-CE422B?style=flat-square&logo=rust&logoColor=white)](https://www.rust-lang.org/) [![License](https://img.shields.io/badge/License-Apache--2.0%20OR%20MIT-475569?style=flat-square)](#licensing) [![Verified](https://img.shields.io/badge/Verified-Kani%20BMC-0d7a5f?style=flat-square)](https://model-checking.github.io/kani/) [![Ecosystem pulse](https://img.shields.io/endpoint?url=https%3A%2F%2Faxonos-bci.github.io%2Faxonos-community-radar%2Fdata%2Fbadge-ecosystem.json&style=flat-square)](https://axonos-bci.github.io/axonos-community-radar/)
 
@@ -160,12 +160,28 @@ flowchart TB
     LIMBS --> IMMUNE
     RADAR -. observes the whole field, AxonOS included .-> SKIN
 
-    classDef law fill:#0a4a8f,stroke:#0a4a8f,color:#fff
-    classDef sense fill:#0d7a5f,stroke:#0d7a5f,color:#fff
-    classDef skel fill:#5b3a8f,stroke:#5b3a8f,color:#fff
+    %% One hue per anatomical group, and every node gets one. A diagram where
+    %% some groups are coloured and others sit at the default grey reads as
+    %% unfinished: the eye takes grey for less important, not for unstyled.
+    %%
+    %% The core row is declared mid-line (GW --> SP --> K), so a check that
+    %% looked for node declarations at the start of a line missed four of them
+    %% and reported the diagram fully styled when it was not.
+    classDef law    fill:#0a4a8f,stroke:#083a70,color:#fff,stroke-width:2px
+    classDef skel   fill:#5b3a8f,stroke:#472d70,color:#fff,stroke-width:2px
+    classDef core   fill:#0d7a5f,stroke:#0a5f4a,color:#fff,stroke-width:2px
+    classDef limb   fill:#8f5b1e,stroke:#704818,color:#fff,stroke-width:2px
+    classDef immune fill:#8f2d3a,stroke:#70232d,color:#fff,stroke-width:2px
+    classDef sense  fill:#1e6f8f,stroke:#185870,color:#fff,stroke-width:2px
+    classDef skin   fill:#4a4a52,stroke:#3a3a40,color:#fff,stroke-width:2px
+
     class STD,RFC,VALID law
-    class RADAR sense
     class HAL,VAULT,SUP skel
+    class SDK,SDKP,SDKS,GW limb
+    class CONF,SW immune
+    class SP,K,CO,PR core
+    class RADAR sense
+    class SITE,BTB,NBG,E2E skin
 ```
 
 <details>
@@ -311,8 +327,12 @@ flowchart LR
     F[Cognitive Hypervisor<br/>TrustZone-S] -.->|isolates| C
     G[Consent FSM<br/>axonos-consent] -.->|gates| D
 
-    classDef kernel fill:#0a4a8f,stroke:#0a4a8f,color:#fff,stroke-width:2px
-    classDef secure fill:#0d7a5f,stroke:#0d7a5f,color:#fff,stroke-width:2px
+    %% Grey is deliberate here, unlike in the organ diagram above. Colour marks
+    %% what AxonOS owns; the sensors, the gateway and the applications are
+    %% somebody else's and are left plain on purpose. Filling every node would
+    %% delete the only thing this diagram says.
+    classDef kernel fill:#0a4a8f,stroke:#083a70,color:#fff,stroke-width:2px
+    classDef secure fill:#0d7a5f,stroke:#0a5f4a,color:#fff,stroke-width:2px
     class C kernel
     class F,G secure
 ```
@@ -651,7 +671,7 @@ The **AxonOS Community Radar** continuously maps every open-source brain–compu
 project, tool and team building in the open — AxonOS included, ranked by the same public-signal
 formula as everyone else, with no boosting.
 
-<p align="center"><a href="https://axonos-bci.github.io/axonos-community-radar/report.html"><b>📊 The State of Open BCI — read the full report →</b></a></p>
+<p align="center"><a href="https://axonos-bci.github.io/axonos-community-radar/report.html"><b>The State of Open BCI — read the full report →</b></a></p>
 
 <p align="center"><img src="https://img.shields.io/badge/projects-120-0a4a8f?style=flat-square" alt="projects: 120"> <img src="https://img.shields.io/badge/total_stars-46.4k-0a4a8f?style=flat-square" alt="total stars: 46.4k"> <img src="https://img.shields.io/badge/over_1k-10-0a4a8f?style=flat-square" alt="over 1k: 10"> <img src="https://img.shields.io/badge/active_30d-111-0d7a5f?style=flat-square" alt="active 30d: 111"> <img src="https://img.shields.io/badge/builders-11-0a4a8f?style=flat-square" alt="builders: 11"> <img src="https://img.shields.io/badge/languages-14-0a4a8f?style=flat-square" alt="languages: 14"></p>
 
