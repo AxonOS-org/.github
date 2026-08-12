@@ -451,7 +451,7 @@ table is a figure we do not publish.
 | IPC slot latency, proven upper bound | ≤ 0.5 µs | **L1** | [`axonos-spsc` BMC harnesses](https://github.com/AxonOS-org/axonos-kernel/blob/main/axonos-spsc/kani-proofs/src/main.rs) |
 | Consent withdrawal, proven upper bound | ≤ 1648 cycles *(≈ 9.8 µs @ 168 MHz)* | **L1** | [`handle_withdraw_terminates.rs`](https://github.com/AxonOS-org/axonos-consent/blob/main/kani/handle_withdraw_terminates.rs) |
 | Release jitter, σ | 2.1 µs | L2 | RFC-0001 — *trace publication pending* |
-| Release jitter, P99.9 | 6.5 µs | L2 | RFC-0001 — *trace publication pending* |
+| Release jitter, P99.9 | 6.5 µs | L2 | [RFC-0008 §4a](https://github.com/AxonOS-org/axonos-rfcs/blob/main/rfcs/0008-deadline-closure-acquisition-chain.md) — *trace publication pending* |
 | Utilisation ceiling | 0.25 | policy | RFC-0001 · the admitted set runs at 0.174 |
 | Jitter-limited SNR at 100 Hz | 57.6 dB | **L1** | −20·log₁₀(2π·f·σ), arithmetic over the σ above |
 | Goertzel coefficient accuracy | 1 count in ≈ 31 700 | **L1** | tested against the closed form in `axonos-signal-pipeline` |
@@ -490,9 +490,11 @@ project that publishes only its successes has put its failures somewhere else.
 
 **A timing assumption refuted by our own published data.** The admission test
 for the real-time chain omitted blocking and interference: a normal
-simplification, and here a wrong one. RFC-0001 publishes two figures measured on
-the same board: the admitted task set sums to **694.2 µs**, and the end-to-end
-worst case is **972 µs**. The **277.8 µs** between them — 28.6 % of the budget,
+simplification, and here a wrong one. RFC-0001 publishes an admitted task set and an end-to-end
+measurement from the same board. Its four 4 ms-period tasks sum to **694.2 µs**
+of WCET — 640.2 pipeline, 12 consent, 18 attestation, 24 egress, with the 1 s
+background task excluded because it is not in the epoch chain — against an
+end-to-end worst case of **972 µs**. The **277.8 µs** between them — 28.6 % of the budget,
 of which at most 6.5 µs is jitter, is precisely the terms the test was leaving
 out. The assumption was not merely undischarged; it was contradicted by our own
 measurement, and nobody had subtracted the two numbers.
@@ -673,9 +675,9 @@ formula as everyone else, with no boosting.
 
 <p align="center"><a href="https://axonos-bci.github.io/axonos-community-radar/report.html"><b>The State of Open BCI — read the full report →</b></a></p>
 
-<p align="center"><img src="https://img.shields.io/badge/projects-120-0a4a8f?style=flat-square" alt="projects: 120"> <img src="https://img.shields.io/badge/total_stars-48.9k-0a4a8f?style=flat-square" alt="total stars: 48.9k"> <img src="https://img.shields.io/badge/over_1k-10-0a4a8f?style=flat-square" alt="over 1k: 10"> <img src="https://img.shields.io/badge/active_30d-107-0d7a5f?style=flat-square" alt="active 30d: 107"> <img src="https://img.shields.io/badge/builders-11-0a4a8f?style=flat-square" alt="builders: 11"> <img src="https://img.shields.io/badge/languages-16-0a4a8f?style=flat-square" alt="languages: 16"></p>
+<p align="center"><img src="https://img.shields.io/badge/projects-120-0a4a8f?style=flat-square" alt="projects: 120"> <img src="https://img.shields.io/badge/total_stars-48.6k-0a4a8f?style=flat-square" alt="total stars: 48.6k"> <img src="https://img.shields.io/badge/over_1k-10-0a4a8f?style=flat-square" alt="over 1k: 10"> <img src="https://img.shields.io/badge/active_30d-107-0d7a5f?style=flat-square" alt="active 30d: 107"> <img src="https://img.shields.io/badge/builders-11-0a4a8f?style=flat-square" alt="builders: 11"> <img src="https://img.shields.io/badge/languages-16-0a4a8f?style=flat-square" alt="languages: 16"></p>
 
-<sub>One click for the exhaustive view — a Gartner-style reach×engagement quadrant, category and evidence breakdowns, and a full table of all 120 tracked resources. Currently leading by reach: `omi` · `wukong-robot` · `mne-python` · `NeuroKit`. Auto-refreshed from the radar every 3 hours · last update <b>11 Aug 2026, 22:24 UTC</b>.</sub>
+<sub>One click for the exhaustive view — a Gartner-style reach×engagement quadrant, category and evidence breakdowns, and a full table of all 120 tracked resources. Currently leading by reach: `omi` · `wukong-robot` · `mne-python` · `NeuroKit`. Auto-refreshed from the radar every 3 hours · last update <b>11 Aug 2026, 19:46 UTC</b>.</sub>
 <!-- RADAR:END -->
 
 ---
