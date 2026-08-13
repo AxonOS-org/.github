@@ -13,14 +13,14 @@
 
 <br/>
 
-[![🇬🇧 English](https://img.shields.io/badge/%F0%9F%87%AC%F0%9F%87%A7-English-012169?style=for-the-badge&labelColor=ffffff)](./README.md)
-[![🇯🇵 日本語](https://img.shields.io/badge/%F0%9F%87%AF%F0%9F%87%B5-%E6%97%A5%E6%9C%AC%E8%AA%9E-BC002D?style=for-the-badge&labelColor=ffffff)](./README.ja.md)
-[![🇨🇳 中文](https://img.shields.io/badge/%F0%9F%87%A8%F0%9F%87%B3-%E4%B8%AD%E6%96%87-DE2910?style=for-the-badge&labelColor=ffffff)](./README.zh.md)
-[![🇮🇹 Italiano](https://img.shields.io/badge/%F0%9F%87%AE%F0%9F%87%B9-Italiano-009246?style=for-the-badge&labelColor=ffffff)](./README.it.md)
-[![🇫🇷 Français](https://img.shields.io/badge/%F0%9F%87%AB%F0%9F%87%B7-Fran%C3%A7ais-0055A4?style=for-the-badge&labelColor=ffffff)](./README.fr.md)
-[![🇩🇪 Deutsch](https://img.shields.io/badge/%F0%9F%87%A9%F0%9F%87%AA-Deutsch-1A1A1A?style=for-the-badge&labelColor=FFCE00)](./README.de.md)
-[![🇪🇸 Español](https://img.shields.io/badge/%F0%9F%87%AA%F0%9F%87%B8-Espa%C3%B1ol-C60B1E?style=for-the-badge&labelColor=FFC400)](./README.es.md)
-[![🇸🇦 العربية](https://img.shields.io/badge/%F0%9F%87%B8%F0%9F%87%A6-%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A%D8%A9-006C35?style=for-the-badge&labelColor=ffffff)](./README.ar.md)
+[![English](https://img.shields.io/badge/%F0%9F%87%AC%F0%9F%87%A7-English-012169?style=for-the-badge&labelColor=ffffff)](./README.md)
+[![日本語](https://img.shields.io/badge/%F0%9F%87%AF%F0%9F%87%B5-%E6%97%A5%E6%9C%AC%E8%AA%9E-BC002D?style=for-the-badge&labelColor=ffffff)](./README.ja.md)
+[![中文](https://img.shields.io/badge/%F0%9F%87%A8%F0%9F%87%B3-%E4%B8%AD%E6%96%87-DE2910?style=for-the-badge&labelColor=ffffff)](./README.zh.md)
+[![Italiano](https://img.shields.io/badge/%F0%9F%87%AE%F0%9F%87%B9-Italiano-009246?style=for-the-badge&labelColor=ffffff)](./README.it.md)
+[![Français](https://img.shields.io/badge/%F0%9F%87%AB%F0%9F%87%B7-Fran%C3%A7ais-0055A4?style=for-the-badge&labelColor=ffffff)](./README.fr.md)
+[![Deutsch](https://img.shields.io/badge/%F0%9F%87%A9%F0%9F%87%AA-Deutsch-1A1A1A?style=for-the-badge&labelColor=FFCE00)](./README.de.md)
+[![Español](https://img.shields.io/badge/%F0%9F%87%AA%F0%9F%87%B8-Espa%C3%B1ol-C60B1E?style=for-the-badge&labelColor=FFC400)](./README.es.md)
+[![العربية](https://img.shields.io/badge/%F0%9F%87%B8%F0%9F%87%A6-%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A%D8%A9-006C35?style=for-the-badge&labelColor=ffffff)](./README.ar.md)
 
 <br/>
 
@@ -28,9 +28,9 @@
 [![Kernel](https://img.shields.io/badge/Kernel-v0.3.0-0a4a8f?style=flat-square)](https://github.com/AxonOS-org/AxonOS-kernel)
 [![ABI](https://img.shields.io/badge/Kernel%20ABI-v1-0a4a8f?style=flat-square)](https://axonos.org/specifications.html)
 [![Rust](https://img.shields.io/badge/built%20with-Rust-CE422B?style=flat-square&logo=rust&logoColor=white)](https://www.rust-lang.org/)
-[![License](https://img.shields.io/badge/license-Apache--2.0%20OR%20MIT-475569?style=flat-square)](#licensing)
+[![License](https://img.shields.io/badge/license-Apache--2.0%20OR%20MIT-475569?style=flat-square)](#lizenzierung)
 
-### [🌐 axonos.org](https://axonos.org) · [📐 Spezifikationen](https://axonos.org/specifications.html) · [🧰 SDK](https://axonos.org/sdk.html) · [📖 Artikel](https://medium.com/@AxonOS) · [💬 connect@axonos.org](mailto:connect@axonos.org)
+### [axonos.org](https://axonos.org) · [Spezifikationen](https://axonos.org/specifications.html) · [SDK](https://axonos.org/sdk.html) · [Artikel](https://medium.com/@AxonOS) · [connect@axonos.org](mailto:connect@axonos.org)
 
 </div>
 
@@ -58,12 +58,12 @@ Heute muss jede BCI-Anwendung pro Gerät ein eigenes binäres Wire-Format neu pa
 
 <br/>
 
-|     | Zusage                        | Was das in der Praxis bedeutet                                                                                                     |
-|:---:|:------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------|
-| 🦀  | **Harter Echtzeitbetrieb auf Standardhardware** | `#![no_std]` Rust auf ARMv8-M. Kein GC, kein Allokator im Hot Path, keine unbeschränkten Panics.                |
-| 📐  | **Formal beschränkte WCRT**   | Jede Critical-Path-Operation hat eine Kani-verifizierte Obergrenze. Latenz wird nicht gemessen, sondern *bewiesen*.              |
-| 🔒  | **Strukturelle Privatsphäre** | Capabilities, die rohe kognitive Daten leaken würden (`RawEEG`, `EmotionState`, `CognitiveProfile`), existieren nicht als Typen.   |
-| 🌐  | **Offenes Ökosystem**         | Apache-2.0 OR MIT für Code, CC-BY-SA-4.0 für Spezifikationen. Alle Repositorien sind öffentlich. Jede Schicht ist auditierbar, forkbar, austauschbar. |
+|  | Zusage | Was das in der Praxis bedeutet |
+|:---:|:---|:---|
+| | **Harter Echtzeitbetrieb auf Standardhardware** | `#![no_std]` Rust auf ARMv8-M. Kein GC, kein Allokator im Hot Path, keine unbeschränkten Panics. |
+| | **Formal beschränkte WCRT** | Jede Critical-Path-Operation hat eine Kani-verifizierte Obergrenze. Latenz wird nicht gemessen, sondern *bewiesen*. |
+| | **Strukturelle Privatsphäre** | Capabilities, die rohe kognitive Daten leaken würden (`RawEEG`, `EmotionState`, `CognitiveProfile`), existieren nicht als Typen. |
+| | **Offenes Ökosystem** | Apache-2.0 OR MIT für Code, CC-BY-SA-4.0 für Spezifikationen. Alle Repositorien sind öffentlich. Jede Schicht ist auditierbar, forkbar, austauschbar. |
 
 <br/>
 
@@ -103,14 +103,14 @@ Das SDK ist das Rust-Referenz-Binding. C-FFI-, Python-, WebAssembly-, JNI- und S
 
 Alle sechs Repositorien sind öffentlich. Quellcode unter Apache-2.0 OR MIT. Spezifikationen unter CC-BY-SA-4.0.
 
-|                                                                              | Repository           | Zweck                                                                              | Sprache  | Aktuell    |
-|:----------------------------------------------------------------------------:|:---------------------|:-----------------------------------------------------------------------------------|:--------:|:-----------|
-| [⬢](https://github.com/AxonOS-org/AxonOS-kernel)                              | **AxonOS-kernel**    | Hartes Echtzeit-Mikrokernel — 8 Crates, formal beschränkte WCRT, 28 Kani-Harnesses | Rust     | `v0.3.0`   |
-| [⬢](https://github.com/AxonOS-org/axonos-sdk)                                 | **axonos-sdk**       | Anwendungsgrenze — typisierte Intents, Capability-Manifests, Kernel-ABI v1         | Rust     | `v0.3.5`   |
-| [⬢](https://github.com/AxonOS-org/axonos-consent)                             | **axonos-consent**   | Consent-Enforcement auf Protokollebene für Cognitive Mesh Coupling (MMP)           | Rust     | `v0.5.0`   |
-| [⬢](https://github.com/AxonOS-org/axonos-swarm)                               | **axonos-swarm**     | Multi-Node-Koordination — Neural-PTP-Synchronisation, Swarm-Scheduling             | Rust     | `v0.2.1`   |
-| [⬢](https://github.com/AxonOS-org/axonos-rfcs)                                | **axonos-rfcs**      | Engineering-Spezifikationen — 8 nummerierte RFCs, normativ, CC-BY-SA-4.0           | Markdown | aktiv      |
-| [⬢](https://github.com/AxonOS-org/axon-bci-gateway)                           | **axon-bci-gateway** | Hardware-Akquise-Gateway (OpenBCI-Fork, MIT vom Upstream erhalten)                 | HTML     | aktiv      |
+|  | Repository | Zweck | Sprache | Aktuell |
+|:---:|:---|:---|:---:|:---|
+| [⬢](https://github.com/AxonOS-org/AxonOS-kernel) | **AxonOS-kernel** | Hartes Echtzeit-Mikrokernel — 8 Crates, formal beschränkte WCRT, 28 Kani-Harnesses | Rust | `v0.3.0` |
+| [⬢](https://github.com/AxonOS-org/axonos-sdk) | **axonos-sdk** | Anwendungsgrenze — typisierte Intents, Capability-Manifests, Kernel-ABI v1 | Rust | `v0.3.5` |
+| [⬢](https://github.com/AxonOS-org/axonos-consent) | **axonos-consent** | Consent-Enforcement auf Protokollebene für Cognitive Mesh Coupling (MMP) | Rust | `v0.5.0` |
+| [⬢](https://github.com/AxonOS-org/axonos-swarm) | **axonos-swarm** | Multi-Node-Koordination — Neural-PTP-Synchronisation, Swarm-Scheduling | Rust | `v0.2.1` |
+| [⬢](https://github.com/AxonOS-org/axonos-rfcs) | **axonos-rfcs** | Engineering-Spezifikationen — 8 nummerierte RFCs, normativ, CC-BY-SA-4.0 | Markdown | aktiv |
+| [⬢](https://github.com/AxonOS-org/axon-bci-gateway) | **axon-bci-gateway** | Hardware-Akquise-Gateway (OpenBCI-Fork, MIT vom Upstream erhalten) | HTML | aktiv |
 
 <br/>
 
@@ -176,22 +176,22 @@ flowchart LR
 
 <br/>
 
-| Phase        | Inhalt                                                                                     | Zeitpunkt     |
-|:-------------|:-------------------------------------------------------------------------------------------|:--------------|
-| **Phase 0**  | Architektur, RFCs, SDK-API, Kernel-Verifikations-Harnesses                                  | ✓ Abgeschlossen |
-| **Phase 1**  | Klinik-Dev-Kit (8 Kanäle) · ALS-Zentrum-Pilot                                              | 🟡 Q2 2026    |
-| **Phase 2**  | FDA 510(k) Q-Sub für Cognitive Hypervisor · IEEE P2731 Beitrag                              | 🔵 Q3 2026    |
-| **Phase 3**  | Erste kommerzielle Bereitstellung über Foundation-Mitglieder                                | 🔵 2027       |
+| Phase | Inhalt | Zeitpunkt |
+|:---|:---|:---|
+| **Phase 0** | Architektur, RFCs, SDK-API, Kernel-Verifikations-Harnesses | Abgeschlossen |
+| **Phase 1** | Klinik-Dev-Kit (8 Kanäle) · ALS-Zentrum-Pilot | abhängig von einer instrumentierten Messvorrichtung, die noch nicht beschafft ist; kein Datum, weil es erfunden wäre |
+| **Phase 2** | FDA 510(k) Q-Sub für Cognitive Hypervisor · IEEE P2731 Beitrag | nach Phase 1 |
+| **Phase 3** | Erste kommerzielle Bereitstellung über Foundation-Mitglieder | nach Phase 2 |
 
 <br/>
 
 ## Lizenzierung
 
-| Artefakt                              | Lizenz                                            |
-|:--------------------------------------|:--------------------------------------------------|
-| Kernel, SDK, consent, swarm, gateway  | Apache-2.0 OR MIT                                 |
-| RFCs und Spezifikationen              | CC-BY-SA-4.0                                      |
-| `axon-bci-gateway`                    | MIT (vom Upstream OpenBCI_GUI erhalten)           |
+| Artefakt | Lizenz |
+|:---|:---|
+| Kernel, SDK, consent, swarm, gateway | Apache-2.0 OR MIT |
+| RFCs und Spezifikationen | CC-BY-SA-4.0 |
+| `axon-bci-gateway` | MIT (vom Upstream OpenBCI_GUI erhalten) |
 
 <br/>
 <br/>
