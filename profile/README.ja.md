@@ -13,14 +13,14 @@
 
 <br/>
 
-[![🇬🇧 English](https://img.shields.io/badge/%F0%9F%87%AC%F0%9F%87%A7-English-012169?style=for-the-badge&labelColor=ffffff)](./README.md)
-[![🇯🇵 日本語](https://img.shields.io/badge/%F0%9F%87%AF%F0%9F%87%B5-%E6%97%A5%E6%9C%AC%E8%AA%9E-BC002D?style=for-the-badge&labelColor=ffffff)](./README.ja.md)
-[![🇨🇳 中文](https://img.shields.io/badge/%F0%9F%87%A8%F0%9F%87%B3-%E4%B8%AD%E6%96%87-DE2910?style=for-the-badge&labelColor=ffffff)](./README.zh.md)
-[![🇮🇹 Italiano](https://img.shields.io/badge/%F0%9F%87%AE%F0%9F%87%B9-Italiano-009246?style=for-the-badge&labelColor=ffffff)](./README.it.md)
-[![🇫🇷 Français](https://img.shields.io/badge/%F0%9F%87%AB%F0%9F%87%B7-Fran%C3%A7ais-0055A4?style=for-the-badge&labelColor=ffffff)](./README.fr.md)
-[![🇩🇪 Deutsch](https://img.shields.io/badge/%F0%9F%87%A9%F0%9F%87%AA-Deutsch-1A1A1A?style=for-the-badge&labelColor=FFCE00)](./README.de.md)
-[![🇪🇸 Español](https://img.shields.io/badge/%F0%9F%87%AA%F0%9F%87%B8-Espa%C3%B1ol-C60B1E?style=for-the-badge&labelColor=FFC400)](./README.es.md)
-[![🇸🇦 العربية](https://img.shields.io/badge/%F0%9F%87%B8%F0%9F%87%A6-%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A%D8%A9-006C35?style=for-the-badge&labelColor=ffffff)](./README.ar.md)
+[![English](https://img.shields.io/badge/%F0%9F%87%AC%F0%9F%87%A7-English-012169?style=for-the-badge&labelColor=ffffff)](./README.md)
+[![日本語](https://img.shields.io/badge/%F0%9F%87%AF%F0%9F%87%B5-%E6%97%A5%E6%9C%AC%E8%AA%9E-BC002D?style=for-the-badge&labelColor=ffffff)](./README.ja.md)
+[![中文](https://img.shields.io/badge/%F0%9F%87%A8%F0%9F%87%B3-%E4%B8%AD%E6%96%87-DE2910?style=for-the-badge&labelColor=ffffff)](./README.zh.md)
+[![Italiano](https://img.shields.io/badge/%F0%9F%87%AE%F0%9F%87%B9-Italiano-009246?style=for-the-badge&labelColor=ffffff)](./README.it.md)
+[![Français](https://img.shields.io/badge/%F0%9F%87%AB%F0%9F%87%B7-Fran%C3%A7ais-0055A4?style=for-the-badge&labelColor=ffffff)](./README.fr.md)
+[![Deutsch](https://img.shields.io/badge/%F0%9F%87%A9%F0%9F%87%AA-Deutsch-1A1A1A?style=for-the-badge&labelColor=FFCE00)](./README.de.md)
+[![Español](https://img.shields.io/badge/%F0%9F%87%AA%F0%9F%87%B8-Espa%C3%B1ol-C60B1E?style=for-the-badge&labelColor=FFC400)](./README.es.md)
+[![العربية](https://img.shields.io/badge/%F0%9F%87%B8%F0%9F%87%A6-%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A%D8%A9-006C35?style=for-the-badge&labelColor=ffffff)](./README.ar.md)
 
 <br/>
 
@@ -28,9 +28,9 @@
 [![Kernel](https://img.shields.io/badge/Kernel-v0.3.0-0a4a8f?style=flat-square)](https://github.com/AxonOS-org/AxonOS-kernel)
 [![ABI](https://img.shields.io/badge/Kernel%20ABI-v1-0a4a8f?style=flat-square)](https://axonos.org/specifications.html)
 [![Rust](https://img.shields.io/badge/built%20with-Rust-CE422B?style=flat-square&logo=rust&logoColor=white)](https://www.rust-lang.org/)
-[![License](https://img.shields.io/badge/license-Apache--2.0%20OR%20MIT-475569?style=flat-square)](#licensing)
+[![License](https://img.shields.io/badge/license-Apache--2.0%20OR%20MIT-475569?style=flat-square)](#ライセンス)
 
-### [🌐 axonos.org](https://axonos.org) · [📐 仕様](https://axonos.org/specifications.html) · [🧰 SDK](https://axonos.org/sdk.html) · [📖 記事](https://medium.com/@AxonOS) · [💬 connect@axonos.org](mailto:connect@axonos.org)
+### [axonos.org](https://axonos.org) · [仕様](https://axonos.org/specifications.html) · [SDK](https://axonos.org/sdk.html) · [記事](https://medium.com/@AxonOS) · [connect@axonos.org](mailto:connect@axonos.org)
 
 </div>
 
@@ -58,12 +58,12 @@
 
 <br/>
 
-|     | 約束                          | 実際の意味                                                                                                                            |
-|:---:|:------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------|
-| 🦀  | **汎用ハードウェアでのハードリアルタイム** | ARMv8-M 上の `#![no_std]` Rust。GC なし、ホットパスにアロケータなし、無制限のパニックなし。メモリ安全性は構造的に保証されます。  |
-| 📐  | **形式的に境界づけられた WCRT** | すべてのクリティカルパス操作には Kani 検証済みの上限があります。レイテンシは測定されるのではなく*証明*されます。                |
-| 🔒  | **構造的プライバシー**        | 生の認知状態を漏洩する機能 (`RawEEG`、`EmotionState`、`CognitiveProfile`) は型として存在しません。                                  |
-| 🌐  | **オープンエコシステム**      | コードは Apache-2.0 または MIT、仕様は CC-BY-SA-4.0。すべてのリポジトリが公開されています。誰でも監査・フォーク・置き換え可能。  |
+|  | 約束 | 実際の意味 |
+|:---:|:---|:---|
+| | **汎用ハードウェアでのハードリアルタイム** | ARMv8-M 上の `#![no_std]` Rust。GC なし、ホットパスにアロケータなし、無制限のパニックなし。メモリ安全性は構造的に保証されます。 |
+| | **形式的に境界づけられた WCRT** | すべてのクリティカルパス操作には Kani 検証済みの上限があります。レイテンシは測定されるのではなく*証明*されます。 |
+| | **構造的プライバシー** | 生の認知状態を漏洩する機能 (`RawEEG`、`EmotionState`、`CognitiveProfile`) は型として存在しません。 |
+| | **オープンエコシステム** | コードは Apache-2.0 または MIT、仕様は CC-BY-SA-4.0。すべてのリポジトリが公開されています。誰でも監査・フォーク・置き換え可能。 |
 
 <br/>
 
@@ -103,14 +103,14 @@ SDK は Rust リファレンスバインディングです。C FFI、Python、We
 
 すべての 6 つのリポジトリは公開されています。ソースコードは Apache-2.0 または MIT、仕様は CC-BY-SA-4.0 のもとで提供されます。
 
-|                                                                              | リポジトリ           | 目的                                                                              | 言語     | 最新       |
-|:----------------------------------------------------------------------------:|:---------------------|:----------------------------------------------------------------------------------|:--------:|:-----------|
-| [⬢](https://github.com/AxonOS-org/AxonOS-kernel)                              | **AxonOS-kernel**    | ハードリアルタイムマイクロカーネル — 8 クレート、形式的に境界づけられた WCRT、28 Kani ハーネス | Rust     | `v0.3.0`   |
-| [⬢](https://github.com/AxonOS-org/axonos-sdk)                                 | **axonos-sdk**       | アプリケーション境界 — 型付きインテント、能力マニフェスト、カーネル ABI v1            | Rust     | `v0.3.5`   |
-| [⬢](https://github.com/AxonOS-org/axonos-consent)                             | **axonos-consent**   | 認知メッシュカップリングのためのプロトコルレベル同意施行 (MMP)                       | Rust     | `v0.5.0`   |
-| [⬢](https://github.com/AxonOS-org/axonos-swarm)                               | **axonos-swarm**     | マルチノード調整 — Neural PTP 同期、スウォームスケジューリング                       | Rust     | `v0.2.1`   |
-| [⬢](https://github.com/AxonOS-org/axonos-rfcs)                                | **axonos-rfcs**      | 工学仕様書 — 8 つの番号付き RFC、規範的、CC-BY-SA-4.0                                 | Markdown | active     |
-| [⬢](https://github.com/AxonOS-org/axon-bci-gateway)                           | **axon-bci-gateway** | ハードウェア取得ゲートウェイ (OpenBCI フォーク、上流から MIT 保持)                   | HTML     | active     |
+|  | リポジトリ | 目的 | 言語 | 最新 |
+|:---:|:---|:---|:---:|:---|
+| [⬢](https://github.com/AxonOS-org/AxonOS-kernel) | **AxonOS-kernel** | ハードリアルタイムマイクロカーネル — 8 クレート、形式的に境界づけられた WCRT、28 Kani ハーネス | Rust | `v0.3.0` |
+| [⬢](https://github.com/AxonOS-org/axonos-sdk) | **axonos-sdk** | アプリケーション境界 — 型付きインテント、能力マニフェスト、カーネル ABI v1 | Rust | `v0.3.5` |
+| [⬢](https://github.com/AxonOS-org/axonos-consent) | **axonos-consent** | 認知メッシュカップリングのためのプロトコルレベル同意施行 (MMP) | Rust | `v0.5.0` |
+| [⬢](https://github.com/AxonOS-org/axonos-swarm) | **axonos-swarm** | マルチノード調整 — Neural PTP 同期、スウォームスケジューリング | Rust | `v0.2.1` |
+| [⬢](https://github.com/AxonOS-org/axonos-rfcs) | **axonos-rfcs** | 工学仕様書 — 8 つの番号付き RFC、規範的、CC-BY-SA-4.0 | Markdown | active |
+| [⬢](https://github.com/AxonOS-org/axon-bci-gateway) | **axon-bci-gateway** | ハードウェア取得ゲートウェイ (OpenBCI フォーク、上流から MIT 保持) | HTML | active |
 
 <br/>
 
@@ -176,22 +176,22 @@ flowchart LR
 
 <br/>
 
-| フェーズ      | 内容                                                                                              | 時期        |
-|:--------------|:--------------------------------------------------------------------------------------------------|:------------|
-| **フェーズ 0** | アーキテクチャ、RFC、SDK API、カーネル検証ハーネス                                                    | ✓ 完了      |
-| **フェーズ 1** | 臨床グレード 8 チャンネル開発キット · ALS センター臨床試験                                              | 🟡 2026 Q2  |
-| **フェーズ 2** | Cognitive Hypervisor の FDA 510(k) Q-Sub · IEEE P2731 寄稿                                          | 🔵 2026 Q3  |
-| **フェーズ 3** | Foundation メンバーによる初の商用展開                                                                | 🔵 2027     |
+| フェーズ | 内容 | 時期 |
+|:---|:---|:---|
+| **フェーズ 0** | アーキテクチャ、RFC、SDK API、カーネル検証ハーネス | 完了 |
+| **フェーズ 1** | 臨床グレード 8 チャンネル開発キット · ALS センター臨床試験 | 計測機器の治具を調達次第。日付は記載しません — 記載すれば創作になるためです |
+| **フェーズ 2** | Cognitive Hypervisor の FDA 510(k) Q-Sub · IEEE P2731 寄稿 | フェーズ 1 の後 |
+| **フェーズ 3** | Foundation メンバーによる初の商用展開 | フェーズ 2 の後 |
 
 <br/>
 
 ## ライセンス
 
-| 成果物                                | ライセンス                                          |
-|:--------------------------------------|:----------------------------------------------------|
-| カーネル、SDK、consent、swarm、gateway | Apache-2.0 OR MIT                                   |
-| RFC と仕様書                           | CC-BY-SA-4.0                                        |
-| `axon-bci-gateway`                    | MIT (上流の OpenBCI_GUI から保持)                   |
+| 成果物 | ライセンス |
+|:---|:---|
+| カーネル、SDK、consent、swarm、gateway | Apache-2.0 OR MIT |
+| RFC と仕様書 | CC-BY-SA-4.0 |
+| `axon-bci-gateway` | MIT (上流の OpenBCI_GUI から保持) |
 
 <br/>
 <br/>

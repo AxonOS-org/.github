@@ -13,14 +13,14 @@
 
 <br/>
 
-[![🇬🇧 English](https://img.shields.io/badge/%F0%9F%87%AC%F0%9F%87%A7-English-012169?style=for-the-badge&labelColor=ffffff)](./README.md)
-[![🇯🇵 日本語](https://img.shields.io/badge/%F0%9F%87%AF%F0%9F%87%B5-%E6%97%A5%E6%9C%AC%E8%AA%9E-BC002D?style=for-the-badge&labelColor=ffffff)](./README.ja.md)
-[![🇨🇳 中文](https://img.shields.io/badge/%F0%9F%87%A8%F0%9F%87%B3-%E4%B8%AD%E6%96%87-DE2910?style=for-the-badge&labelColor=ffffff)](./README.zh.md)
-[![🇮🇹 Italiano](https://img.shields.io/badge/%F0%9F%87%AE%F0%9F%87%B9-Italiano-009246?style=for-the-badge&labelColor=ffffff)](./README.it.md)
-[![🇫🇷 Français](https://img.shields.io/badge/%F0%9F%87%AB%F0%9F%87%B7-Fran%C3%A7ais-0055A4?style=for-the-badge&labelColor=ffffff)](./README.fr.md)
-[![🇩🇪 Deutsch](https://img.shields.io/badge/%F0%9F%87%A9%F0%9F%87%AA-Deutsch-1A1A1A?style=for-the-badge&labelColor=FFCE00)](./README.de.md)
-[![🇪🇸 Español](https://img.shields.io/badge/%F0%9F%87%AA%F0%9F%87%B8-Espa%C3%B1ol-C60B1E?style=for-the-badge&labelColor=FFC400)](./README.es.md)
-[![🇸🇦 العربية](https://img.shields.io/badge/%F0%9F%87%B8%F0%9F%87%A6-%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A%D8%A9-006C35?style=for-the-badge&labelColor=ffffff)](./README.ar.md)
+[![English](https://img.shields.io/badge/%F0%9F%87%AC%F0%9F%87%A7-English-012169?style=for-the-badge&labelColor=ffffff)](./README.md)
+[![日本語](https://img.shields.io/badge/%F0%9F%87%AF%F0%9F%87%B5-%E6%97%A5%E6%9C%AC%E8%AA%9E-BC002D?style=for-the-badge&labelColor=ffffff)](./README.ja.md)
+[![中文](https://img.shields.io/badge/%F0%9F%87%A8%F0%9F%87%B3-%E4%B8%AD%E6%96%87-DE2910?style=for-the-badge&labelColor=ffffff)](./README.zh.md)
+[![Italiano](https://img.shields.io/badge/%F0%9F%87%AE%F0%9F%87%B9-Italiano-009246?style=for-the-badge&labelColor=ffffff)](./README.it.md)
+[![Français](https://img.shields.io/badge/%F0%9F%87%AB%F0%9F%87%B7-Fran%C3%A7ais-0055A4?style=for-the-badge&labelColor=ffffff)](./README.fr.md)
+[![Deutsch](https://img.shields.io/badge/%F0%9F%87%A9%F0%9F%87%AA-Deutsch-1A1A1A?style=for-the-badge&labelColor=FFCE00)](./README.de.md)
+[![Español](https://img.shields.io/badge/%F0%9F%87%AA%F0%9F%87%B8-Espa%C3%B1ol-C60B1E?style=for-the-badge&labelColor=FFC400)](./README.es.md)
+[![العربية](https://img.shields.io/badge/%F0%9F%87%B8%F0%9F%87%A6-%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A%D8%A9-006C35?style=for-the-badge&labelColor=ffffff)](./README.ar.md)
 
 <br/>
 
@@ -28,9 +28,9 @@
 [![Kernel](https://img.shields.io/badge/Kernel-v0.3.0-0a4a8f?style=flat-square)](https://github.com/AxonOS-org/AxonOS-kernel)
 [![ABI](https://img.shields.io/badge/Kernel%20ABI-v1-0a4a8f?style=flat-square)](https://axonos.org/specifications.html)
 [![Rust](https://img.shields.io/badge/built%20with-Rust-CE422B?style=flat-square&logo=rust&logoColor=white)](https://www.rust-lang.org/)
-[![License](https://img.shields.io/badge/license-Apache--2.0%20OR%20MIT-475569?style=flat-square)](#licensing)
+[![License](https://img.shields.io/badge/license-Apache--2.0%20OR%20MIT-475569?style=flat-square)](#许可)
 
-### [🌐 axonos.org](https://axonos.org) · [📐 规范](https://axonos.org/specifications.html) · [🧰 SDK](https://axonos.org/sdk.html) · [📖 文章](https://medium.com/@AxonOS) · [💬 connect@axonos.org](mailto:connect@axonos.org)
+### [axonos.org](https://axonos.org) · [规范](https://axonos.org/specifications.html) · [SDK](https://axonos.org/sdk.html) · [文章](https://medium.com/@AxonOS) · [connect@axonos.org](mailto:connect@axonos.org)
 
 </div>
 
@@ -58,12 +58,12 @@
 
 <br/>
 
-|     | 承诺                          | 实际含义                                                                                                                              |
-|:---:|:------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------|
-| 🦀  | **普通硬件上的硬实时**         | ARMv8-M 上的 `#![no_std]` Rust。无 GC、热路径无分配器、无无界 panic。内存安全是结构化的。                                            |
-| 📐  | **形式化验证的 WCRT**         | 每个关键路径操作都有 Kani 验证的上界。延迟是被*证明*的,而非被测量的。                                                              |
-| 🔒  | **结构化隐私**                 | 会泄露原始认知状态的能力 (`RawEEG`、`EmotionState`、`CognitiveProfile`) 在类型系统中不存在。                                          |
-| 🌐  | **开放生态**                   | 代码采用 Apache-2.0 或 MIT 许可,规范采用 CC-BY-SA-4.0。所有仓库均为公开。任何人都可以审计、分叉、或替换任何层。                      |
+|  | 承诺 | 实际含义 |
+|:---:|:---|:---|
+| | **普通硬件上的硬实时** | ARMv8-M 上的 `#![no_std]` Rust。无 GC、热路径无分配器、无无界 panic。内存安全是结构化的。 |
+| | **形式化验证的 WCRT** | 每个关键路径操作都有 Kani 验证的上界。延迟是被*证明*的,而非被测量的。 |
+| | **结构化隐私** | 会泄露原始认知状态的能力 (`RawEEG`、`EmotionState`、`CognitiveProfile`) 在类型系统中不存在。 |
+| | **开放生态** | 代码采用 Apache-2.0 或 MIT 许可,规范采用 CC-BY-SA-4.0。所有仓库均为公开。任何人都可以审计、分叉、或替换任何层。 |
 
 <br/>
 
@@ -103,14 +103,14 @@ SDK 是 Rust 参考绑定。C FFI、Python、WebAssembly、JNI 和 Swift 绑定�
 
 所有 6 个仓库均已公开。源代码采用 Apache-2.0 OR MIT,规范采用 CC-BY-SA-4.0。
 
-|                                                                              | 仓库                 | 用途                                                                              | 语言     | 最新版本   |
-|:----------------------------------------------------------------------------:|:---------------------|:----------------------------------------------------------------------------------|:--------:|:-----------|
-| [⬢](https://github.com/AxonOS-org/AxonOS-kernel)                              | **AxonOS-kernel**    | 硬实时微内核 — 8 个 crate,形式化验证的 WCRT,28 个 Kani 验证桩                    | Rust     | `v0.3.0`   |
-| [⬢](https://github.com/AxonOS-org/axonos-sdk)                                 | **axonos-sdk**       | 应用边界 — 类型化意图、能力清单、内核 ABI v1                                       | Rust     | `v0.3.5`   |
-| [⬢](https://github.com/AxonOS-org/axonos-consent)                             | **axonos-consent**   | 用于认知网格耦合的协议级同意执行 (MMP)                                            | Rust     | `v0.5.0`   |
-| [⬢](https://github.com/AxonOS-org/axonos-swarm)                               | **axonos-swarm**     | 多节点协调 — Neural PTP 同步,集群调度                                              | Rust     | `v0.2.1`   |
-| [⬢](https://github.com/AxonOS-org/axonos-rfcs)                                | **axonos-rfcs**      | 工程规范 — 8 个编号 RFC,规范性,CC-BY-SA-4.0                                       | Markdown | active     |
-| [⬢](https://github.com/AxonOS-org/axon-bci-gateway)                           | **axon-bci-gateway** | 硬件采集网关 (OpenBCI 分叉,从上游保留 MIT)                                        | HTML     | active     |
+|  | 仓库 | 用途 | 语言 | 最新版本 |
+|:---:|:---|:---|:---:|:---|
+| [⬢](https://github.com/AxonOS-org/AxonOS-kernel) | **AxonOS-kernel** | 硬实时微内核 — 8 个 crate,形式化验证的 WCRT,28 个 Kani 验证桩 | Rust | `v0.3.0` |
+| [⬢](https://github.com/AxonOS-org/axonos-sdk) | **axonos-sdk** | 应用边界 — 类型化意图、能力清单、内核 ABI v1 | Rust | `v0.3.5` |
+| [⬢](https://github.com/AxonOS-org/axonos-consent) | **axonos-consent** | 用于认知网格耦合的协议级同意执行 (MMP) | Rust | `v0.5.0` |
+| [⬢](https://github.com/AxonOS-org/axonos-swarm) | **axonos-swarm** | 多节点协调 — Neural PTP 同步,集群调度 | Rust | `v0.2.1` |
+| [⬢](https://github.com/AxonOS-org/axonos-rfcs) | **axonos-rfcs** | 工程规范 — 8 个编号 RFC,规范性,CC-BY-SA-4.0 | Markdown | active |
+| [⬢](https://github.com/AxonOS-org/axon-bci-gateway) | **axon-bci-gateway** | 硬件采集网关 (OpenBCI 分叉,从上游保留 MIT) | HTML | active |
 
 <br/>
 
@@ -176,22 +176,22 @@ flowchart LR
 
 <br/>
 
-| 阶段          | 内容                                                                                              | 时间        |
-|:--------------|:--------------------------------------------------------------------------------------------------|:------------|
-| **阶段 0**    | 架构、RFC、SDK API、内核验证桩                                                                       | ✓ 完成      |
-| **阶段 1**    | 临床级 8 通道开发套件 · ALS 中心临床试点                                                              | 🟡 2026 Q2  |
-| **阶段 2**    | Cognitive Hypervisor 的 FDA 510(k) Q-Sub · IEEE P2731 贡献                                          | 🔵 2026 Q3  |
-| **阶段 3**    | 首个商业部署                                                                                          | 🔵 2027     |
+| 阶段 | 内容 | 时间 |
+|:---|:---|:---|
+| **阶段 0** | 架构、RFC、SDK API、内核验证桩 | 完成 |
+| **阶段 1** | 临床级 8 通道开发套件 · ALS 中心临床试点 | 取决于尚未采购的测量夹具。此处不给日期，因为给出的日期只能是编造的 |
+| **阶段 2** | Cognitive Hypervisor 的 FDA 510(k) Q-Sub · IEEE P2731 贡献 | 在第 1 阶段之后 |
+| **阶段 3** | 首个商业部署 | 在第 2 阶段之后 |
 
 <br/>
 
 ## 许可
 
-| 工件                                  | 许可证                                              |
-|:--------------------------------------|:----------------------------------------------------|
-| 内核、SDK、consent、swarm、gateway     | Apache-2.0 OR MIT                                   |
-| RFC 与规范                             | CC-BY-SA-4.0                                        |
-| `axon-bci-gateway`                    | MIT (从上游 OpenBCI_GUI 保留)                       |
+| 工件 | 许可证 |
+|:---|:---|
+| 内核、SDK、consent、swarm、gateway | Apache-2.0 OR MIT |
+| RFC 与规范 | CC-BY-SA-4.0 |
+| `axon-bci-gateway` | MIT (从上游 OpenBCI_GUI 保留) |
 
 <br/>
 <br/>
