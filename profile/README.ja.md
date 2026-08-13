@@ -122,7 +122,7 @@ SDK は Rust リファレンスバインディングです。C FFI、Python、We
 flowchart LR
     A[EEG/EMG センサー<br/>ADS1299 · 24-bit] -->|raw| B[BCI ゲートウェイ<br/>nRF52840]
     B -->|filtered| C[AxonOS カーネル<br/>Rust no_std<br/>Cortex-M4F]
-    C -->|WCRT<br/>≤ 1 ms (L1)| D[認知<br/>スケジューラ]
+    C -->|"WCRT ≤ 1 ms<br/>L1 証明済み"| D[認知<br/>スケジューラ]
     D -->|typed intent| E[アプリケーション<br/>via SDK]
     F[Cognitive Hypervisor<br/>TrustZone-S] -.->|isolates| C
     G[同意層<br/>MMP protocol] -.->|gates| D
@@ -133,9 +133,17 @@ flowchart LR
     class F,G secure
 ```
 
+**図の読み方。** 左から右へ、電極から意図まで。カーネル（青）は締め切りを*拒否*します — 保証できない設定は実行を許可されません。緑の二つは境界です:Cognitive Hypervisor は分離し、同意層はゲートします。
+
+この図は構造であり、性能の主張ではありません。数値は次節にあり、それぞれ根拠のレベルを伴います。
+
 <br/>
 
 ## 数字で見る
+
+各数値は、それが**どのように**確立されたかを伴います。L1 は機械検証済み — 自分で `cargo kani` を実行して確認できます。L2 は参照ハードウェア上の測定値で、生のトレースはまだ公開されていません。L3 は独立した再現であり、**どの数値についても主張していません**。
+
+分類精度、情報転送率、消費電力は測定していません。これらは推定ではなく、そもそも計測していないため記載しません。
 
 <br/>
 

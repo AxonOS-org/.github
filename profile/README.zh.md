@@ -122,7 +122,7 @@ SDK 是 Rust 参考绑定。C FFI、Python、WebAssembly、JNI 和 Swift 绑定�
 flowchart LR
     A[EEG/EMG 传感器<br/>ADS1299 · 24-bit] -->|raw| B[BCI 网关<br/>nRF52840]
     B -->|filtered| C[AxonOS 内核<br/>Rust no_std<br/>Cortex-M4F]
-    C -->|WCRT<br/>≤ 1 ms (L1)| D[认知<br/>调度器]
+    C -->|"WCRT ≤ 1 ms<br/>L1 已证明"| D[认知<br/>调度器]
     D -->|typed intent| E[应用<br/>via SDK]
     F[Cognitive Hypervisor<br/>TrustZone-S] -.->|isolates| C
     G[同意层<br/>MMP protocol] -.->|gates| D
@@ -133,9 +133,17 @@ flowchart LR
     class F,G secure
 ```
 
+**如何阅读此图。** 从左到右，从电极到意图。内核（蓝色）*拒绝*截止期限 —它无法保证的配置不被允许运行。两个绿色节点是边界：Cognitive Hypervisor 隔离，同意层设门。
+
+此图表示结构，而非性能主张。数字在下一节，每个都带有证据级别。
+
 <br/>
 
 ## 数字一览
+
+每个数字都附带它是**如何**得出的。L1 为机器验证 — 你可以自己运行 `cargo kani` 核对。L2 为参考硬件上的实测值，原始轨迹尚未公开。L3 为独立复现，**任何数字都未主张达到该级别**。
+
+分类准确率、信息传输率和功耗未被测量。此处不给出估计值，因为项目并未测量它们。
 
 <br/>
 

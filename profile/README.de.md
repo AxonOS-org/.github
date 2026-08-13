@@ -122,7 +122,7 @@ Alle sechs Repositorien sind öffentlich. Quellcode unter Apache-2.0 OR MIT. Spe
 flowchart LR
     A[EEG/EMG-Sensoren<br/>ADS1299 · 24-bit] -->|raw| B[BCI-Gateway<br/>nRF52840]
     B -->|filtered| C[AxonOS-Kernel<br/>Rust no_std<br/>Cortex-M4F]
-    C -->|WCRT<br/>≤ 1 ms (L1)| D[Kognitiver<br/>Scheduler]
+    C -->|"WCRT ≤ 1 ms<br/>L1 bewiesen"| D[Kognitiver<br/>Scheduler]
     D -->|typed intent| E[Anwendung<br/>via SDK]
     F[Cognitive Hypervisor<br/>TrustZone-S] -.->|isolates| C
     G[Consent-Schicht<br/>MMP protocol] -.->|gates| D
@@ -133,10 +133,18 @@ flowchart LR
     class F,G secure
 ```
 
+**Wie das Diagramm zu lesen ist.** Von links nach rechts, von der Elektrode zur Absicht. Der Kernel (blau) *verweigert* Fristen: eine Konfiguration, die er nicht garantieren kann, wird nicht zugelassen. Die beiden grünen Knoten sind Grenzen — der Cognitive Hypervisor isoliert, die Zustimmungsschicht gibt frei.
+
+Das Diagramm zeigt Struktur und behauptet keine Leistung. Die Zahlen stehen im nächsten Abschnitt, jede mit ihrer Evidenzstufe.
+
 <br/>
 
 ## In Zahlen
 
+
+Jede Zahl trägt, **wie** sie zustande kam. L1 ist maschinell geprüft — man kann `cargo kani` ausführen und nachsehen. L2 ist auf Referenzhardware gemessen, die Rohdaten sind noch nicht veröffentlicht. L3 ist unabhängige Reproduktion und wird **für keine Zahl beansprucht**.
+
+Klassifikationsgenauigkeit, Informationsrate und Stromaufnahme werden nicht gemessen. Es stehen hier keine Schätzungen, weil das Projekt sie nicht misst.
 <br/>
 
 <table align="center">

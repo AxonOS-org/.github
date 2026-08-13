@@ -122,7 +122,7 @@ Les six dépôts sont publics. Code source sous Apache-2.0 OR MIT. Spécificatio
 flowchart LR
     A[Capteurs EEG/EMG<br/>ADS1299 · 24-bit] -->|raw| B[Passerelle BCI<br/>nRF52840]
     B -->|filtered| C[Kernel AxonOS<br/>Rust no_std<br/>Cortex-M4F]
-    C -->|WCRT<br/>≤ 1 ms (L1)| D[Ordonnanceur<br/>cognitif]
+    C -->|"WCRT ≤ 1 ms<br/>prouvé L1"| D[Ordonnanceur<br/>cognitif]
     D -->|typed intent| E[Application<br/>via SDK]
     F[Cognitive Hypervisor<br/>TrustZone-S] -.->|isolates| C
     G[Couche consentement<br/>MMP protocol] -.->|gates| D
@@ -133,9 +133,17 @@ flowchart LR
     class F,G secure
 ```
 
+**Comment lire le schéma.** De gauche à droite, de l'électrode à l'intention. Le noyau (bleu) *refuse* les échéances : une configuration qu'il ne peut garantir n'est pas admise. Les deux nœuds verts sont des frontières — le Cognitive Hypervisor isole, la couche de consentement autorise.
+
+Le schéma montre une structure, il n'affirme aucune performance. Les chiffres sont dans la section suivante, chacun avec son niveau de preuve.
+
 <br/>
 
 ## Les chiffres
+
+Chaque chiffre indique **comment** il a été établi. L1 est vérifié par machine : on peut lancer `cargo kani` et contrôler. L2 est mesuré sur le matériel de référence, les traces brutes n'étant pas encore publiées. L3 est la reproduction indépendante, et **elle n'est revendiquée pour aucun chiffre**.
+
+La précision de classification, le débit d'information et la consommation ne sont pas mesurés. Aucune estimation n'est donnée, car le projet ne les mesure pas.
 
 <br/>
 
