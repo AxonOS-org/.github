@@ -689,7 +689,7 @@ formula as everyone else, with no boosting.
 | **1** | **Hard real-time on commodity hardware** | `#![no_std]` Rust on ARMv8-M. No GC, no allocator on the hot path, no unbounded panics. Memory safety is structural.                   |
 | **2** | **Formally bounded WCRT**                | Every critical-path operation has a Kani-verified upper bound. Latency is *proven*, not benchmarked.                                   |
 | **3** | **Structural privacy**                   | Capabilities that would leak raw cognitive state (`RawEEG`, `EmotionState`, `CognitiveProfile`) do not exist as types.                 |
-| **4** | **Open ecosystem**                       | Apache-2.0 OR MIT for code, CC-BY-SA-4.0 for specifications. Every repository is public. Anyone can audit, fork, or replace any layer. |
+| **4** | **Open ecosystem**                       | Apache-2.0 OR MIT for code, CC-BY-SA-4.0 for specifications. Thirty-two repositories are public and seven are not. Everything that *decides* is public — the kernel, the specifications, the scoring rule, the conformance vectors. What is private holds credentials: the scanner behind the community map, the sweep that audits this organisation, and the working analysis behind the assistant. A score nobody can recompute is a score nobody can dispute, so the rule is public and the scanner is not. Anyone can audit, fork, or replace any
 
 ---
 
