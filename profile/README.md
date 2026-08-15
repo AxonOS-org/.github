@@ -324,7 +324,7 @@ flowchart LR
     B -->|filtered| C[AxonOS kernel<br/>Rust no_std<br/>Cortex-M4F]
     C -->|WCRT ≤ 1 ms, proven L1| D[Cognitive scheduler]
     D -->|typed intent| E[Application<br/>via SDK]
-    F[Cognitive Hypervisor<br/>TrustZone-S] -.->|isolates| C
+    F["Cognitive Hypervisor<br/>TrustZone-S<br/><i>planned — no code yet</i>"] -.->|"would isolate"| C
     G[Consent FSM<br/>axonos-consent] -.->|gates| D
 
     %% Grey is deliberate here, unlike in the organ diagram above. Colour marks
@@ -333,8 +333,15 @@ flowchart LR
     %% delete the only thing this diagram says.
     classDef kernel fill:#0a4a8f,stroke:#083a70,color:#fff,stroke-width:2px
     classDef secure fill:#0d7a5f,stroke:#0a5f4a,color:#fff,stroke-width:2px
+    %% Planned, not built. A diagram is the most-read thing on this page, and a
+    %% node drawn like the others says the mechanism exists. TrustZone-S appears
+    %% in no source file in this organisation — an external reviewer checked and
+    %% was right. Dashed and dimmed, so the diagram stays a map of intent
+    %% without asserting an isolation boundary that is not there.
+    classDef planned fill:#141a23,stroke:#5a6b82,color:#8b98ad,stroke-dasharray:4 3
     class C kernel
-    class F,G secure
+    class G secure
+    class F planned
 ```
 
 Every arrow is a contract. The [Standard](https://github.com/AxonOS-org/axonos-standard) defines what must hold at each boundary; an implementation is free in
