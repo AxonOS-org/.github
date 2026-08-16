@@ -217,7 +217,7 @@ La precisión de clasificación, la tasa de transferencia y el consumo no se mid
 
 [denis@axonos.org](mailto:denis@axonos.org) · [LinkedIn](https://www.linkedin.com/in/denis-yermakou) · [Medium](https://medium.com/@AxonOS) · [Site](https://axonos.org)
 
-<sub>Singapore · Zurich · Berlin · Milano · San Mateo</sub>
+<sub></sub>
 
 <br/>
 

@@ -799,6 +799,4 @@ project wants to hear it: <connect@axonos.org>.
 
 [axonos.org](https://axonos.org) · <connect@axonos.org> · [LinkedIn](https://www.linkedin.com/in/denis-yermakou) · [Medium](https://medium.com/@AxonOS)
 
-Singapore · Zurich · Berlin · Milano · San Mateo
-
 Built with Rust. Verified with Kani. Aimed at hard real-time.

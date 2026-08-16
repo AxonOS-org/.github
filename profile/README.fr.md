@@ -217,7 +217,7 @@ La précision de classification, le débit d'information et la consommation ne s
 
 [denis@axonos.org](mailto:denis@axonos.org) · [LinkedIn](https://www.linkedin.com/in/denis-yermakou) · [Medium](https://medium.com/@AxonOS) · [Site](https://axonos.org)
 
-<sub>Singapore · Zurich · Berlin · Milano · San Mateo</sub>
+<sub></sub>
 
 <br/>
 
