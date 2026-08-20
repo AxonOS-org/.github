@@ -21,6 +21,7 @@
 | looking for the code | [Quick start](#quick-start) · [The stack](#the-stack) · [Architecture](#architecture) |
 | wondering why it is built this way | [The constraints this is built against](#the-constraints-this-is-built-against): the physics and biology, not the preferences |
 | checking whether we overclaim | [What AxonOS does not claim](#what-axonos-does-not-claim) · [What is genuinely unsolved](#what-is-genuinely-unsolved) |
+| after a scheduling primitive, not an OS | [`dy-wcet`](https://github.com/DYResearch/dy-wcet) at [DY Research](https://github.com/DYResearch) — the timing analysis, standalone |
 | holding a vulnerability | **security@axonos.org**: a coordinated-disclosure window is offered and the finding is published either way. See [`SECURITY.md`](https://github.com/AxonOS-org/axonos-kernel/blob/main/SECURITY.md) in any repository |
 
 **One command, ninety seconds, no account:**
@@ -52,6 +53,21 @@ else is going to do it for me.
 
 I read connect@axonos.org. If you find a mistake, an issue is more use to me
 than a polite silence.
+
+Some of the timing work outgrew this project and now lives separately, under
+[**DY Research**](https://github.com/DYResearch). The first piece is
+[`dy-wcet`](https://github.com/DYResearch/dy-wcet): response-time analysis for
+fixed-priority task sets, in integer arithmetic, with no dependency on anything
+here. It is there rather than here because a kernel for brain–computer
+interfaces is the wrong place to look for a scheduling primitive, and because a
+crate that only makes sense inside one project is a crate nobody else will
+check.
+
+The argument it opens with is worth thirty seconds even if you never use it:
+two tasks where the obvious answer is 400 µs and the correct one is 300, and
+the reason the obvious answer is wrong. Change the periods and that same
+mistake reports a deadline met that is missed on hardware —
+[dyresearch.github.io](https://dyresearch.github.io) works it through.
 
 ---
 
@@ -800,3 +816,4 @@ project wants to hear it: <connect@axonos.org>.
 [axonos.org](https://axonos.org) · <connect@axonos.org> · [LinkedIn](https://www.linkedin.com/in/axonos) · [Medium](https://medium.com/@AxonOS)
 
 Built with Rust. Verified with Kani. Aimed at hard real-time.
+
