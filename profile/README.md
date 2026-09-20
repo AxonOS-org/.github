@@ -69,6 +69,12 @@ the reason the obvious answer is wrong. Change the periods and that same
 mistake reports a deadline met that is missed on hardware —
 [dyresearch.github.io](https://dyresearch.github.io) works it through.
 
+The method behind that work is written out in full: what a deterministic-
+runtime audit has to establish, why a measured maximum is not a bound, and
+the release where the analysis tool failed its own audit and reported 557
+task sets as meeting deadlines they miss — [What a deterministic-runtime
+audit should establish](https://gist.github.com/AxonOS-BCI/3bef2ff217a3ece45e4958fac2c16c4a).
+
 ---
 
 ## What AxonOS is
