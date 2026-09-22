@@ -704,9 +704,9 @@ formula as everyone else, with no boosting.
 
 <p align="center"><a href="https://axonos-bci.github.io/axonos-community-radar/report.html"><b>The State of Open BCI — read the full report →</b></a></p>
 
-<p align="center"><img src="https://img.shields.io/badge/projects-120-0a4a8f?style=flat-square" alt="projects: 120"> <img src="https://img.shields.io/badge/total_stars-51.2k-0a4a8f?style=flat-square" alt="total stars: 51.2k"> <img src="https://img.shields.io/badge/over_1k-10-0a4a8f?style=flat-square" alt="over 1k: 10"> <img src="https://img.shields.io/badge/active_30d-98-0d7a5f?style=flat-square" alt="active 30d: 98"> <img src="https://img.shields.io/badge/builders-9-0a4a8f?style=flat-square" alt="builders: 9"> <img src="https://img.shields.io/badge/languages-17-0a4a8f?style=flat-square" alt="languages: 17"></p>
+<p align="center"><img src="https://img.shields.io/badge/projects-120-0a4a8f?style=flat-square" alt="projects: 120"> <img src="https://img.shields.io/badge/total_stars-50.9k-0a4a8f?style=flat-square" alt="total stars: 50.9k"> <img src="https://img.shields.io/badge/over_1k-10-0a4a8f?style=flat-square" alt="over 1k: 10"> <img src="https://img.shields.io/badge/active_30d-99-0d7a5f?style=flat-square" alt="active 30d: 99"> <img src="https://img.shields.io/badge/builders-10-0a4a8f?style=flat-square" alt="builders: 10"> <img src="https://img.shields.io/badge/languages-18-0a4a8f?style=flat-square" alt="languages: 18"></p>
 
-<sub>One click for the exhaustive view — a Gartner-style reach×engagement quadrant, category and evidence breakdowns, and a full table of all 120 tracked resources. Currently leading by reach: `omi` · `wukong-robot` · `mne-python` · `NeuroKit`. Auto-refreshed from the radar every 3 hours · last update <b>21 Sep 2026, 20:07 UTC</b>.</sub>
+<sub>One click for the exhaustive view — a Gartner-style reach×engagement quadrant, category and evidence breakdowns, and a full table of all 120 tracked resources. Currently leading by reach: `omi` · `wukong-robot` · `mne-python` · `NeuroKit`. Auto-refreshed from the radar every 3 hours · last update <b>22 Sep 2026, 00:18 UTC</b>.</sub>
 <!-- RADAR:END -->
 
 ---
