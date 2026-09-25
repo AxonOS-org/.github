@@ -200,11 +200,11 @@ A living map of every open-source brain–computer-interface project, tool and t
 scored from public evidence and refreshed every three hours. AxonOS is ranked by the same
 formula as everyone else, with no boosting.
 
-<p align="center"><img src="https://img.shields.io/badge/projects-120-1f8fae?style=flat-square&labelColor=0d1117" alt="projects: 120"> <img src="https://img.shields.io/badge/active_30d-100-2ea043?style=flat-square&labelColor=0d1117" alt="active 30d: 100"> <img src="https://img.shields.io/badge/total_stars-50.9k-1f8fae?style=flat-square&labelColor=0d1117" alt="total stars: 50.9k"> <img src="https://img.shields.io/badge/builders-8-1f8fae?style=flat-square&labelColor=0d1117" alt="builders: 8"></p>
+<p align="center"><img src="https://img.shields.io/badge/projects-120-1f8fae?style=flat-square&labelColor=0d1117" alt="projects: 120"> <img src="https://img.shields.io/badge/active_30d-104-2ea043?style=flat-square&labelColor=0d1117" alt="active 30d: 104"> <img src="https://img.shields.io/badge/total_stars-47.8k-1f8fae?style=flat-square&labelColor=0d1117" alt="total stars: 47.8k"> <img src="https://img.shields.io/badge/builders-9-1f8fae?style=flat-square&labelColor=0d1117" alt="builders: 9"></p>
 
 <p align="center"><a href="https://axonos-bci.github.io/axonos-community-radar/report.html"><b>The State of Open BCI — read the full report →</b></a></p>
 
-<p align="center"><sub>Leading by reach: <code>omi</code> · <code>wukong-robot</code> · <code>mne-python</code> · <code>NeuroKit</code> · 15 languages · last refreshed <b>25 Sep 2026, 03:15 UTC</b></sub></p>
+<p align="center"><sub>Leading by reach: <code>omi</code> · <code>wukong-robot</code> · <code>mne-python</code> · <code>NeuroKit</code> · 16 languages · last refreshed <b>25 Sep 2026, 05:25 UTC</b></sub></p>
 <!-- RADAR:END -->
 
 ---
