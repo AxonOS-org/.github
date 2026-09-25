@@ -1,13 +1,16 @@
 <div align="center">
 
-<img src="./banner.jpg" alt="AxonOS — système d'exploitation cognitif ouvert pour interfaces cerveau-ordinateur" width="100%" />
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/AxonOS-org/.github/raw/main/profile/assets/hero-dark.svg">
+  <img alt="AxonOS — Une infrastructure déterministe pour les interfaces cerveau-machine" src="https://github.com/AxonOS-org/.github/raw/main/profile/assets/hero-light.svg" width="100%">
+</picture>
 
 <br/>
 <br/>
 
 # **axonos**
 
-### Le système d'exploitation cognitif ouvert pour les interfaces cerveau-ordinateur.
+### Une infrastructure déterministe pour les interfaces cerveau-machine.
 
 *La page anglaise fait foi et est mise à jour en premier ; les données en direct et les sections les plus récentes se trouvent [ici](./README.md).*
 
@@ -122,9 +125,9 @@ Les six dépôts sont publics. Code source sous Apache-2.0 OR MIT. Spécificatio
 flowchart LR
     A[Capteurs EEG/EMG<br/>ADS1299 · 24-bit] -->|raw| B[Passerelle BCI<br/>nRF52840]
     B -->|filtered| C[Kernel AxonOS<br/>Rust no_std<br/>Cortex-M4F]
-    C -->|"WCRT ≤ 1 ms<br/>prouvé L1"| D[Ordonnanceur<br/>cognitif]
+    C -->|"WCRT ≤ 1 ms<br/>prouvé L1"| D[Ordonnanceur]
     D -->|typed intent| E[Application<br/>via SDK]
-    F[Cognitive Hypervisor<br/>TrustZone-S] -.->|isolates| C
+    F[Cognitive Hypervisor<br/>TrustZone-S · prévu] -.->|isolates| C
     G[Couche consentement<br/>MMP protocol] -.->|gates| D
 
     classDef kernel fill:#0e2a47,stroke:#3b82f6,color:#fff,stroke-width:2px

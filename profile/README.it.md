@@ -1,13 +1,16 @@
 <div align="center">
 
-<img src="./banner.jpg" alt="AxonOS — sistema operativo cognitivo aperto per interfacce cervello-computer" width="100%" />
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/AxonOS-org/.github/raw/main/profile/assets/hero-dark.svg">
+  <img alt="AxonOS — Infrastruttura deterministica per le interfacce cervello-computer" src="https://github.com/AxonOS-org/.github/raw/main/profile/assets/hero-light.svg" width="100%">
+</picture>
 
 <br/>
 <br/>
 
 # **axonos**
 
-### Il sistema operativo cognitivo aperto per le interfacce cervello-computer.
+### Infrastruttura deterministica per le interfacce cervello-computer.
 
 *La pagina inglese è quella canonica e viene aggiornata per prima; i dati live e le sezioni più recenti compaiono [lì](./README.md).*
 
@@ -122,9 +125,9 @@ Tutti i sei repository sono pubblici. Codice sorgente sotto Apache-2.0 OR MIT. S
 flowchart LR
     A[Sensori EEG/EMG<br/>ADS1299 · 24-bit] -->|raw| B[Gateway BCI<br/>nRF52840]
     B -->|filtered| C[Kernel AxonOS<br/>Rust no_std<br/>Cortex-M4F]
-    C -->|"WCRT ≤ 1 ms<br/>provato L1"| D[Scheduler<br/>cognitivo]
+    C -->|"WCRT ≤ 1 ms<br/>provato L1"| D[Scheduler]
     D -->|typed intent| E[Applicazione<br/>via SDK]
-    F[Cognitive Hypervisor<br/>TrustZone-S] -.->|isolates| C
+    F[Cognitive Hypervisor<br/>TrustZone-S · pianificato] -.->|isolates| C
     G[Livello consenso<br/>MMP protocol] -.->|gates| D
 
     classDef kernel fill:#0e2a47,stroke:#3b82f6,color:#fff,stroke-width:2px

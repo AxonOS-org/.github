@@ -44,10 +44,10 @@ def k(n):
     return (f"{n / 1000:.1f}k".replace(".0k", "k")) if n >= 1000 else str(n)
 
 
-def badge(label, value, color="0a4a8f"):
+def badge(label, value, color="1f8fae"):
     lab = str(label).replace(" ", "_").replace("-", "--")
     val = str(value).replace(" ", "_").replace("-", "--")
-    return (f'<img src="https://img.shields.io/badge/{lab}-{val}-{color}?style=flat-square" '
+    return (f'<img src="https://img.shields.io/badge/{lab}-{val}-{color}?style=flat-square&labelColor=0d1117" '
             f'alt="{label}: {value}">')
 
 
@@ -75,31 +75,28 @@ def build_block(radar):
 
     badges = " ".join([
         badge("projects", tot),
+        badge("active 30d", active, "2ea043"),
         badge("total stars", k(stars)),
-        badge("over 1k", big),
-        badge("active 30d", active, "0d7a5f"),
         badge("builders", builders),
-        badge("languages", langs),
     ])
-    top_line = " · ".join(f"`{t}`" for t in top if t)
+    # <code>, not backticks: the line opens with a block-level <p>, and GitHub
+    # does not read Markdown inside an HTML block, so backticks would print.
+    top_line = " \u00b7 ".join(f"<code>{t}</code>" for t in top if t)
 
+    # No emoji. The profile removes them by hand and this job put one back
+    # every three hours, which made a rule enforced downstream into a lie
+    # upstream. A rule that a scheduled job undoes is not a rule.
     return "\n".join([
-        "The **AxonOS Community Radar** continuously maps every open-source brain\u2013computer-interface",
-        "project, tool and team building in the open \u2014 AxonOS included, ranked by the same public-signal",
+        "A living map of every open-source brain\u2013computer-interface project, tool and team,",
+        "scored from public evidence and refreshed every three hours. AxonOS is ranked by the same",
         "formula as everyone else, with no boosting.",
-        "",
-        # No emoji. The profile removes them by hand and this job put one back
-        # every three hours, which made a rule enforced downstream into a lie
-        # upstream. A rule that a scheduled job undoes is not a rule.
-        f'<p align="center"><a href="{REPORT_URL}"><b>The State of Open BCI \u2014 '
-        "read the full report \u2192</b></a></p>",
         "",
         f'<p align="center">{badges}</p>',
         "",
-        f"<sub>One click for the exhaustive view \u2014 a Gartner-style reach\u00d7engagement quadrant, "
-        f"category and evidence breakdowns, and a full table of all {tot} tracked resources. "
-        f"Currently leading by reach: {top_line}. "
-        f"Auto-refreshed from the radar every 3 hours \u00b7 last update <b>{ts}</b>.</sub>",
+        f'<p align="center"><a href="{REPORT_URL}"><b>The State of Open BCI \u2014 read the full report \u2192</b></a></p>',
+        "",
+        f'<p align="center"><sub>Leading by reach: {top_line} \u00b7 {langs} languages \u00b7 '
+        f"last refreshed <b>{ts}</b></sub></p>",
     ])
 
 

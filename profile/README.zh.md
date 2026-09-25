@@ -1,13 +1,16 @@
 <div align="center">
 
-<img src="./banner.jpg" alt="AxonOS — 面向脑机接口的开放认知操作系统" width="100%" />
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/AxonOS-org/.github/raw/main/profile/assets/hero-dark.svg">
+  <img alt="AxonOS — 面向脑机接口的确定性基础设施" src="https://github.com/AxonOS-org/.github/raw/main/profile/assets/hero-light.svg" width="100%">
+</picture>
 
 <br/>
 <br/>
 
 # **axonos**
 
-### 面向脑机接口的开放认知操作系统。
+### 面向脑机接口的确定性基础设施。
 
 *英文页面为权威版本并率先更新；实时数据与最新章节见[英文页面](./README.md)。*
 
@@ -122,7 +125,7 @@ SDK 是 Rust 参考绑定。C FFI、Python、WebAssembly、JNI 和 Swift 绑定�
 flowchart LR
     A[EEG/EMG 传感器<br/>ADS1299 · 24-bit] -->|raw| B[BCI 网关<br/>nRF52840]
     B -->|filtered| C[AxonOS 内核<br/>Rust no_std<br/>Cortex-M4F]
-    C -->|"WCRT ≤ 1 ms<br/>L1 已证明"| D[认知<br/>调度器]
+    C -->|"WCRT ≤ 1 ms<br/>L1 已证明"| D[调度器]
     D -->|typed intent| E[应用<br/>via SDK]
     F[Cognitive Hypervisor<br/>TrustZone-S] -.->|isolates| C
     G[同意层<br/>MMP protocol] -.->|gates| D
