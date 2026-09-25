@@ -1,13 +1,16 @@
 <div align="center">
 
-<img src="./banner.jpg" alt="AxonOS — ブレイン・コンピュータ・インターフェース向けの認知オペレーティングシステム" width="100%" />
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/AxonOS-org/.github/raw/main/profile/assets/hero-dark.svg">
+  <img alt="AxonOS — ブレイン・コンピュータ・インターフェースのための決定論的インフラストラクチャ" src="https://github.com/AxonOS-org/.github/raw/main/profile/assets/hero-light.svg" width="100%">
+</picture>
 
 <br/>
 <br/>
 
 # **axonos**
 
-### ブレイン・コンピュータ・インターフェースのためのオープン認知オペレーティングシステム。
+### ブレイン・コンピュータ・インターフェースのための決定論的インフラストラクチャ。
 
 *英語版ページが正となり、最初に更新されます。ライブデータと最新セクションは[英語版](./README.md)に掲載されています。*
 
@@ -122,7 +125,7 @@ SDK は Rust リファレンスバインディングです。C FFI、Python、We
 flowchart LR
     A[EEG/EMG センサー<br/>ADS1299 · 24-bit] -->|raw| B[BCI ゲートウェイ<br/>nRF52840]
     B -->|filtered| C[AxonOS カーネル<br/>Rust no_std<br/>Cortex-M4F]
-    C -->|"WCRT ≤ 1 ms<br/>L1 証明済み"| D[認知<br/>スケジューラ]
+    C -->|"WCRT ≤ 1 ms<br/>L1 証明済み"| D[スケジューラ]
     D -->|typed intent| E[アプリケーション<br/>via SDK]
     F[Cognitive Hypervisor<br/>TrustZone-S] -.->|isolates| C
     G[同意層<br/>MMP protocol] -.->|gates| D

@@ -23,7 +23,7 @@ front door is wired up.
 |:---|:---|
 | [`profile/README.md`](./profile/README.md) | The organisation landing page (English) |
 | [`profile/README.*.md`](./profile/) | The same landing page in seven additional languages |
-| [`profile/banner.jpg`](./profile/banner.jpg), [`profile/logo.png`](./profile/logo.png) | Imagery used by the landing page |
+| [`profile/assets/`](./profile/assets) | The profile's hero, architecture and schedule images, each in a dark and a light variant |
 
 ## Where the project actually is
 
@@ -56,6 +56,5 @@ licensing of each AxonOS component is declared in its own repository.
 
 [axonos.org](https://axonos.org) &nbsp;·&nbsp; connect@axonos.org &nbsp;·&nbsp; security@axonos.org
 
-<sub>Singapore · Zurich · Berlin · Milano · San Mateo</sub>
 
 </div>

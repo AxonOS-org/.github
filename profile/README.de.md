@@ -1,13 +1,16 @@
 <div align="center">
 
-<img src="./banner.jpg" alt="AxonOS — offenes kognitives Betriebssystem für Gehirn-Computer-Schnittstellen" width="100%" />
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/AxonOS-org/.github/raw/main/profile/assets/hero-dark.svg">
+  <img alt="AxonOS — Deterministische Infrastruktur für Gehirn-Computer-Schnittstellen" src="https://github.com/AxonOS-org/.github/raw/main/profile/assets/hero-light.svg" width="100%">
+</picture>
 
 <br/>
 <br/>
 
 # **axonos**
 
-### Das offene kognitive Betriebssystem für Gehirn-Computer-Schnittstellen.
+### Deterministische Infrastruktur für Gehirn-Computer-Schnittstellen.
 
 *Die englische Seite ist kanonisch und wird zuerst aktualisiert; Live-Daten und die neuesten Abschnitte erscheinen [dort](./README.md).*
 
@@ -122,7 +125,7 @@ Alle sechs Repositorien sind öffentlich. Quellcode unter Apache-2.0 OR MIT. Spe
 flowchart LR
     A[EEG/EMG-Sensoren<br/>ADS1299 · 24-bit] -->|raw| B[BCI-Gateway<br/>nRF52840]
     B -->|filtered| C[AxonOS-Kernel<br/>Rust no_std<br/>Cortex-M4F]
-    C -->|"WCRT ≤ 1 ms<br/>L1 bewiesen"| D[Kognitiver<br/>Scheduler]
+    C -->|"WCRT ≤ 1 ms<br/>L1 bewiesen"| D[Scheduler]
     D -->|typed intent| E[Anwendung<br/>via SDK]
     F[Cognitive Hypervisor<br/>TrustZone-S] -.->|isolates| C
     G[Consent-Schicht<br/>MMP protocol] -.->|gates| D

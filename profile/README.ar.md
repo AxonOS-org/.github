@@ -1,13 +1,16 @@
 <div align="center">
 
-<img src="./banner.jpg" alt="AxonOS — نظام التشغيل المعرفي المفتوح لواجهات الدماغ والحاسوب" width="100%" />
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/AxonOS-org/.github/raw/main/profile/assets/hero-dark.svg">
+  <img alt="AxonOS — بنية تحتية حتمية لواجهات الدماغ والحاسوب" src="https://github.com/AxonOS-org/.github/raw/main/profile/assets/hero-light.svg" width="100%">
+</picture>
 
 <br/>
 <br/>
 
 # **axonos**
 
-### نظام التشغيل المعرفي المفتوح لواجهات الدماغ والحاسوب.
+### بنية تحتية حتمية لواجهات الدماغ والحاسوب.
 
 *الصفحة الإنجليزية هي المرجع الرسمي ويتم تحديثها أولاً؛ البيانات الحية والأقسام الأحدث تظهر [هناك](./README.md).*
 
@@ -130,9 +133,9 @@ SDK هو الربط المرجعي بلغة Rust. روابط C FFI و Python و 
 flowchart LR
     A[مستشعرات EEG/EMG<br/>ADS1299 · 24-bit] -->|raw| B[بوابة BCI<br/>nRF52840]
     B -->|filtered| C[نواة AxonOS<br/>Rust no_std<br/>Cortex-M4F]
-    C -->|WCRT<br/>≤ 1 ms (L1)| D[المُجدول<br/>المعرفي]
+    C -->|WCRT<br/>≤ 1 ms (L1)| D[المُجدول]
     D -->|typed intent| E[التطبيق<br/>via SDK]
-    F[المراقب المعرفي<br/>TrustZone-S] -.->|isolates| C
+    F[المراقب المعرفي<br/>TrustZone-S · مخطط] -.->|isolates| C
     G[طبقة الموافقة<br/>MMP protocol] -.->|gates| D
 
     classDef kernel fill:#0e2a47,stroke:#3b82f6,color:#fff,stroke-width:2px
