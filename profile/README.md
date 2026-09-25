@@ -103,7 +103,7 @@ missed on hardware.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://github.com/AxonOS-org/.github/raw/main/profile/assets/architecture-dark.svg">
-  <img alt="The AxonOS stack from electrodes to applications: hardware abstraction, signal pipeline, kernel with a proven 1,000 microsecond response bound and 0.5 microsecond IPC bound, consent with a proven withdrawal bound, SDK and protocol, then a privacy boundary that raw neural data never crosses, then applications." src="https://github.com/AxonOS-org/.github/raw/main/profile/assets/architecture-light.svg" width="100%">
+  <img alt="The AxonOS stack from electrodes to applications: hardware abstraction, signal pipeline, kernel with a proven 1,000 microsecond response bound and 0.5 microsecond IPC bound, consent whose withdrawal is proven to terminate, SDK and protocol, then a privacy boundary that raw neural data never crosses, then applications." src="https://github.com/AxonOS-org/.github/raw/main/profile/assets/architecture-light.svg" width="100%">
 </picture>
 
 ---
@@ -112,7 +112,9 @@ missed on hardware.
 
 Every figure published here, its evidence level, and the artefact it derives
 from. **L1** formally proven · **L2** measured on reference hardware · **L3**
-independently reproduced · **CI** checked mechanically on every push. A figure
+independently reproduced · **CI** checked mechanically on every push ·
+**analytical** derived by hand from a reference. Graded as in
+[`CLAIMS.md`](https://github.com/AxonOS-org/axonos-standard/blob/main/CLAIMS.md), which this table follows. A figure
 absent from this table is not claimed.
 
 | Figure | Value | Source |
@@ -120,7 +122,8 @@ absent from this table is not claimed.
 | End-to-end WCRT, proven upper bound | ≤ 1,000 µs · **L1** | [scheduler BMC harnesses](https://github.com/AxonOS-org/axonos-kernel/blob/main/axonos-scheduler/kani-proofs/src/main.rs) |
 | End-to-end WCRT, worst observed | 972 µs · L2 | RFC-0001 · 12 h, 10.8 M epochs, 0 misses · *raw traces pending* |
 | IPC slot latency, proven upper bound | ≤ 0.5 µs · **L1** | [SPSC BMC harnesses](https://github.com/AxonOS-org/axonos-kernel/blob/main/axonos-spsc/kani-proofs/src/main.rs) |
-| Consent withdrawal, proven upper bound | ≤ 1,648 cycles · **L1** | [`handle_withdraw_terminates.rs`](https://github.com/AxonOS-org/axonos-consent/blob/main/kani/handle_withdraw_terminates.rs) · ≈ 9.8 µs at 168 MHz |
+| Consent withdrawal terminates, in the correct state | proven · **L1** | [`handle_withdraw_terminates.rs`](https://github.com/AxonOS-org/axonos-consent/blob/main/kani/handle_withdraw_terminates.rs) · *covers the `Granted` starting state; the rest is an open gap* |
+| Consent withdrawal, transition time | ≤ 1,648 cycles · analytical | instruction count against the ISA timing reference, ≈ 9.8 µs at 168 MHz · *not a Kani output; derivation pending* |
 | Release jitter, σ | 2.1 µs · L2 | RFC-0001 · *raw traces pending* |
 | Kani proofs re-run in CI | 47 · **L1** | kernel 30 · signal pipeline 9 · dy-wcet 8 · *consent's 6 are in its repository, not yet in CI* |
 | `unsafe` in the kernel | one crate · **CI** | confined to `axonos-spsc`; `#![forbid(unsafe_code)]` in consent, protocol and five kernel crates |
@@ -182,7 +185,7 @@ git clone https://github.com/DYResearch/dy-wcet && cd dy-wcet && cargo test && .
 
 - **The 1,000 µs bound.** Run the scheduler harnesses. A counterexample from Kani falsifies it outright.
 - **The 972 µs observation.** It is L2 and pending until the raw traces are published; until then, treat it as a claim with its evidence outstanding.
-- **Consent withdrawal.** Run [`handle_withdraw_terminates.rs`](https://github.com/AxonOS-org/axonos-consent/blob/main/kani/handle_withdraw_terminates.rs) under `cargo kani`. It is the one proof here not yet re-run in CI.
+- **Consent withdrawal.** Run [`handle_withdraw_terminates.rs`](https://github.com/AxonOS-org/axonos-consent/blob/main/kani/handle_withdraw_terminates.rs) under `cargo kani`: it proves termination and the target state, from `Granted` only, and it is the one proof here not yet re-run in CI. The 1,648-cycle figure is analytical; an execution above it on the reference hardware falsifies it.
 - **dy-wcet.** Find a task set where it returns a bound the recurrence does not support. There is [a bounty](https://github.com/DYResearch/dy-wcet/blob/main/BOUNTY.md) for the first one.
 - **The Radar's scores.** Every score is published with the evidence it rests on. Recompute any of them.
 
@@ -201,7 +204,7 @@ formula as everyone else, with no boosting.
 
 <p align="center"><a href="https://axonos-bci.github.io/axonos-community-radar/report.html"><b>The State of Open BCI — read the full report →</b></a></p>
 
-<p align="center"><sub>Leading by reach: <code>omi</code> · <code>wukong-robot</code> · <code>mne-python</code> · <code>NeuroKit</code> · 15 languages · last refreshed <b>25 Sep 2026, 02:57 UTC</b></sub></p>
+<p align="center"><sub>Leading by reach: <code>omi</code> · <code>wukong-robot</code> · <code>mne-python</code> · <code>NeuroKit</code> · 15 languages · last refreshed <b>25 Sep 2026, 03:15 UTC</b></sub></p>
 <!-- RADAR:END -->
 
 ---
@@ -296,7 +299,7 @@ Every repository exposes **Cite this repository** through [`CITATION.cff`](https
 
 <div align="center">
 
-**AxonOS** · founded by Denis Yermakou
+© The AxonOS Project / Denis Yermakou
 
 [connect@axonos.org](mailto:connect@axonos.org) · [security@axonos.org](mailto:security@axonos.org) · [LinkedIn](https://www.linkedin.com/in/axonos) · [axonos.org](https://axonos.org)
 
