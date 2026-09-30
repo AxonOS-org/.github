@@ -5,7 +5,7 @@
   <img alt="AxonOS — deterministic infrastructure for brain–computer interfaces. Hard real-time, no_std Rust, formally bounded, consent below the application layer." src="https://github.com/AxonOS-org/.github/raw/main/profile/assets/hero-light.svg" width="100%">
 </picture>
 
-**[axonos.org](https://axonos.org)** · **[dy-wcet](https://github.com/DYResearch/dy-wcet)** · **[Radar](https://axonos-bci.github.io/axonos-community-radar/)** · **[DY Research](https://dyresearch.github.io)** · **[Specifications](https://axonos.org/specifications.html)** · **[Articles](https://medium.com/@AxonOS)**
+**[axonos.org](https://axonos.org)** · **[dy-wcet](https://github.com/DYResearch/dy-wcet)** · **[Radar](https://axonos-bci.github.io/axonos-community-radar/)** · **[DY Research](https://dyresearch.github.io)** · **[DY PROOF](https://dy-proof.github.io)** · **[Specifications](https://axonos.org/specifications.html)** · **[Articles](https://medium.com/@AxonOS)**
 
 [![Kernel](https://img.shields.io/github/v/tag/AxonOS-org/axonos-kernel?sort=semver&style=flat-square&label=kernel&labelColor=0d1117&color=1f8fae)](https://github.com/AxonOS-org/axonos-kernel/releases)
 [![Consent](https://img.shields.io/github/v/tag/AxonOS-org/axonos-consent?sort=semver&style=flat-square&label=consent&labelColor=0d1117&color=1f8fae)](https://github.com/AxonOS-org/axonos-consent/releases)
@@ -63,6 +63,15 @@ evidence and refreshed every three hours.
 **Verify — [DY Research](https://dyresearch.github.io)**<br>
 Independent technical due diligence for investors, founders and engineering
 teams. A written verdict on what the evidence supports.
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top">
+
+**Prove — [DY PROOF](https://dy-proof.github.io)**<br>
+Independent technology diagnostics: where a running system breaks under load,
+located and reproduced.
 
 </td>
 </tr>
