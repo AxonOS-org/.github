@@ -213,7 +213,7 @@ formula as everyone else, with no boosting.
 
 <p align="center"><a href="https://axonos-bci.github.io/axonos-community-radar/report.html"><b>The State of Open BCI — read the full report →</b></a></p>
 
-<p align="center"><sub>Leading by reach: <code>omi</code> · <code>wukong-robot</code> · <code>mne-python</code> · <code>NeuroKit</code> · 17 languages · last refreshed <b>01 Oct 2026, 18:34 UTC</b></sub></p>
+<p align="center"><sub>Leading by reach: <code>omi</code> · <code>wukong-robot</code> · <code>mne-python</code> · <code>NeuroKit</code> · 17 languages · last refreshed <b>01 Oct 2026, 22:55 UTC</b></sub></p>
 <!-- RADAR:END -->
 
 ---
