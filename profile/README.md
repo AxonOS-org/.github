@@ -5,7 +5,7 @@
   <img alt="AxonOS — deterministic infrastructure for brain–computer interfaces. Hard real-time, no_std Rust, formally bounded, consent below the application layer." src="https://github.com/AxonOS-org/.github/raw/main/profile/assets/hero-light.svg" width="100%">
 </picture>
 
-**[axonos.org](https://axonos.org)** · **[dy-wcet](https://github.com/DYResearch/dy-wcet)** · **[Radar](https://axonos-bci.github.io/axonos-community-radar/)** · **[DY Research](https://dyresearch.github.io)** · **[DY PROOF](https://dy-proof.github.io)** · **[Specifications](https://axonos.org/specifications.html)** · **[Articles](https://medium.com/@AxonOS)**
+**[axonos.org](https://axonos.org)** · **[DY-WCET](https://github.com/DYResearch/dy-wcet)** · **[Radar](https://axonos-bci.github.io/axonos-community-radar/)** · **[DY Research](https://dyresearch.github.io)** · **[DY PROOF](https://dy-proof.github.io)** · **[Specifications](https://axonos.org/specifications.html)** · **[Articles](https://medium.com/@AxonOS)**
 
 [![Kernel](https://img.shields.io/github/v/tag/AxonOS-org/axonos-kernel?sort=semver&style=flat-square&label=kernel&labelColor=0d1117&color=1f8fae)](https://github.com/AxonOS-org/axonos-kernel/releases)
 [![Consent](https://img.shields.io/github/v/tag/AxonOS-org/axonos-consent?sort=semver&style=flat-square&label=consent&labelColor=0d1117&color=1f8fae)](https://github.com/AxonOS-org/axonos-consent/releases)
@@ -44,7 +44,7 @@ Specified openly, verified by machine.
 </td>
 <td width="50%" valign="top">
 
-**Measure — [dy-wcet](https://github.com/DYResearch/dy-wcet)**<br>
+**Measure — [DY-WCET](https://github.com/DYResearch/dy-wcet)**<br>
 Worst-case response-time analysis in integer arithmetic. Zero dependencies,
 eight Kani proofs, every one closing in CI.
 
@@ -79,7 +79,7 @@ located and reproduced.
 
 ---
 
-## In focus · dy-wcet
+## In focus · DY-WCET
 
 **Timing analysis that refuses rather than rounds.** Worst-case response time
 for real-time systems, computed exactly in integer arithmetic — and a named
@@ -134,7 +134,7 @@ absent from this table is not claimed.
 | Consent withdrawal terminates, in the correct state | proven · **L1** | [`handle_withdraw_terminates.rs`](https://github.com/AxonOS-org/axonos-consent/blob/main/kani/handle_withdraw_terminates.rs) · *covers the `Granted` starting state; the rest is an open gap* |
 | Consent withdrawal, transition time | ≤ 1,648 cycles · analytical | instruction count against the ISA timing reference, ≈ 9.8 µs at 168 MHz · *not a Kani output; derivation pending* |
 | Release jitter, σ | 2.1 µs · L2 | RFC-0001 · *raw traces pending* |
-| Kani proofs re-run in CI | 47 · **L1** | kernel 30 · signal pipeline 9 · dy-wcet 8 · *consent's 6 are in its repository, not yet in CI* |
+| Kani proofs re-run in CI | 47 · **L1** | kernel 30 · signal pipeline 9 · DY-WCET 8 · *consent's 6 are in its repository, not yet in CI* |
 | `unsafe` in the kernel | one crate · **CI** | confined to `axonos-spsc`; `#![forbid(unsafe_code)]` in consent, protocol and five kernel crates |
 | Wire format, reference against SDK | byte-identical · **CI** | [conformance](https://github.com/AxonOS-org/axonos-conformance): Python reference and Rust SDK on every push; C header by `_Static_assert` |
 | Projects on the live map | 100+ · live | [`data/radar.json`](https://github.com/AxonOS-BCI/axonos-community-radar/blob/main/data/radar.json), refreshed every 3 h |
