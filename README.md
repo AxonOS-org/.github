@@ -2,6 +2,8 @@
 
 # `.github`
 
+[![AxonOS Radar](https://img.shields.io/badge/AxonOS%20Radar-open%20neurotech%20map-1f8fae?style=flat-square&labelColor=0b1220)](https://axonos-bci.github.io/axonos-community-radar/)
+
 ### The AxonOS organisation's community-health repository.
 
 </div>

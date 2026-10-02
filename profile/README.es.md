@@ -32,6 +32,7 @@
 [![ABI](https://img.shields.io/badge/Kernel%20ABI-v1-0a4a8f?style=flat-square)](https://axonos.org/specifications.html)
 [![Rust](https://img.shields.io/badge/built%20with-Rust-CE422B?style=flat-square&logo=rust&logoColor=white)](https://www.rust-lang.org/)
 [![License](https://img.shields.io/badge/license-Apache--2.0%20OR%20MIT-475569?style=flat-square)](#licencias)
+[![AxonOS Radar](https://img.shields.io/badge/AxonOS%20Radar-open%20neurotech%20map-1f8fae?style=flat-square&labelColor=0b1220)](https://axonos-bci.github.io/axonos-community-radar/)
 
 ### [axonos.org](https://axonos.org) · [Especificaciones](https://axonos.org/specifications.html) · [SDK](https://axonos.org/sdk.html) · [Artículos](https://medium.com/@AxonOS) · [connect@axonos.org](mailto:connect@axonos.org)
 
