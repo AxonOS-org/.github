@@ -40,6 +40,10 @@
 
 ---
 
+
+> [!IMPORTANT]
+> Esta traducción va por detrás de la [versión en inglés](./README.md), que es la de referencia: cifras, versiones y niveles de evidencia se leen allí.
+
 ## Proyecto AxonOS
 
 <br/>
@@ -111,7 +115,7 @@ Los seis repositorios son públicos. Código fuente bajo Apache-2.0 OR MIT. Espe
 |:---:|:---|:---|:---:|:---|
 | [⬢](https://github.com/AxonOS-org/AxonOS-kernel) | **AxonOS-kernel** | Microkernel de tiempo real estricto — 8 crates, WCRT formalmente acotado, 28 harnesses Kani | Rust | `v0.3.0` |
 | [⬢](https://github.com/AxonOS-org/axonos-sdk) | **axonos-sdk** | Frontera de aplicación — intents tipados, manifiestos de capacidades, ABI del kernel v1 | Rust | `v0.3.5` |
-| [⬢](https://github.com/AxonOS-org/axonos-consent) | **axonos-consent** | Consentimiento a nivel de protocolo para acoplamiento cognitive mesh (MMP) | Rust | `v0.5.0` |
+| [⬢](https://github.com/AxonOS-org/axonos-consent) | **axonos-consent** | Consentimiento aplicado por el kernel: autenticado con Ed25519, a prueba de repetición, definitivo en el instante de la retirada | Rust | `v0.9.2` |
 | [⬢](https://github.com/AxonOS-org/axonos-swarm) | **axonos-swarm** | Coordinación multinodo — sincronización Neural PTP, scheduling de swarm | Rust | `v0.2.1` |
 | [⬢](https://github.com/AxonOS-org/axonos-rfcs) | **axonos-rfcs** | Especificaciones de ingeniería — 8 RFC numerados, normativos, CC-BY-SA-4.0 | Markdown | activo |
 | [⬢](https://github.com/AxonOS-org/axon-bci-gateway) | **axon-bci-gateway** | Gateway de adquisición de hardware (fork de OpenBCI, MIT preservado del upstream) | HTML | activo |

@@ -20,7 +20,8 @@
 
 AxonOS is the hard real-time layer between neural hardware and the applications
 that use it: an open-source kernel in `#![no_std]` Rust on ARM Cortex-M, with
-worst-case response times that are **proven rather than benchmarked**, and
+worst-case response times that are **analysed before they run, not benchmarked
+after**, and
 privacy enforced **below the application layer**, where no application can
 bypass it.
 
@@ -29,6 +30,16 @@ bypass it.
 It is not an AI-agent framework, a chatbot runtime or a token project. Every
 guarantee it makes is specified, openly licensed, and built to be checked by
 someone else.
+
+> [!NOTE]
+> **axonos-consent 0.9.2.** Consent now changes only on a verified Ed25519
+> signature, never twice for the same sequence number, and a withdrawal is final
+> the instant it is stored. Ten Kani proofs, three loom models, twenty
+> conformance vectors and three fuzz targets run on every push. The line closes
+> [AXC-2026-001](https://github.com/AxonOS-org/axonos-consent/blob/main/docs/advisories/AXC-2026-001.md), a critical advisory
+> against our own consent layer, published with its fix.
+> **[Release notes](https://github.com/AxonOS-org/axonos-consent/releases/tag/v0.9.2)** ·
+> **[Specification](https://github.com/AxonOS-org/axonos-consent/blob/main/SPEC.md)**
 
 ---
 
@@ -113,7 +124,7 @@ missed on hardware.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://github.com/AxonOS-org/.github/raw/main/profile/assets/architecture-dark.svg">
-  <img alt="The AxonOS stack from electrodes to applications: hardware abstraction, signal pipeline, kernel with a proven 1,000 microsecond response bound and 0.5 microsecond IPC bound, consent whose withdrawal is proven to terminate, SDK and protocol, then a privacy boundary that raw neural data never crosses, then applications." src="https://github.com/AxonOS-org/.github/raw/main/profile/assets/architecture-light.svg" width="100%">
+  <img alt="The AxonOS stack from electrodes to applications: hardware abstraction, signal pipeline, kernel with an analytical 1,000 microsecond response bound and 0.5 microsecond IPC bound, consent that changes only on a verified signature and whose withdrawal is final, SDK and protocol, then a privacy boundary that raw neural data never crosses, then applications." src="https://github.com/AxonOS-org/.github/raw/main/profile/assets/architecture-light.svg" width="100%">
 </picture>
 
 ---
@@ -129,19 +140,19 @@ absent from this table is not claimed.
 
 | Figure | Value | Source |
 |:--|:--|:--|
-| End-to-end WCRT, proven upper bound | ≤ 1,000 µs · **L1** | [scheduler BMC harnesses](https://github.com/AxonOS-org/axonos-kernel/blob/main/axonos-scheduler/kani-proofs/src/main.rs) |
+| End-to-end WCRT, upper bound | ≤ 1,000 µs · analytical | response-time analysis over analytical per-task WCETs · *derivation pending* · the [scheduler harnesses](https://github.com/AxonOS-org/axonos-kernel/blob/main/axonos-scheduler/kani-proofs/src/main.rs) prove admission and EDF selection, not a time |
 | End-to-end WCRT, worst observed | 972 µs · L2 | RFC-0001 · 12 h, 10.8 M epochs, 0 misses · *raw traces pending* |
-| IPC slot latency, proven upper bound | ≤ 0.5 µs · **L1** | [SPSC BMC harnesses](https://github.com/AxonOS-org/axonos-kernel/blob/main/axonos-spsc/kani-proofs/src/main.rs) |
-| Consent withdrawal terminates, in the correct state | proven · **L1** | [`handle_withdraw_terminates.rs`](https://github.com/AxonOS-org/axonos-consent/blob/main/kani/handle_withdraw_terminates.rs) · *covers the `Granted` starting state; the rest is an open gap* |
-| Consent withdrawal, transition time | ≤ 1,648 cycles · analytical | instruction count against the ISA timing reference, ≈ 9.8 µs at 168 MHz · *not a Kani output; derivation pending* |
+| IPC slot latency, upper bound | ≤ 0.5 µs · analytical | *derivation pending* · the [SPSC harnesses](https://github.com/AxonOS-org/axonos-kernel/blob/main/axonos-spsc/kani-proofs/src/main.rs) prove the slot loop-free and FIFO, not a time |
+| Consent changes only on an authenticated frame; withdrawal is final | proven · **L1** | [`src/proofs.rs`](https://github.com/AxonOS-org/axonos-consent/blob/main/src/proofs.rs) · ten harnesses, a blocking CI job · *the former `kani/` harnesses never compiled and are removed* |
+| Consent withdrawal, transition time | **retracted** at consent 0.9.0 | the 1,648-cycle figure was derived for a tag path that no longer exists; Ed25519 verification now dominates admission · [SPEC §4.1](https://github.com/AxonOS-org/axonos-consent/blob/main/SPEC.md#41-the-transition) |
 | Release jitter, σ | 2.1 µs · L2 | RFC-0001 · *raw traces pending* |
-| Kani proofs re-run in CI | 47 · **L1** | kernel 30 · signal pipeline 9 · DY-WCET 8 · *consent's 6 are in its repository, not yet in CI* |
+| Kani proofs re-run in CI | 57 · **L1** | kernel 30 · consent 10 · signal pipeline 9 · DY-WCET 8 |
 | `unsafe` in the kernel | one crate · **CI** | confined to `axonos-spsc`; `#![forbid(unsafe_code)]` in consent, protocol and five kernel crates |
 | Wire format, reference against SDK | byte-identical · **CI** | [conformance](https://github.com/AxonOS-org/axonos-conformance): Python reference and Rust SDK on every push; C header by `_Static_assert` |
 | Projects on the live map | 100+ · live | [`data/radar.json`](https://github.com/AxonOS-BCI/axonos-community-radar/blob/main/data/radar.json), refreshed every 3 h |
 
-**≤ 1,000 µs is proven; 972 µs is the worst anyone has seen.** A proof and an
-observation are different kinds of statement. Until the raw traces land in
+**≤ 1,000 µs is derived; 972 µs is the worst anyone has seen.** A derivation, a
+proof and an observation are different kinds of statement. Until the raw traces land in
 [`axonos-validation`](https://github.com/AxonOS-org/axonos-validation), every L2
 row is held as pending and graded in
 [`CLAIMS.md`](https://github.com/AxonOS-org/axonos-standard/blob/main/CLAIMS.md).
@@ -193,9 +204,9 @@ git clone https://github.com/DYResearch/dy-wcet && cd dy-wcet && cargo test && .
 
 <br>
 
-- **The 1,000 µs bound.** Run the scheduler harnesses. A counterexample from Kani falsifies it outright.
+- **The 1,000 µs bound.** It is analytical: check the derivation when it is published, or run the reference hardware past it. The scheduler harnesses falsify something narrower, the admission and EDF logic, and a counterexample from Kani does that outright.
 - **The 972 µs observation.** It is L2 and pending until the raw traces are published; until then, treat it as a claim with its evidence outstanding.
-- **Consent withdrawal.** Run [`handle_withdraw_terminates.rs`](https://github.com/AxonOS-org/axonos-consent/blob/main/kani/handle_withdraw_terminates.rs) under `cargo kani`: it proves termination and the target state, from `Granted` only, and it is the one proof here not yet re-run in CI. The 1,648-cycle figure is analytical; an execution above it on the reference hardware falsifies it.
+- **Consent.** Run `cargo kani` in `axonos-consent`: the ten harnesses in [`src/proofs.rs`](https://github.com/AxonOS-org/axonos-consent/blob/main/src/proofs.rs), the job CI runs on every push. Or forge a frame: the `auth_forgery` fuzz target verifies against a key whose secret no one holds, so any frame it admits is a forgery.
 - **dy-wcet.** Find a task set where it returns a bound the recurrence does not support. There is [a bounty](https://github.com/DYResearch/dy-wcet/blob/main/BOUNTY.md) for the first one.
 - **The Radar's scores.** Every score is published with the evidence it rests on. Recompute any of them.
 
@@ -243,7 +254,7 @@ funds AxonOS. **[Engagements and full scope →](https://dyresearch.github.io/#e
 |:--|:--|
 | [`axonos-kernel`](https://github.com/AxonOS-org/axonos-kernel) | Scheduler, lock-free SPSC IPC, capabilities, intent, time — `#![no_std]` |
 | [`axonos-signal-pipeline`](https://github.com/AxonOS-org/axonos-signal-pipeline) | Conditioning, DSP and classification, bit-exact against conformance vectors |
-| [`axonos-consent`](https://github.com/AxonOS-org/axonos-consent) | The consent state machine, with a bounded withdrawal |
+| [`axonos-consent`](https://github.com/AxonOS-org/axonos-consent) | Consent enforced by the kernel: Ed25519-authenticated, replay-proof, final the instant it is withdrawn |
 | [`axonos-protocol`](https://github.com/AxonOS-org/axonos-protocol) · [`axonos-sdk`](https://github.com/AxonOS-org/axonos-sdk) | The wire format and the application interface |
 | [`axonos-hal`](https://github.com/AxonOS-org/axonos-hal) | Hardware abstraction for ARM Cortex-M |
 | [`axonos-stack`](https://github.com/AxonOS-org/axonos-stack) · [`axonos-e2e-demo`](https://github.com/AxonOS-org/axonos-e2e-demo) | The layers running as one system, reproducible from a seed |
