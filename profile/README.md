@@ -32,6 +32,16 @@ guarantee it makes is specified, openly licensed, and built to be checked by
 someone else.
 
 > [!NOTE]
+> **The AxonOS Reference BCI.** One command carries synthetic EEG through every
+> AxonOS component, withdraws consent mid-session and counts, at the application,
+> what still arrives: **zero**. Building it found the gap that would have made it
+> twelve — a withdrawal that stopped intents while derived data kept flowing under
+> a live grant. Fixed, kept as a test that must fail, and proposed as a requirement
+> for every implementation in [RFC-0012](https://github.com/AxonOS-org/axonos-rfcs/blob/main/rfcs/0012-consent-withdrawal-reaches-every-disclosure-channel.md).
+> **[Long read](https://gist.github.com/AxonOS-BCI/b5cf55b5ce6a901bbeb0a34faaa1fd8a)** ·
+> **[axonos-stack 0.4.0](https://github.com/AxonOS-org/axonos-stack/releases/tag/v0.4.0)**
+
+> [!NOTE]
 > **axonos-consent 0.9.2.** Consent now changes only on a verified Ed25519
 > signature, never twice for the same sequence number, and a withdrawal is final
 > the instant it is stored. Ten Kani proofs, three loom models, twenty
@@ -149,6 +159,7 @@ absent from this table is not claimed.
 | Kani proofs re-run in CI | 57 · **L1** | kernel 30 · consent 10 · signal pipeline 9 · DY-WCET 8 |
 | `unsafe` in the kernel | one crate · **CI** | confined to `axonos-spsc`; `#![forbid(unsafe_code)]` in consent, protocol and five kernel crates |
 | Wire format, reference against SDK | byte-identical · **CI** | [conformance](https://github.com/AxonOS-org/axonos-conformance): Python reference and Rust SDK on every push; C header by `_Static_assert` |
+| Post-withdrawal leakage, reference BCI | 0 · **CI** | [`reference-bci-7.txt`](https://github.com/AxonOS-org/axonos-stack/blob/main/reference/reference-bci-7.txt) · counted at the application on a host, synthetic input · no timing claimed |
 | Projects on the live map | 100+ · live | [`data/radar.json`](https://github.com/AxonOS-BCI/axonos-community-radar/blob/main/data/radar.json), refreshed every 3 h |
 
 **≤ 1,000 µs is derived; 972 µs is the worst anyone has seen.** A derivation, a
@@ -175,6 +186,16 @@ Silence means the whole chain — electrode to conditioning to privacy boundary
 to the right to act — reproduced byte for byte on your machine. The session is
 not a happy path: an electrode lifts partway through, and the transcript records
 the system withdrawing the right to actuate 96 ms later while it keeps recording.
+
+Then the consent boundary, counted where the data arrives:
+
+```sh
+cargo run --locked --release --bin reference_bci | tail -1
+```
+
+`RESULT: VERIFIED` means that after consent is withdrawn at second 36, nothing —
+no raw sample, no derived reading, no decoded intent — reached the application,
+and that a second run reproduced every digest. [How it works, and what it does not show →](https://gist.github.com/AxonOS-BCI/b5cf55b5ce6a901bbeb0a34faaa1fd8a)
 
 <details>
 <summary><b>More to run</b> — the path, the kernel proofs, the signal chain, the timing analysis</summary>
@@ -243,7 +264,7 @@ written verdict.
 | **Focused Audit** · 2–3 weeks | Does one critical property — timing, determinism, concurrency — actually hold? |
 | **Due Diligence** · 3–4 weeks | Is the technology what the company says it is, and what could break the investment? |
 
-Fixed price, from $5,000, agreed in writing before any work begins. Revenue
+Fixed scope, agreed in writing before any work begins; pricing on request. Revenue
 funds AxonOS. **[Engagements and full scope →](https://dyresearch.github.io/#engagements)**
 
 ---
