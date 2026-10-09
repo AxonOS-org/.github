@@ -2,7 +2,7 @@
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://github.com/AxonOS-org/.github/raw/main/profile/assets/hero-dark.svg">
-  <img alt="AxonOS — deterministic infrastructure for brain–computer interfaces. Hard real-time, no_std Rust, formally bounded, consent below the application layer." src="https://github.com/AxonOS-org/.github/raw/main/profile/assets/hero-light.svg" width="100%">
+  <img alt="AxonOS — deterministic infrastructure for brain–computer interfaces. Hard real-time by design, no_std Rust, Kani-checked logic, consent below the application layer." src="https://github.com/AxonOS-org/.github/raw/main/profile/assets/hero-light.svg" width="100%">
 </picture>
 
 **[axonos.org](https://axonos.org)** · **[DY-WCET](https://github.com/DYResearch/dy-wcet)** · **[Radar](https://axonos-bci.github.io/axonos-community-radar/)** · **[DY Research](https://dyresearch.github.io)** · **[DY PROOF](https://dy-proof.github.io)** · **[Specifications](https://axonos.org/specifications.html)** · **[Articles](https://medium.com/@AxonOS)**
@@ -11,7 +11,7 @@
 [![Consent](https://img.shields.io/github/v/tag/AxonOS-org/axonos-consent?sort=semver&style=flat-square&label=consent&labelColor=0d1117&color=1f8fae)](https://github.com/AxonOS-org/axonos-consent/releases)
 [![Protocol](https://img.shields.io/github/v/tag/AxonOS-org/axonos-protocol?sort=semver&style=flat-square&label=protocol&labelColor=0d1117&color=1f8fae)](https://github.com/AxonOS-org/axonos-protocol/releases)
 [![Standard](https://img.shields.io/github/v/tag/AxonOS-org/axonos-standard?sort=semver&style=flat-square&label=standard&labelColor=0d1117&color=1f8fae)](https://github.com/AxonOS-org/axonos-standard/releases)
-[![Kani](https://img.shields.io/badge/formally%20verified-Kani-2ea043?style=flat-square&labelColor=0d1117)](#the-numbers-and-where-each-one-comes-from)
+[![Kani](https://img.shields.io/badge/properties%20proven-Kani-2ea043?style=flat-square&labelColor=0d1117)](#the-numbers-and-where-each-one-comes-from)
 [![License](https://img.shields.io/badge/license-Apache--2.0%20OR%20MIT-8b949e?style=flat-square&labelColor=0d1117)](#licensing)
 [![Ecosystem pulse](https://img.shields.io/endpoint?url=https%3A%2F%2Faxonos-bci.github.io%2Faxonos-community-radar%2Fdata%2Fbadge-ecosystem.json&style=flat-square&labelColor=0d1117)](https://axonos-bci.github.io/axonos-community-radar/)
 [![AxonOS Radar](https://img.shields.io/badge/AxonOS%20Radar-open%20neurotech%20map-1f8fae?style=flat-square&labelColor=0b1220)](https://axonos-bci.github.io/axonos-community-radar/)
@@ -19,8 +19,8 @@
 </div>
 
 AxonOS is the hard real-time layer between neural hardware and the applications
-that use it: an open-source kernel in `#![no_std]` Rust on ARM Cortex-M, with
-worst-case response times that are **analysed before they run, not benchmarked
+that use it: an open-source kernel in `#![no_std]` Rust on ARM Cortex-M, designed
+so that worst-case response times are **analysed before they run, not benchmarked
 after**, and
 privacy enforced **below the application layer**, where no application can
 bypass it.
@@ -134,7 +134,7 @@ missed on hardware.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://github.com/AxonOS-org/.github/raw/main/profile/assets/architecture-dark.svg">
-  <img alt="The AxonOS stack from electrodes to applications: hardware abstraction, signal pipeline, kernel with an analytical 1,000 microsecond response bound and 0.5 microsecond IPC bound, consent that changes only on a verified signature and whose withdrawal is final, SDK and protocol, then a privacy boundary that raw neural data never crosses, then applications." src="https://github.com/AxonOS-org/.github/raw/main/profile/assets/architecture-light.svg" width="100%">
+  <img alt="The AxonOS stack from electrodes to applications: hardware abstraction, signal pipeline, kernel designed to a 1,000 microsecond response-time target and a 0.5 microsecond IPC target, consent that changes only on a verified signature and whose withdrawal is final, SDK and protocol, then a privacy boundary that raw neural data never crosses, then applications." src="https://github.com/AxonOS-org/.github/raw/main/profile/assets/architecture-light.svg" width="100%">
 </picture>
 
 ---
@@ -143,30 +143,28 @@ missed on hardware.
 
 Every figure published here, its evidence level, and the artefact it derives
 from. **L1** formally proven · **L2** measured on reference hardware · **L3**
-independently reproduced · **CI** checked mechanically on every push ·
-**analytical** derived by hand from a reference. Graded as in
+independently reproduced · **CI** checked mechanically on every push.
+Graded as in
 [`CLAIMS.md`](https://github.com/AxonOS-org/axonos-standard/blob/main/CLAIMS.md), which this table follows. A figure
 absent from this table is not claimed.
 
 | Figure | Value | Source |
 |:--|:--|:--|
-| End-to-end WCRT, upper bound | ≤ 1,000 µs · analytical | response-time analysis over analytical per-task WCETs · *derivation pending* · the [scheduler harnesses](https://github.com/AxonOS-org/axonos-kernel/blob/main/axonos-scheduler/kani-proofs/src/main.rs) prove admission and EDF selection, not a time |
-| End-to-end WCRT, worst observed | 972 µs · L2 | RFC-0001 · 12 h, 10.8 M epochs, 0 misses · *raw traces pending* |
-| IPC slot latency, upper bound | ≤ 0.5 µs · analytical | *derivation pending* · the [SPSC harnesses](https://github.com/AxonOS-org/axonos-kernel/blob/main/axonos-spsc/kani-proofs/src/main.rs) prove the slot loop-free and FIFO, not a time |
+| End-to-end WCRT | **not claimed** | ≤ 1,000 µs is the Standard's DC1 requirement, not a result: no proof of it and no reference-hardware trace exist yet. The [scheduler harnesses](https://github.com/AxonOS-org/axonos-kernel/blob/main/axonos-scheduler/kani-proofs/src/main.rs) prove admission and EDF selection, not a time |
+| IPC slot latency | **not claimed** | ≤ 0.5 µs is the DC3 requirement. The [SPSC harnesses](https://github.com/AxonOS-org/axonos-kernel/blob/main/axonos-spsc/kani-proofs/src/main.rs) prove the slot loop-free and FIFO, not a time |
 | Consent changes only on an authenticated frame; withdrawal is final | proven · **L1** | [`src/proofs.rs`](https://github.com/AxonOS-org/axonos-consent/blob/main/src/proofs.rs) · ten harnesses, a blocking CI job · *the former `kani/` harnesses never compiled and are removed* |
 | Consent withdrawal, transition time | **retracted** at consent 0.9.0 | the 1,648-cycle figure was derived for a tag path that no longer exists; Ed25519 verification now dominates admission · [SPEC §4.1](https://github.com/AxonOS-org/axonos-consent/blob/main/SPEC.md#41-the-transition) |
-| Release jitter, σ | 2.1 µs · L2 | RFC-0001 · *raw traces pending* |
-| Kani proofs re-run in CI | 57 · **L1** | kernel 30 · consent 10 · signal pipeline 9 · DY-WCET 8 |
+| Kani proofs re-run in CI | 57 · **L1** | consent 10 · signal pipeline 9 · DY-WCET 8 as blocking jobs on every push · kernel 30 on every push as advisory jobs and as a blocking gate on release tags |
 | `unsafe` in the kernel | one crate · **CI** | confined to `axonos-spsc`; `#![forbid(unsafe_code)]` in consent, protocol and five kernel crates |
 | Wire format, reference against SDK | byte-identical · **CI** | [conformance](https://github.com/AxonOS-org/axonos-conformance): Python reference and Rust SDK on every push; C header by `_Static_assert` |
 | Post-withdrawal leakage, reference BCI | 0 · **CI** | [`reference-bci-7.txt`](https://github.com/AxonOS-org/axonos-stack/blob/main/reference/reference-bci-7.txt) · counted at the application on a host, synthetic input · no timing claimed |
 | Projects on the live map | 100+ · live | [`data/radar.json`](https://github.com/AxonOS-BCI/axonos-community-radar/blob/main/data/radar.json), refreshed every 3 h |
 
-**≤ 1,000 µs is derived; 972 µs is the worst anyone has seen.** A derivation, a
-proof and an observation are different kinds of statement. Until the raw traces land in
-[`axonos-validation`](https://github.com/AxonOS-org/axonos-validation), every L2
-row is held as pending and graded in
-[`CLAIMS.md`](https://github.com/AxonOS-org/axonos-standard/blob/main/CLAIMS.md).
+**No timing figure is claimed.** A proof of a property, a proof of a time and a
+measurement are different kinds of statement, and only the first exists today.
+The first reference-hardware trace will land in
+[`axonos-validation`](https://github.com/AxonOS-org/axonos-validation), raw, whatever
+it shows; until then no microsecond figure appears in this table.
 **L3 independent reproduction is not claimed for anything.**
 
 <sub>Not in this table, and therefore not claimed: classification accuracy, information transfer rate, power draw, on-hardware latency in a deployment, session length, electrode count in real use.</sub>
@@ -225,8 +223,7 @@ git clone https://github.com/DYResearch/dy-wcet && cd dy-wcet && cargo test && .
 
 <br>
 
-- **The 1,000 µs bound.** It is analytical: check the derivation when it is published, or run the reference hardware past it. The scheduler harnesses falsify something narrower, the admission and EDF logic, and a counterexample from Kani does that outright.
-- **The 972 µs observation.** It is L2 and pending until the raw traces are published; until then, treat it as a claim with its evidence outstanding.
+- **The scheduler.** The harnesses prove admission and EDF selection for two tasks with periods up to 8; a counterexample from Kani within that domain refutes them outright. The 1,000 µs bound is a requirement the kernel has yet to meet with evidence, so there is no timing claim to refute.
 - **Consent.** Run `cargo kani` in `axonos-consent`: the ten harnesses in [`src/proofs.rs`](https://github.com/AxonOS-org/axonos-consent/blob/main/src/proofs.rs), the job CI runs on every push. Or forge a frame: the `auth_forgery` fuzz target verifies against a key whose secret no one holds, so any frame it admits is a forgery.
 - **dy-wcet.** Find a task set where it returns a bound the recurrence does not support. There is [a bounty](https://github.com/DYResearch/dy-wcet/blob/main/BOUNTY.md) for the first one.
 - **The Radar's scores.** Every score is published with the evidence it rests on. Recompute any of them.

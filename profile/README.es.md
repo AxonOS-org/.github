@@ -2,17 +2,12 @@
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://github.com/AxonOS-org/.github/raw/main/profile/assets/hero-dark.svg">
-  <img alt="AxonOS — Infraestructura determinista para interfaces cerebro-computadora" src="https://github.com/AxonOS-org/.github/raw/main/profile/assets/hero-light.svg" width="100%">
+  <img alt="AxonOS — infraestructura determinista para interfaces cerebro-computadora" src="https://github.com/AxonOS-org/.github/raw/main/profile/assets/hero-light.svg" width="100%">
 </picture>
-
-<br/>
-<br/>
-
-# **axonos**
 
 ### Infraestructura determinista para interfaces cerebro-computadora.
 
-*La página en inglés es la canónica y se actualiza primero; los datos en vivo y las secciones más recientes aparecen [allí](./README.md).*
+<sub>Esta página resume la [página en inglés](./README.md). La página en inglés es la canónica; allí están las versiones, los repositorios y las evidencias.</sub>
 
 <br/>
 
@@ -27,208 +22,38 @@
 
 <br/>
 
-[![SDK](https://img.shields.io/badge/SDK-v0.3.5-0a4a8f?style=flat-square)](https://github.com/AxonOS-org/axonos-sdk)
-[![Kernel](https://img.shields.io/badge/Kernel-v0.3.0-0a4a8f?style=flat-square)](https://github.com/AxonOS-org/AxonOS-kernel)
-[![ABI](https://img.shields.io/badge/Kernel%20ABI-v1-0a4a8f?style=flat-square)](https://axonos.org/specifications.html)
-[![Rust](https://img.shields.io/badge/built%20with-Rust-CE422B?style=flat-square&logo=rust&logoColor=white)](https://www.rust-lang.org/)
-[![License](https://img.shields.io/badge/license-Apache--2.0%20OR%20MIT-475569?style=flat-square)](#licencias)
 [![AxonOS Radar](https://img.shields.io/badge/AxonOS%20Radar-open%20neurotech%20map-1f8fae?style=flat-square&labelColor=0b1220)](https://axonos-bci.github.io/axonos-community-radar/)
-
-### [axonos.org](https://axonos.org) · [Especificaciones](https://axonos.org/specifications.html) · [SDK](https://axonos.org/sdk.html) · [Artículos](https://medium.com/@AxonOS) · [connect@axonos.org](mailto:connect@axonos.org)
 
 </div>
 
----
+## Qué es AxonOS
 
+AxonOS es la capa de tiempo real estricto entre el hardware neuronal y las aplicaciones que lo usan: un núcleo de código abierto en Rust `#![no_std]` para ARM Cortex-M. Está diseñado para que los tiempos de respuesta en el peor caso se analicen antes de ejecutarse, no se midan después, y para que la privacidad se imponga **por debajo de la capa de aplicación**, donde ninguna aplicación puede eludirla.
 
-> [!IMPORTANT]
-> Esta traducción va por detrás de la [versión en inglés](./README.md), que es la de referencia: cifras, versiones y niveles de evidencia se leen allí.
+> Las aplicaciones reciben eventos de intención tipados y sujetos a consentimiento — nunca flujos neuronales en bruto.
 
-## Proyecto AxonOS
+## Qué está demostrado hoy
 
-<br/>
+Tres propiedades están demostradas con el verificador de modelos acotado Kani, cada una sobre un dominio declarado (nivel **L1**):
 
-**AxonOS es un sistema operativo neuronal de tiempo real estricto para interfaces cerebro-computadora.** Kernel de código abierto en `#![no_std]` Rust. Jitter sub-milisegundo en ARM Cortex-M comercial. Tiempo de respuesta en el peor caso formalmente acotado. Privacidad estructural que la capa de aplicación no puede eludir.
+- la admisión y la selección Earliest-Deadline-First del planificador;
+- el anillo de un productor y un consumidor: ida y vuelta exacta, inserción sin bucles, orden FIFO;
+- el consentimiento: ningún cambio de estado sin firma verificada, ninguna secuencia admitida dos veces, una retirada es definitiva.
 
-Construido para los pacientes que dependen de interfaces asistivas de bucle cerrado, y para los ingenieros que se niegan a entregarlos sobre planificación best-effort.
+**Hoy no se reivindica ninguna cifra de tiempo.** Los 1 000 µs del Estándar son un requisito, no un resultado: aún no existe una demostración de un tiempo de respuesta ni una medición publicada en el hardware de referencia. El estado autorizado está en el [catálogo de afirmaciones](https://github.com/AxonOS-org/axonos-standard/blob/main/CLAIMS.md).
 
-<br/>
+## Repositorios
 
-## Por qué existe AxonOS
-
-Hoy, cada aplicación BCI debe reparsear un formato binario propio por dispositivo, reimplementar el control de capacidades, y reescribir el código de integración para cada nueva plataforma de hardware.
-
-**AxonOS hace las tres cosas una sola vez, en `no_std` Rust seguro, sobre un microkernel formalmente acotado.** Una base verificable. Una superficie API tipada. Múltiples backends de hardware.
-
-<br/>
-
-## Los cuatro compromisos
-
-<br/>
-
-|  | Compromiso | Lo que significa en la práctica |
-|:---:|:---|:---|
-| | **Tiempo real estricto en hardware comercial** | Rust `#![no_std]` en ARMv8-M. Sin GC, sin asignador en el camino caliente, sin panics no acotados. |
-| | **WCRT formalmente acotado** | Cada operación crítica tiene un límite superior verificado por Kani. La latencia se *demuestra*, no se mide. |
-| | **Privacidad estructural** | Las capacidades que filtrarían estado cognitivo crudo (`RawEEG`, `EmotionState`, `CognitiveProfile`) no existen como tipos. |
-| | **Ecosistema abierto** | Apache-2.0 OR MIT para código, CC-BY-SA-4.0 para especificaciones. Todos los repositorios son públicos. Cualquiera puede auditar, bifurcar o reemplazar cualquier capa. |
-
-<br/>
-
-## Inicio rápido
-
-Sesenta segundos desde el clone hasta tu primera observación de intención.
-
-```sh
-git clone https://github.com/AxonOS-org/axonos-sdk
-cd axonos-sdk
-cargo test --features std
-```
-
-```rust
-use axonos_sdk::{Capability, IntentStream, Manifest};
-
-let manifest = Manifest::builder()
-    .app_id("com.example.cursor")?
-    .capability(Capability::Navigation)
-    .max_rate_hz(50)
-    .build()?;
-
-let mut stream = IntentStream::connect(&manifest)?;
-while let Some(obs) = stream.try_next()? {
-    println!("{:?} @ {} µs ({}%)",
-        obs.kind(),
-        obs.timestamp().as_micros(),
-        obs.confidence_percent());
-}
-```
-
-El SDK es el binding Rust de referencia. Los bindings C FFI, Python, WebAssembly, JNI y Swift figuran en la [hoja de ruta publicada](https://axonos.org/sdk.html).
-
-<br/>
-
-## Los repositorios
-
-Los seis repositorios son públicos. Código fuente bajo Apache-2.0 OR MIT. Especificaciones bajo CC-BY-SA-4.0.
-
-|  | Repositorio | Propósito | Lenguaje | Última |
-|:---:|:---|:---|:---:|:---|
-| [⬢](https://github.com/AxonOS-org/AxonOS-kernel) | **AxonOS-kernel** | Microkernel de tiempo real estricto — 8 crates, WCRT formalmente acotado, 28 harnesses Kani | Rust | `v0.3.0` |
-| [⬢](https://github.com/AxonOS-org/axonos-sdk) | **axonos-sdk** | Frontera de aplicación — intents tipados, manifiestos de capacidades, ABI del kernel v1 | Rust | `v0.3.5` |
-| [⬢](https://github.com/AxonOS-org/axonos-consent) | **axonos-consent** | Consentimiento aplicado por el kernel: autenticado con Ed25519, a prueba de repetición, definitivo en el instante de la retirada | Rust | `v0.9.2` |
-| [⬢](https://github.com/AxonOS-org/axonos-swarm) | **axonos-swarm** | Coordinación multinodo — sincronización Neural PTP, scheduling de swarm | Rust | `v0.2.1` |
-| [⬢](https://github.com/AxonOS-org/axonos-rfcs) | **axonos-rfcs** | Especificaciones de ingeniería — 8 RFC numerados, normativos, CC-BY-SA-4.0 | Markdown | activo |
-| [⬢](https://github.com/AxonOS-org/axon-bci-gateway) | **axon-bci-gateway** | Gateway de adquisición de hardware (fork de OpenBCI, MIT preservado del upstream) | HTML | activo |
-
-<br/>
-
-## Arquitectura
-
-<br/>
-
-```mermaid
-flowchart LR
-    A[Sensores EEG/EMG<br/>ADS1299 · 24-bit] -->|raw| B[Gateway BCI<br/>nRF52840]
-    B -->|filtered| C[Kernel AxonOS<br/>Rust no_std<br/>Cortex-M4F]
-    C -->|"WCRT ≤ 1 ms<br/>probado L1"| D[Planificador]
-    D -->|typed intent| E[Aplicación<br/>via SDK]
-    F[Cognitive Hypervisor<br/>TrustZone-S · planificado] -.->|isolates| C
-    G[Capa de consentimiento<br/>MMP protocol] -.->|gates| D
-
-    classDef kernel fill:#0e2a47,stroke:#3b82f6,color:#fff,stroke-width:2px
-    classDef secure fill:#0a3d2e,stroke:#10b981,color:#fff,stroke-width:2px
-    class C kernel
-    class F,G secure
-```
-
-**Cómo leer el diagrama.** De izquierda a derecha, del electrodo a la intención. El núcleo (azul) *rechaza* los plazos: una configuración que no puede garantizar no se admite. Los dos nodos verdes son fronteras — el Cognitive Hypervisor aísla, la capa de consentimiento autoriza.
-
-El diagrama muestra estructura, no afirma rendimiento. Las cifras están en la sección siguiente, cada una con su nivel de evidencia.
-
-<br/>
-
-## En números
-
-
-Cada cifra indica **cómo** se estableció. L1 está verificada por máquina: se puede ejecutar `cargo kani` y comprobarlo. L2 está medida en el hardware de referencia, con las trazas en bruto aún sin publicar. L3 es reproducción independiente, y **no se reclama para ninguna cifra**.
-
-La precisión de clasificación, la tasa de transferencia y el consumo no se miden. No hay estimaciones aquí porque el proyecto no los mide.
-<br/>
-
-<table align="center">
-<tr>
-  <td align="center" width="200">
-    <h2>≤ 1 ms</h2>
-    <sub>WCRT del kernel, demostrado (L1)<br/>STM32F407 @ 168 MHz</sub>
-  </td>
-  <td align="center" width="200">
-    <h2>2.1 µs</h2>
-    <sub>Jitter σ en el peor caso<br/>vs Linux 1323 µs</sub>
-  </td>
-  <td align="center" width="200">
-    <h2>630×</h2>
-    <sub>Factor de mejora<br/>vs Linux mainline</sub>
-  </td>
-</tr>
-<tr>
-  <td align="center">
-    <h2>30</h2>
-    <sub>Harnesses Kani BMC<br/>límites superiores probados</sub>
-  </td>
-  <td align="center">
-    <h2>66+</h2>
-    <sub>Pruebas unitarias y de integración<br/>en todo el workspace</sub>
-  </td>
-  <td align="center">
-    <h2>42+</h2>
-    <sub>Artículos de arquitectura<br/>publicados en Medium</sub>
-  </td>
-</tr>
-</table>
-
-<br/>
-
-## Estado
-
-<br/>
-
-| Fase | Contenido | Cuándo |
-|:---|:---|:---|
-| **Fase 0** | Arquitectura, RFCs, API del SDK, harnesses de verificación del kernel | Completado |
-| **Fase 1** | Kit de desarrollo clínico (8 canales) · piloto en centro ALS | a la espera de un banco de medida instrumentado, aún no adquirido; sin fecha, porque sería inventada |
-| **Fase 2** | FDA 510(k) Q-Sub para Cognitive Hypervisor · contribución IEEE P2731 | después de la Fase 1 |
-| **Fase 3** | Primera implementación comercial vía miembros de la Foundation | después de la Fase 2 |
-
-<br/>
-
-## Licencias
-
-| Artefacto | Licencia |
-|:---|:---|
-| Kernel, SDK, consent, swarm, gateway | Apache-2.0 OR MIT |
-| RFCs y especificaciones | CC-BY-SA-4.0 |
-| `axon-bci-gateway` | MIT (preservado del upstream OpenBCI_GUI) |
-
-<br/>
-<br/>
+Todos los repositorios son públicos: código bajo Apache-2.0 OR MIT, especificaciones bajo CC-BY-SA-4.0. La lista completa con las versiones actuales está en la [página en inglés](./README.md) y en [github.com/AxonOS-org](https://github.com/AxonOS-org).
 
 ---
 
 <div align="center">
 
-<img src="./logo.png" width="72" alt="Logo AxonOS" />
+© The AxonOS Project / Denis Yermakou
 
-<br/>
-<br/>
+[connect@axonos.org](mailto:connect@axonos.org) · [security@axonos.org](mailto:security@axonos.org) · [LinkedIn](https://www.linkedin.com/in/axonos) · [axonos.org](https://axonos.org)
 
-**Construido y mantenido por Denis Yermakou**
-
-[denis@axonos.org](mailto:denis@axonos.org) · [LinkedIn](https://www.linkedin.com/in/denis-yermakou) · [Medium](https://medium.com/@AxonOS) · [Site](https://axonos.org)
-
-<sub></sub>
-
-<br/>
-
-<sub>Construido con Rust. Verificado con Kani. Orientado al tiempo real estricto.</sub>
+<sub>Se contemplan oficinas y una sede para el futuro.</sub>
 
 </div>
