@@ -261,7 +261,7 @@ written verdict.
 | **Focused Audit** · 2–3 weeks | Does one critical property — timing, determinism, concurrency — actually hold? |
 | **Due Diligence** · 3–4 weeks | Is the technology what the company says it is, and what could break the investment? |
 
-Fixed scope, agreed in writing before any work begins; pricing on request. Revenue
+Fixed scope, agreed in writing before any work begins. Revenue
 funds AxonOS. **[Engagements and full scope →](https://dyresearch.github.io/#engagements)**
 
 ---
